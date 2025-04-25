@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://da63brjqpdla5"]
+
+[ext_resource type="Script" path="res://components/xr-helper/scene_anchor.gd" id="1_xsa00"]
+
+[node name="SceneAnchor" type="Node3D"]
+script = ExtResource("1_xsa00")
+
+[node name="Label3D" type="Label3D" parent="."]
+layers = 2
+text = "Label"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0

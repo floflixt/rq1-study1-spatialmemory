@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkw7fi5xn7v14"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_e4qnq"]
+[ext_resource type="Script" path="res://components/pickable_object.gd" id="2_cppq8"]
+
+[node name="PickableObject" instance=ExtResource("1_e4qnq")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+linear_damp = 15.0
+angular_damp = 15.0
+script = ExtResource("2_cppq8")
+ranged_grab_method = 0
+
+[connection signal="released" from="." to="." method="_on_released"]

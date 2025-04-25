@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://se8kdypldi4o"]
+
+[ext_resource type="Script" path="res://components/images.gd" id="1_lsf8p"]
+[ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="2_trca1"]
+
+[node name="Images" type="Node3D"]
+script = ExtResource("1_lsf8p")
+
+[node name="PickableImageFrame" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(-0.221187, 0, 0.975232, 0, 1, 0, -0.975232, 0, -0.221187, -0.038, 0.636, 1.769)

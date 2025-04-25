@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cdhtonjl3m5af"]
+
+[node name="TextEditTutorial" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+layout_mode = 0
+offset_right = 233.0
+offset_bottom = 140.0
+placeholder_text = "enter text here"

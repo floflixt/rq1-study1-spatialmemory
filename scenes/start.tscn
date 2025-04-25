@@ -1,0 +1,133 @@
+[gd_scene load_steps=19 format=3 uid="uid://csxv2b1wtmqwq"]
+
+[ext_resource type="Script" path="res://scenes/start.gd" id="1_dc70w"]
+[ext_resource type="PackedScene" uid="uid://by3a66atwv3v2" path="res://components/calibration_cube.tscn" id="2_04tl0"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="3_0qo35"]
+[ext_resource type="Material" uid="uid://cerku00otgooj" path="res://components/black_material.tres" id="4_ry3u0"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_gu5rn"]
+[ext_resource type="PackedScene" uid="uid://da4emgfjt344f" path="res://components/experiment_setup.tscn" id="6_5fuei"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_58wtm"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_dgmss"]
+size = Vector3(1, 0.02, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv8eu"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_valt5"]
+size = Vector3(0.02, 1, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1mt7"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dcxmc"]
+size = Vector3(0.02, 0.02, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovwcn"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8j026"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_frnnv"]
+resource_local_to_scene = true
+size = Vector2(3, 2.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_i36vi"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4uuh"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_i36vi")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f12r8"]
+resource_local_to_scene = true
+size = Vector3(3, 2.5, 0.02)
+
+[node name="Start" type="Node3D"]
+script = ExtResource("1_dc70w")
+
+[node name="WorldOrigin" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("SphereMesh_58wtm")
+
+[node name="AxisX" type="MeshInstance3D" parent="WorldOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_dgmss")
+surface_material_override/0 = SubResource("StandardMaterial3D_iv8eu")
+
+[node name="AxisY" type="MeshInstance3D" parent="WorldOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+layers = 2
+mesh = SubResource("BoxMesh_valt5")
+surface_material_override/0 = SubResource("StandardMaterial3D_y1mt7")
+
+[node name="AxisZ" type="MeshInstance3D" parent="WorldOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+layers = 2
+mesh = SubResource("BoxMesh_dcxmc")
+surface_material_override/0 = SubResource("StandardMaterial3D_ovwcn")
+
+[node name="OriginCoordinates" type="Label3D" parent="WorldOrigin"]
+transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, 0, 0, 0)
+layers = 2
+billboard = 2
+no_depth_test = true
+text = "0
+0
+0"
+
+[node name="CalibrationCube" parent="." instance=ExtResource("2_04tl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+ranged_grab_method = 2
+
+[node name="HighlightRing" parent="CalibrationCube" instance=ExtResource("3_0qo35")]
+layers = 3
+
+[node name="KeyboardIndicator" type="MeshInstance3D" parent="CalibrationCube"]
+transform = Transform3D(2.77, 0, 0, 0, 1.95869, -1.95869, 0, 1.95869, 1.95869, 0.000578105, -0.155865, 0.145597)
+layers = 3
+mesh = SubResource("PlaneMesh_8j026")
+surface_material_override/0 = ExtResource("4_ry3u0")
+
+[node name="Viewport2Din3D" parent="CalibrationCube/KeyboardIndicator" instance=ExtResource("5_gu5rn")]
+transform = Transform3D(0.03, 0, 0, 0, -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0.000338316, -0.000338316)
+screen_size = Vector2(3, 2.5)
+viewport_size = Vector2(300, 250)
+unshaded = true
+
+[node name="Viewport" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D" index="0"]
+size = Vector2i(300, 250)
+
+[node name="ExperimentSetup" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D/Viewport" index="0" instance=ExtResource("6_5fuei")]
+
+[node name="Screen" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_frnnv")
+surface_material_override/0 = SubResource("StandardMaterial3D_y4uuh")
+
+[node name="StaticBody3D" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D" index="2"]
+screen_size = Vector2(3, 2.5)
+viewport_size = Vector2(300, 250)
+
+[node name="CollisionShape3D" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_f12r8")
+
+[node name="CalibrationCubeCoordinates" type="Label3D" parent="CalibrationCube"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+layers = 2
+billboard = 2
+no_depth_test = true
+text = "0
+1.1
+0"
+
+[connection signal="experiment_started" from="CalibrationCube/KeyboardIndicator/Viewport2Din3D/Viewport/ExperimentSetup" to="." method="_on_experiment_setup_experiment_started"]
+
+[editable path="CalibrationCube/KeyboardIndicator/Viewport2Din3D"]

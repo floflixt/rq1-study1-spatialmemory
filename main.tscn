@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs6rpftoatnnn"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_y6vsj"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="2_xrdlg"]
+[ext_resource type="PackedScene" uid="uid://8jnhhlbowys8" path="res://components/xr_origin_3d.tscn" id="3_yq6tj"]
+[ext_resource type="PackedScene" uid="uid://ci58r10k3gssl" path="res://scenes/scene_manager.tscn" id="4_cxhar"]
+
+[sub_resource type="Environment" id="Environment_npe0s"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_y6vsj")
+
+[node name="StartXR" parent="." instance=ExtResource("2_xrdlg")]
+enable_passthrough = true
+target_refresh_rate = 120.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_npe0s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.903388, -0.423064, 0.0700528, 0.241227, 0.636419, 0.732653, -0.354542, -0.644971, 0.676987, 0, 0, 0)
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.218034, -0.912142, 0.34707, -0.606906, 0.405224, 0.68371, -0.764282, -0.0615665, -0.641937, 0.79635, 0, 0)
+shadow_enabled = true
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.625048, 0.28799, -0.725519, -0.606906, 0.405224, 0.68371, 0.490899, 0.867672, -0.0785012, 0.79635, 0, 0)
+shadow_enabled = true
+
+[node name="XROrigin3D" parent="." instance=ExtResource("3_yq6tj")]
+
+[node name="BoneAttachment3D" parent="XROrigin3D/LeftTrackedHand/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2"]
+transform = Transform3D(0.0148923, 0.3927, 0.919546, -0.993092, 0.112853, -0.0321113, -0.116383, -0.912716, 0.391668, -0.0111001, 0.0429431, -0.171614)
+
+[node name="BoneAttachment3D" parent="XROrigin3D/RightTrackedHand/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2"]
+transform = Transform3D(0.0190384, -0.392689, -0.919474, 0.993227, 0.112853, -0.0276318, 0.114616, -0.912721, 0.392177, 0.0111, 0.042943, -0.171613)
+
+[node name="OpenXRFbSceneManager" parent="XROrigin3D" index="5"]
+visible = false
+
+[node name="SceneManager" parent="." instance=ExtResource("4_cxhar")]
+
+[connection signal="pose_recentered" from="StartXR" to="." method="_on_start_xr_pose_recentered"]
+[connection signal="xr_ended" from="StartXR" to="." method="_on_start_xr_xr_ended"]
+[connection signal="xr_started" from="StartXR" to="." method="_on_start_xr_xr_started"]
+[connection signal="next_image_requested" from="XROrigin3D" to="." method="_on_xr_origin_3d_next_image_requested"]
+[connection signal="rating_tablet_requested" from="XROrigin3D" to="." method="_on_xr_origin_3d_rating_tablet_requested"]
+[connection signal="scene_switch_requested" from="XROrigin3D" to="." method="_on_xr_origin_3d_scene_switch_requested"]
+
+[editable path="XROrigin3D"]
+[editable path="XROrigin3D/LeftTrackedHand/LeftHandHumanoid2"]
+[editable path="XROrigin3D/RightTrackedHand/RightHandHumanoid2"]

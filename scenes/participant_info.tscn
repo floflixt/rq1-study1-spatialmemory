@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://hy5ilj0o36lh"]
+
+[ext_resource type="Script" path="res://scenes/participant_info.gd" id="1_bo0sw"]
+[ext_resource type="PackedScene" uid="uid://dgdb1texynduw" path="res://addons/godot-xr-tools/objects/virtual_keyboard.tscn" id="1_rb8mh"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_fshjv"]
+[ext_resource type="PackedScene" uid="uid://gj6bitm2dp7e" path="res://components/participant_id.tscn" id="3_qtrt8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_psav6"]
+resource_local_to_scene = true
+size = Vector2(1.33, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3cb7v"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg6qi"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_3cb7v")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y42eh"]
+resource_local_to_scene = true
+size = Vector3(1.33, 1, 0.02)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v1p2j"]
+size = Vector2(0.755, 0.525)
+
+[node name="ParticipantInfo" type="Node3D"]
+script = ExtResource("1_bo0sw")
+
+[node name="UI" type="Node3D" parent="."]
+
+[node name="VirtualKeyboard" parent="UI" instance=ExtResource("1_rb8mh")]
+transform = Transform3D(0.3, 0, 0, 0, 0.202793, 0.221077, 0, -0.221077, 0.202793, 0, 0, 0)
+scene_properties_keys = PackedStringArray("virtual_keyboard_2d.gd")
+
+[node name="Viewport2Din3D" parent="UI" instance=ExtResource("2_fshjv")]
+transform = Transform3D(0.595, 0, 0, 0, 0.595, 0, 0, 0, 0.595, -0.0167715, 0.346978, -0.120621)
+screen_size = Vector2(1.33, 1)
+viewport_size = Vector2(1024, 768)
+unshaded = true
+
+[node name="Viewport" parent="UI/Viewport2Din3D" index="0"]
+size = Vector2i(1024, 768)
+
+[node name="ParticipantID2" parent="UI/Viewport2Din3D/Viewport" index="0" instance=ExtResource("3_qtrt8")]
+
+[node name="Screen" parent="UI/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_psav6")
+surface_material_override/0 = SubResource("StandardMaterial3D_hg6qi")
+
+[node name="StaticBody3D" parent="UI/Viewport2Din3D" index="2"]
+screen_size = Vector2(1.33, 1)
+viewport_size = Vector2(1024, 768)
+
+[node name="CollisionShape3D" parent="UI/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_y42eh")
+
+[node name="Background" type="MeshInstance3D" parent="UI/Viewport2Din3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.00140443)
+mesh = SubResource("PlaneMesh_v1p2j")
+
+[connection signal="valid_sgic_entered" from="UI/Viewport2Din3D/Viewport/ParticipantID2" to="." method="_on_participant_id_2_valid_sgic_entered"]
+
+[editable path="UI/Viewport2Din3D"]

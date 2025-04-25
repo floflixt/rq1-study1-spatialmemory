@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://xkc7ruxol8pr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o45g2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gn8uo"]
+
+[node name="RatingBeauty" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 464.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="BeautyLow" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "not beautiful"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_o45g2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_gn8uo")
+min_value = 1.0
+max_value = 7.0
+value = 4.0
+tick_count = 6
+
+[node name="BeautyHigh" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "very beautiful"

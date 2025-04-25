@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://beh2xxui1np6d"]
+
+[ext_resource type="PackedScene" uid="uid://xkc7ruxol8pr" path="res://components/rating_beauty.tscn" id="1_4v4t6"]
+[ext_resource type="Script" path="res://components/combined_ratings.gd" id="1_61f4x"]
+[ext_resource type="PackedScene" uid="uid://d2iwwfr4gegul" path="res://components/rating_ai.tscn" id="2_isnmj"]
+
+[node name="CombinedRatings" type="CanvasLayer"]
+script = ExtResource("1_61f4x")
+
+[node name="RatingBeauty" parent="." instance=ExtResource("1_4v4t6")]
+offset = Vector2(0, 42.195)
+transform = Transform2D(1, 0, 0, 1, 0, 42.195)
+
+[node name="RatingAI" parent="." instance=ExtResource("2_isnmj")]
+
+[node name="OkayButton" type="Button" parent="."]
+offset_left = 176.0
+offset_top = 148.0
+offset_right = 286.0
+offset_bottom = 179.0
+text = "SAVE RATING"
+
+[connection signal="pressed" from="OkayButton" to="." method="_on_okay_button_pressed"]
+
+[editable path="RatingBeauty"]
+[editable path="RatingAI"]

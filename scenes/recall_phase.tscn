@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhxifaj1wen0p"]
+
+[ext_resource type="Script" path="res://scenes/recall_phase.gd" id="1_8gqp3"]
+
+[node name="RecallPhase" type="Node3D"]
+script = ExtResource("1_8gqp3")
+
+[node name="ImagesNotPlaced" type="Node3D" parent="."]
+
+[node name="ImagesPlaced" type="Node3D" parent="."]

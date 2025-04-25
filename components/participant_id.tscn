@@ -1,0 +1,135 @@
+[gd_scene load_steps=3 format=3 uid="uid://gj6bitm2dp7e"]
+
+[ext_resource type="Script" path="res://components/participant_id.gd" id="1_vhgcl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jab36"]
+bg_color = Color(1, 0.411765, 0, 1)
+
+[node name="ParticipantID" type="CanvasLayer"]
+script = ExtResource("1_vhgcl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = -156.0
+offset_right = 263.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 11
+
+[node name="LabelTask" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Please enter the following information to create a unique ID.
+Replace Ä/Ö/Ü/ß with A/O/U/S. "
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "For example: Klara Maier, born April 1st, 1990, in Tübingen:
+KL 01 XX 04 TU"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FirstName" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_jab36")
+placeholder_text = "KL"
+alignment = 1
+max_length = 2
+context_menu_enabled = false
+select_all_on_focus = true
+caret_blink = true
+
+[node name="LabelFirstName" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "The first two letters of your first name"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BirthDay" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_jab36")
+placeholder_text = "01"
+alignment = 1
+max_length = 2
+select_all_on_focus = true
+caret_blink = true
+
+[node name="LabelBirthDay" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "The day of your birth"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MiddleName" type="LineEdit" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_jab36")
+placeholder_text = "XX"
+alignment = 1
+max_length = 2
+select_all_on_focus = true
+caret_blink = true
+
+[node name="LabelMiddleName" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "The first two letters of your middle name (enter XX if none)"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BirthMonth" type="LineEdit" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_jab36")
+placeholder_text = "04"
+alignment = 1
+max_length = 2
+select_all_on_focus = true
+caret_blink = true
+
+[node name="LabelBirthMonth" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "The month of your birth"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BirthCity" type="LineEdit" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_jab36")
+placeholder_text = "TU"
+alignment = 1
+max_length = 2
+select_all_on_focus = true
+caret_blink = true
+
+[node name="LabelBirthCity" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "The first two letters of the city you were born in"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jab36")
+disabled = true
+action_mode = 0
+text = "CONTINUE"
+
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/FirstName" to="." method="_on_first_name_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/FirstName" to="." method="_on_first_name_text_submitted"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer2/BirthDay" to="." method="_on_birth_day_text_submitted"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer3/MiddleName" to="." method="_on_middle_name_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer3/MiddleName" to="." method="_on_middle_name_text_submitted"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer4/BirthMonth" to="." method="_on_birth_month_text_submitted"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer5/BirthCity" to="." method="_on_birth_city_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer5/BirthCity" to="." method="_on_birth_city_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer6/Button" to="." method="_on_button_pressed"]

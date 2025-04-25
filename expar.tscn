@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkugrrr6c366e"]
+
+[ext_resource type="Script" path="res://expar.gd" id="1_20s1t"]
+
+[node name="EXPAR" type="Node"]
+script = ExtResource("1_20s1t")

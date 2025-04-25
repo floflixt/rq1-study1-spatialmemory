@@ -1,0 +1,357 @@
+[gd_scene load_steps=41 format=3 uid="uid://8jnhhlbowys8"]
+
+[ext_resource type="Script" path="res://components/xr_origin_3d.gd" id="1_mwkcx"]
+[ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="1_tynxx"]
+[ext_resource type="PackedScene" uid="uid://cjcehqrfoxav3" path="res://addons/hand_pose_detector/hands/LeftHandHumanoid.gltf" id="2_pcdvm"]
+[ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="3_c117m"]
+[ext_resource type="Material" uid="uid://baas1mx6du0so" path="res://components/blue_transparent_material.tres" id="3_xhndn"]
+[ext_resource type="PackedScene" uid="uid://df5hynbooj1uj" path="res://addons/hand_pose_detector/hand_pose_detector.tscn" id="4_n5b4k"]
+[ext_resource type="Script" path="res://addons/hand_pose_detector/hand_pose.gd" id="5_nd7yc"]
+[ext_resource type="Resource" uid="uid://dhbqusuodrl3r" path="res://addons/hand_pose_detector/poses/fist.tres" id="6_80b65"]
+[ext_resource type="Resource" uid="uid://ceofxcl7q122" path="res://addons/hand_pose_detector/poses/point.tres" id="7_kc824"]
+[ext_resource type="Resource" uid="uid://sy66yqr1xila" path="res://addons/hand_pose_detector/poses/thumbs_up.tres" id="8_kpicf"]
+[ext_resource type="Resource" uid="uid://xghyj4mh4av2" path="res://addons/hand_pose_detector/poses/spock.tres" id="9_56b8m"]
+[ext_resource type="Script" path="res://addons/hand_pose_detector/hand_pose_set.gd" id="10_5635e"]
+[ext_resource type="PackedScene" uid="uid://bh8isvqs258cp" path="res://addons/hand_pose_detector/hand_pose_controller.tscn" id="11_lo8e6"]
+[ext_resource type="Resource" uid="uid://d3vwkjibfoh1h" path="res://components/xr-helper/open_hand.tres" id="12_g3rub"]
+[ext_resource type="Script" path="res://addons/hand_pose_detector/hand_pose_action.gd" id="12_nau5g"]
+[ext_resource type="Script" path="res://addons/hand_pose_detector/hand_pose_action_map.gd" id="13_jwhf5"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="14_p5l6h"]
+[ext_resource type="PackedScene" uid="uid://dabmoo0spa6vg" path="res://addons/hand_pose_detector/hands/RightHandHumanoid.gltf" id="15_d5fyg"]
+[ext_resource type="Resource" uid="uid://c5pg3bqcsep5y" path="res://addons/hand_pose_detector/poses/metal.tres" id="16_070qm"]
+[ext_resource type="PackedScene" uid="uid://da63brjqpdla5" path="res://components/xr-helper/scene_anchor.tscn" id="17_xkg7w"]
+[ext_resource type="PackedScene" uid="uid://bpf16o8hdvbji" path="res://components/pickable_image.tscn" id="19_22vhv"]
+[ext_resource type="Material" uid="uid://c6mh7rs7set2y" path="res://components/red_material.tres" id="19_wdo87"]
+[ext_resource type="Material" uid="uid://6i6b52wdtj7y" path="res://components/green_material.tres" id="20_2l6da"]
+[ext_resource type="Material" uid="uid://cacunhp1r1fwd" path="res://components/blue_material.tres" id="21_bansj"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ia5ij"]
+top_radius = 4.93
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u1abw"]
+top_radius = 2.0
+bottom_radius = 0.01
+height = 4.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2y120"]
+points = PackedVector3Array(2, 2, 0, 1.99021, 2, -0.196163, 1.99021, 2, 0.195771, 1.19812, 0.399765, 0.117854, 1.20399, 0.399765, 0, 1.19812, 0.399765, -0.118246, 1.57087, 1.19969, -0.312843, 1.96124, 2, -0.390368, 1.96124, 2, 0.389977, 1.57087, 1.19969, 0.312451, 0.400157, -1.20008, 0.0794833, 0.40603, -1.20008, 0.0399373, 0.407987, -1.20008, 0, 0.40603, -1.20008, -0.0403289, 0.400157, -1.20008, -0.0798748, 1.53289, 1.19969, -0.465153, 1.91386, 2, -0.580658, 1.91386, 2, 0.580266, 1.53289, 1.19969, 0.464761, 0.390368, -1.20008, 0.118246, 0.00978851, -2, 0.00156617, 0.00978851, -2, -0.00195765, 0.390368, -1.20008, -0.118637, 1.48003, 1.19969, -0.613156, 1.84769, 2, -0.765466, 1.84769, 2, 0.765074, 1.48003, 1.19969, 0.612764, 0.00939703, -2, 0.00274086, 0.00939703, -2, -0.00313234, 1.41269, 1.19969, -0.755286, 0.00861382, -2, -0.00509, 1.76351, 2, -0.942835, 1.76351, 2, 0.942443, 1.41269, 1.19969, 0.754894, 0.00861382, -2, 0.00469851, 1.33164, 1.19969, -0.890368, 1.66288, 2, -1.1112, 0.00822234, -2, -0.00587308, 1.66288, 2, 1.11081, 1.33164, 1.19969, 0.889977, 0.00822234, -2, 0.00548148, 0.930697, 0.399765, -0.7639, 1.54581, 2, -1.26899, 0.00704765, -2, -0.00743926, 1.54581, 2, 1.2686, 0.930697, 0.399765, 0.763508, 0.00704765, -2, 0.00704765, 1.13273, 1.19969, -1.13312, 1.41386, 2, -1.41425, 0.00548148, -2, -0.00861394, 0.763508, 0.399765, -0.931088, 1.41386, 2, 1.41386, 1.13273, 1.19969, 1.13273, 0.00548148, -2, 0.00822234, 0.763508, 0.399765, 0.930697, 1.2686, 2, -1.5462, 0.00469851, -2, -0.00900543, 0.754894, 1.19969, -1.41308, 0.889977, 1.19969, -1.33203, 1.11081, 2, -1.66327, 1.2686, 2, 1.54581, 0.00469851, -2, 0.00861382, 0.889977, 1.19969, 1.33164, 0.754894, 1.19969, 1.41269, 1.11081, 2, 1.66288, 0.00274086, -2, -0.00978851, 0.612764, 1.19969, -1.48042, 0.765074, 2, -1.84808, 0.942443, 2, -1.7639, 0.00274086, -2, 0.00939703, 0.612764, 1.19969, 1.48003, 0.942443, 2, 1.76351, 0.765074, 2, 1.84769, 0.00156617, -2, -0.0101801, 0.118246, -1.20008, -0.39076, 0.464761, 1.19969, -1.53328, 0.580266, 2, -1.91425, 0.118246, -1.20008, 0.390368, 0.00156617, -2, 0.00978851, 0.580266, 2, 1.91386, 0.464761, 1.19969, 1.53289, 0.0399373, -1.20008, -0.406421, 0.0794833, -1.20008, -0.400548, -0.00195765, -2, -0.0101801, 0, -1.20008, -0.408379, 0.312451, 1.19969, -1.57126, 0.389977, 2, -1.96163, 0.0794833, -1.20008, 0.400157, 0.0399373, -1.20008, 0.40603, 0, -1.20008, 0.407987, -0.00195765, -2, 0.00978851, 0.389977, 2, 1.96124, 0.312451, 1.19969, 1.57087, 0.117854, 0.399765, -1.19851, 0, 0.399765, -1.20439, -0.00313234, -2, -0.00978851, -0.118637, -1.20008, -0.39076, -0.0798748, -1.20008, -0.400548, -0.0403289, -1.20008, -0.406421, 0.195771, 2, -1.9906, 0.117854, 0.399765, 1.19812, 0, 0.399765, 1.20399, -0.0403289, -1.20008, 0.40603, -0.0798748, -1.20008, 0.400157, -0.118637, -1.20008, 0.390368, -0.00313234, -2, 0.00939703, 0.195771, 2, 1.99021, 0, 1.19969, -1.60219, -0.118246, 0.399765, -1.19851, -0.196163, 2, -1.9906, -0.00509, -2, -0.00900543, -0.613156, 1.19969, -1.48042, -0.465153, 1.19969, -1.53328, -0.312843, 1.19969, -1.57126, 0, 2, -2, 0, 2, 2, -0.118246, 0.399765, 1.19812, -0.312843, 1.19969, 1.57087, -0.465153, 1.19969, 1.53289, -0.613156, 1.19969, 1.48003, -0.00509, -2, 0.00861382, -0.390368, 2, -1.96163, -0.00587308, -2, -0.00861394, -0.755286, 1.19969, -1.41308, -0.765466, 2, -1.84808, -0.580658, 2, -1.91425, -0.196163, 2, 1.99021, -0.390368, 2, 1.96124, -0.580658, 2, 1.91386, -0.765466, 2, 1.84769, -0.755286, 1.19969, 1.41269, -0.00587308, -2, 0.00822234, -0.00743926, -2, -0.00743926, -0.7639, 0.399765, -0.931088, -0.890368, 1.19969, -1.33203, -1.1112, 2, -1.66327, -0.942835, 2, -1.7639, -0.942835, 2, 1.76351, -1.1112, 2, 1.66288, -0.890368, 1.19969, 1.33164, -0.00743926, -2, 0.00704765, -0.7639, 0.399765, 0.930697, -0.00861394, -2, -0.00587308, -0.931088, 0.399765, -0.7639, -1.13312, 1.19969, -1.13312, -1.26899, 2, -1.5462, -1.26899, 2, 1.54581, -0.00861394, -2, 0.00548148, -1.13312, 1.19969, 1.13273, -0.931088, 0.399765, 0.763508, -0.00900543, -2, -0.00509, -1.41308, 1.19969, -0.755286, -1.33203, 1.19969, -0.890368, -1.66327, 2, -1.1112, -1.5462, 2, -1.26899, -1.41425, 2, -1.41425, -1.41425, 2, 1.41386, -0.00900543, -2, 0.00469851, -1.33203, 1.19969, 0.889977, -1.41308, 1.19969, 0.754894, -1.5462, 2, 1.2686, -1.66327, 2, 1.11081, -0.00978851, -2, -0.00313234, -1.48042, 1.19969, -0.613156, -1.84808, 2, -0.765466, -1.7639, 2, -0.942835, -0.00978851, -2, 0.00274086, -1.48042, 1.19969, 0.612764, -1.7639, 2, 0.942443, -1.84808, 2, 0.765074, -0.0101801, -2, -0.00195765, -0.39076, -1.20008, -0.118637, -1.53328, 1.19969, -0.465153, -1.91425, 2, -0.580658, -0.39076, -1.20008, 0.118246, -0.0101801, -2, 0.00156617, -1.91425, 2, 0.580266, -1.53328, 1.19969, 0.464761, -0.408379, -1.20008, 0, -0.406421, -1.20008, -0.0403289, -0.400548, -1.20008, -0.0798748, -1.57126, 1.19969, -0.312843, -1.96163, 2, -0.390368, -0.400548, -1.20008, 0.0794833, -0.406421, -1.20008, 0.0399373, -1.96163, 2, 0.389977, -1.57126, 1.19969, 0.312451, -1.20439, 0.399765, 0, -1.19851, 0.399765, -0.118246, -1.9906, 2, -0.196163, -1.19851, 0.399765, 0.117854, -1.9906, 2, 0.195771, -1.60219, 1.19969, 0, -2, 2, 0)
+
+[sub_resource type="Resource" id="Resource_ettgm"]
+script = ExtResource("10_5635e")
+poses = Array[ExtResource("5_nd7yc")]([ExtResource("6_80b65"), ExtResource("7_kc824"), ExtResource("8_kpicf"), ExtResource("9_56b8m"), ExtResource("16_070qm"), ExtResource("12_g3rub")])
+
+[sub_resource type="Resource" id="Resource_fn1ik"]
+script = ExtResource("12_nau5g")
+pose = ExtResource("6_80b65")
+action_type = 1
+action_name = "grip"
+
+[sub_resource type="Resource" id="Resource_28tnc"]
+script = ExtResource("12_nau5g")
+pose = ExtResource("9_56b8m")
+action_type = 0
+action_name = "left_spock"
+
+[sub_resource type="Resource" id="Resource_ytc4i"]
+script = ExtResource("13_jwhf5")
+actions = Array[ExtResource("12_nau5g")]([SubResource("Resource_fn1ik"), SubResource("Resource_28tnc")])
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kqw8e"]
+height = 0.03
+radius = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_psniv"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.03
+
+[sub_resource type="Resource" id="Resource_bk7yq"]
+script = ExtResource("10_5635e")
+poses = Array[ExtResource("5_nd7yc")]([ExtResource("6_80b65"), ExtResource("7_kc824"), ExtResource("8_kpicf"), ExtResource("9_56b8m"), ExtResource("16_070qm"), ExtResource("12_g3rub")])
+
+[sub_resource type="Resource" id="Resource_ykfmo"]
+script = ExtResource("12_nau5g")
+pose = ExtResource("6_80b65")
+action_type = 1
+action_name = "grip"
+
+[sub_resource type="Resource" id="Resource_5k581"]
+script = ExtResource("12_nau5g")
+pose = ExtResource("9_56b8m")
+action_type = 0
+action_name = "right_spock"
+
+[sub_resource type="Resource" id="Resource_syosr"]
+script = ExtResource("13_jwhf5")
+actions = Array[ExtResource("12_nau5g")]([SubResource("Resource_ykfmo"), SubResource("Resource_5k581")])
+
+[sub_resource type="BoxMesh" id="BoxMesh_3uikd"]
+size = Vector3(0.01, 0.01, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7co2y"]
+size = Vector3(0.01, 0.01, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kbes8"]
+size = Vector3(0.01, 0.01, 0.05)
+
+[node name="XROrigin3D" type="XROrigin3D" groups=["xr"]]
+current = true
+script = ExtResource("1_mwkcx")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+cull_mask = 3
+current = true
+
+[node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_tynxx")]
+
+[node name="Feedback" type="Node3D" parent="XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0493448, 0, 0)
+
+[node name="ParticipantFeedback" type="Label3D" parent="XRCamera3D/Feedback"]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, -1)
+no_depth_test = true
+modulate = Color(0, 1, 0.0117647, 1)
+text = "ParticipantFeedback"
+
+[node name="Timer" type="Timer" parent="XRCamera3D/Feedback/ParticipantFeedback"]
+wait_time = 5.0
+one_shot = true
+
+[node name="TrackingStatus" type="Label3D" parent="XRCamera3D/Feedback"]
+transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, -0.546282, -0.203227, -1)
+layers = 2
+text = "TrackingStatus..."
+font_size = 19
+
+[node name="CurrentScene" type="Label3D" parent="XRCamera3D/Feedback"]
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, -0.50556, -0.146222, -1)
+layers = 2
+text = "CurrentScene"
+
+[node name="DebugMessage" type="Label3D" parent="XRCamera3D/Feedback"]
+transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0.404844, -0.228112, -0.955803)
+layers = 2
+no_depth_test = true
+text = "DebugMessages:
+"
+vertical_alignment = 2
+
+[node name="FrameRate" type="Label3D" parent="XRCamera3D/Feedback"]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, -0.551578, -0.0869775, -1)
+layers = 2
+text = "XX Hz"
+font_size = 19
+horizontal_alignment = 2
+
+[node name="Other" type="Label3D" parent="XRCamera3D/Feedback"]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, -0.063227, -0.950241)
+layers = 2
+no_depth_test = true
+text = "blahblah"
+
+[node name="CameraVisibleArea" type="Area3D" parent="XRCamera3D"]
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="VisibleArea" type="MeshInstance3D" parent="XRCamera3D/CameraVisibleArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -7.60642)
+visible = false
+mesh = SubResource("CylinderMesh_ia5ij")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRCamera3D/CameraVisibleArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2.05525)
+visible = false
+mesh = SubResource("CylinderMesh_u1abw")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_xhndn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRCamera3D/CameraVisibleArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2.05525)
+shape = SubResource("ConvexPolygonShape3D_2y120")
+
+[node name="LeftTrackedHand" type="XRNode3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+tracker = &"/user/hand_tracker/left"
+
+[node name="LeftHandHumanoid2" parent="LeftTrackedHand" instance=ExtResource("2_pcdvm")]
+
+[node name="LeftHandHumanoidMesh" parent="LeftTrackedHand/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="0"]
+layers = 3
+
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="LeftTrackedHand/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="1"]
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="LeftTrackedHand/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2"]
+transform = Transform3D(0.0148923, 0.3927, 0.919546, -0.993092, 0.112853, -0.0321113, -0.116383, -0.912716, 0.391668, -0.0111001, 0.0429431, -0.171614)
+bone_name = "LeftIndexTip"
+bone_idx = 9
+
+[node name="Poke" parent="LeftTrackedHand/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_c117m")]
+enabled = false
+radius = 0.01
+color = Color(0.921569, 0.270588, 0, 0.741176)
+maximum_force = 0.05
+
+[node name="LeftHandPoseDetector" parent="LeftTrackedHand" instance=ExtResource("4_n5b4k")]
+hand_pose_set = SubResource("Resource_ettgm")
+
+[node name="LeftHandPoseController" parent="LeftTrackedHand/LeftHandPoseDetector" instance=ExtResource("11_lo8e6")]
+controller_action_map = SubResource("Resource_ytc4i")
+
+[node name="LeftHandLabel" type="Label3D" parent="LeftTrackedHand"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.097507, 0, 0)
+layers = 2
+text = "left"
+
+[node name="LeftVirtualController" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+tracker = &"/user/hand_pose_controller/left"
+
+[node name="FunctionPickup" parent="LeftVirtualController" instance=ExtResource("14_p5l6h")]
+grab_distance = 0.06
+ranged_enable = false
+
+[node name="LeftHandCollision" type="Area3D" parent="LeftVirtualController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400173, 0.083923)
+collision_layer = 131072
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftVirtualController/LeftHandCollision"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_kqw8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftVirtualController/LeftHandCollision"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.0393563)
+layers = 2
+mesh = SubResource("CylinderMesh_psniv")
+surface_material_override/0 = ExtResource("3_xhndn")
+
+[node name="Label3D" type="Label3D" parent="LeftVirtualController/LeftHandCollision"]
+transform = Transform3D(0.0991633, 0, 0.012909, 0, 0.1, 0, -0.012909, 0, 0.0991633, 0.0264161, 0.0825649, -0.0352524)
+layers = 2
+no_depth_test = true
+text = "test"
+
+[node name="TabletLocation" type="Marker3D" parent="LeftVirtualController"]
+transform = Transform3D(0.4248, 0, 0.905287, 0, 1, 0, -0.905287, 0, 0.4248, 0, 0, -0.118986)
+
+[node name="RightTrackedHand" type="XRNode3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+tracker = &"/user/hand_tracker/right"
+
+[node name="RightHandHumanoid2" parent="RightTrackedHand" instance=ExtResource("15_d5fyg")]
+
+[node name="RightHandHumanoidMesh" parent="RightTrackedHand/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="0" groups=["hands"]]
+layers = 3
+
+[node name="XRHandModifier3D" type="XRHandModifier3D" parent="RightTrackedHand/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="1"]
+hand_tracker = &"/user/hand_tracker/right"
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="RightTrackedHand/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2"]
+transform = Transform3D(0.0190384, -0.392689, -0.919474, 0.993227, 0.112853, -0.0276318, 0.114616, -0.912721, 0.392177, 0.0111, 0.042943, -0.171613)
+bone_name = "RightIndexTip"
+bone_idx = 9
+
+[node name="Poke" parent="RightTrackedHand/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/BoneAttachment3D" groups=["hands"] instance=ExtResource("3_c117m")]
+enabled = false
+radius = 0.01
+color = Color(0.921569, 0.270588, 0, 0.741176)
+maximum_force = 0.05
+
+[node name="RightHandPoseDetector" parent="RightTrackedHand" instance=ExtResource("4_n5b4k")]
+hand_tracker_name = "/user/hand_tracker/right"
+hand_pose_set = SubResource("Resource_bk7yq")
+
+[node name="RightHandPoseController" parent="RightTrackedHand/RightHandPoseDetector" instance=ExtResource("11_lo8e6")]
+controller_tracker_name = "/user/hand_pose_controller/right"
+controller_action_map = SubResource("Resource_syosr")
+hand_tracker_name = "/user/hand_tracker/right"
+
+[node name="RightHandLabel" type="Label3D" parent="RightTrackedHand"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.102493, 0, 0)
+layers = 2
+text = "right"
+
+[node name="RightVirtualController" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+tracker = &"/user/hand_pose_controller/right"
+
+[node name="FunctionPickup" parent="RightVirtualController" instance=ExtResource("14_p5l6h")]
+grab_distance = 0.06
+ranged_enable = false
+ranged_distance = 10.0
+ranged_angle = 25.0
+
+[node name="Marker3D" type="Marker3D" parent="RightVirtualController"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.114436)
+
+[node name="MarkerPosition" type="Label3D" parent="RightVirtualController/Marker3D"]
+transform = Transform3D(-0.05, 0, 7.54979e-09, 0, 0.05, 0, -7.54979e-09, 0, -0.05, 0.0608936, 0.0548714, -7.45058e-09)
+layers = 2
+text = "testestest"
+
+[node name="AxisX" type="MeshInstance3D" parent="RightVirtualController/Marker3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0203549, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_3uikd")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("19_wdo87")
+
+[node name="AxisY" type="MeshInstance3D" parent="RightVirtualController/Marker3D"]
+transform = Transform3D(1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -4.37114e-08, -1, -8.74228e-08, 1, -4.37114e-08, 0, 0.0203845, 0)
+layers = 2
+mesh = SubResource("BoxMesh_7co2y")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("20_2l6da")
+
+[node name="AxisZ" type="MeshInstance3D" parent="RightVirtualController/Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0196973)
+layers = 2
+mesh = SubResource("BoxMesh_kbes8")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("21_bansj")
+
+[node name="RightHandCollision" type="Area3D" parent="RightVirtualController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400173, 0.083923)
+collision_layer = 131072
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightVirtualController/RightHandCollision"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_kqw8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RightVirtualController/RightHandCollision"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.0393563)
+layers = 2
+mesh = SubResource("CylinderMesh_psniv")
+surface_material_override/0 = ExtResource("3_xhndn")
+
+[node name="Label3D" type="Label3D" parent="RightVirtualController/RightHandCollision"]
+transform = Transform3D(0.0991633, 0, 0.012909, 0, 0.1, 0, -0.012909, 0, 0.0991633, 0.0264161, 0.0825649, -0.0352524)
+layers = 2
+no_depth_test = true
+text = "test"
+
+[node name="OpenXRFbSceneManager" type="OpenXRFbSceneManager" parent="."]
+default_scene = ExtResource("17_xkg7w")
+auto_create = false
+
+[node name="OpenXRFbSpatialAnchorManager" type="OpenXRFbSpatialAnchorManager" parent="."]
+scene = ExtResource("19_22vhv")
+process_mode = 4
+
+[node name="ORIGIN" type="Label3D" parent="."]
+layers = 2
+text = "ORIGIN"
+
+[connection signal="timeout" from="XRCamera3D/Feedback/ParticipantFeedback/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pose_ended" from="LeftTrackedHand/LeftHandPoseDetector" to="." method="_on_left_hand_pose_detector_pose_ended"]
+[connection signal="pose_started" from="LeftTrackedHand/LeftHandPoseDetector" to="." method="_on_left_hand_pose_detector_pose_started"]
+[connection signal="body_entered" from="LeftVirtualController/LeftHandCollision" to="." method="_on_left_hand_collision_body_entered"]
+[connection signal="pose_ended" from="RightTrackedHand/RightHandPoseDetector" to="." method="_on_right_hand_pose_detector_pose_ended"]
+[connection signal="pose_started" from="RightTrackedHand/RightHandPoseDetector" to="." method="_on_right_hand_pose_detector_pose_started"]
+[connection signal="body_entered" from="RightVirtualController/RightHandCollision" to="." method="_on_right_hand_collision_body_entered"]
+[connection signal="openxr_fb_spatial_anchor_tracked" from="OpenXRFbSpatialAnchorManager" to="." method="_on_open_xr_fb_spatial_anchor_manager_openxr_fb_spatial_anchor_tracked"]
+[connection signal="openxr_fb_spatial_anchor_untracked" from="OpenXRFbSpatialAnchorManager" to="." method="_on_open_xr_fb_spatial_anchor_manager_openxr_fb_spatial_anchor_untracked"]
+
+[editable path="LeftTrackedHand/LeftHandHumanoid2"]
+[editable path="RightTrackedHand/RightHandHumanoid2"]

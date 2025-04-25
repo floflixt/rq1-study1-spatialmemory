@@ -1,0 +1,66 @@
+[gd_scene load_steps=14 format=3 uid="uid://ci58r10k3gssl"]
+
+[ext_resource type="Script" path="res://components/scene_manager.gd" id="1_jetxe"]
+[ext_resource type="PackedScene" uid="uid://csxv2b1wtmqwq" path="res://scenes/start.tscn" id="2_pngmi"]
+[ext_resource type="PackedScene" uid="uid://bh75755d31wed" path="res://scenes/tutorial.tscn" id="3_krgor"]
+[ext_resource type="PackedScene" uid="uid://hy5ilj0o36lh" path="res://scenes/participant_info.tscn" id="4_x5ymu"]
+[ext_resource type="PackedScene" uid="uid://c557eon4owsi1" path="res://scenes/calibration.tscn" id="6_gpa3a"]
+[ext_resource type="PackedScene" uid="uid://5g7vup568p2t" path="res://scenes/task_practice_learning.tscn" id="7_v5r8y"]
+[ext_resource type="PackedScene" uid="uid://dgkwte1yt8ipm" path="res://scenes/task_practice_recall.tscn" id="9_f7otk"]
+[ext_resource type="Script" path="res://scenes/task_practice_recall.gd" id="10_x7aqw"]
+[ext_resource type="PackedScene" uid="uid://denrepv1xy6xf" path="res://scenes/learning_phase.tscn" id="11_cv6vs"]
+[ext_resource type="PackedScene" uid="uid://dhxifaj1wen0p" path="res://scenes/recall_phase.tscn" id="13_wncjq"]
+[ext_resource type="PackedScene" uid="uid://cvab6smwjw1im" path="res://scenes/error.tscn" id="15_85mcm"]
+[ext_resource type="Script" path="res://scenes/error.gd" id="16_mg8vx"]
+[ext_resource type="PackedScene" uid="uid://coie1v0325x0v" path="res://scenes/end.tscn" id="17_ftafs"]
+
+[node name="SceneManager" type="Node3D" groups=["SceneManager"]]
+script = ExtResource("1_jetxe")
+
+[node name="Start" parent="." instance=ExtResource("2_pngmi")]
+
+[node name="ParticipantInfo" parent="." instance=ExtResource("4_x5ymu")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08598, 0)
+visible = false
+
+[node name="Tutorial" parent="." instance=ExtResource("3_krgor")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09878, 0)
+visible = false
+
+[node name="Calibration" parent="." instance=ExtResource("6_gpa3a")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09801, 0)
+visible = false
+
+[node name="TaskPracticeLearning" parent="." groups=["setup"] instance=ExtResource("7_v5r8y")]
+process_mode = 4
+visible = false
+
+[node name="TaskPracticeRecall" parent="." instance=ExtResource("9_f7otk")]
+process_mode = 4
+visible = false
+script = ExtResource("10_x7aqw")
+
+[node name="LearningPhase" parent="." groups=["setup"] instance=ExtResource("11_cv6vs")]
+process_mode = 4
+visible = false
+
+[node name="RecallPhase" parent="." instance=ExtResource("13_wncjq")]
+process_mode = 4
+visible = false
+
+[node name="Error" parent="." instance=ExtResource("15_85mcm")]
+script = ExtResource("16_mg8vx")
+
+[node name="End" parent="." instance=ExtResource("17_ftafs")]
+process_mode = 4
+visible = false
+
+[connection signal="experiment_setup_finished" from="Start" to="." method="_on_start_experiment_setup_finished"]
+[connection signal="participant_info_collected" from="ParticipantInfo" to="." method="_on_participant_info_participant_info_collected"]
+[connection signal="tutorial_finished" from="Tutorial" to="." method="_on_tutorial_tutorial_finished"]
+[connection signal="calibration_complete" from="Calibration" to="." method="_on_calibration_calibration_complete"]
+[connection signal="all_ratings_complete" from="TaskPracticeLearning" to="." method="_on_task_practice_learning_all_ratings_complete"]
+[connection signal="save_final_ratings" from="End" to="." method="_on_end_save_final_ratings"]

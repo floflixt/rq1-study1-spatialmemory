@@ -1,0 +1,29 @@
+extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func setup() -> void:
+	var file : FileAccess = FileAccess.open(EXPAR.savefile_images, FileAccess.READ_WRITE)
+	var image_file_name : String
+	# now go over all image child nodes and assign them the corresponding image
+	for pickable_image_node in $Images.get_children():
+		image_file_name = EXPAR.images_array.pop_back().replace(".import", "")
+		get_tree().call_group("xr", "debug_message", "LEARNING - " + pickable_image_node.name + ":: " + image_file_name)
+		pickable_image_node.image_texture = image_file_name
+		pickable_image_node.update_texture()
+		# save the frame transforms as well as the assigned images
+		file.seek_end()
+		file.store_line(pickable_image_node.name + "," + image_file_name + "," + MY.transf_to_csv(pickable_image_node.transform))
+		file.seek_end()
+		file.store_line("GLOBAL_" + pickable_image_node.name + "," + image_file_name + "," + MY.transf_to_csv(pickable_image_node.global_transform))
+	file.close()
+	get_tree().call_group("xr", "debug_message", "LEARNING - ImageLocations file created!")

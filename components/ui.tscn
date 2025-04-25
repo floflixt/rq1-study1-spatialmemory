@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bvwoc6fl4smyb"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="HFlowContainer"]
+layout_mode = 2
+text = "this is a button"

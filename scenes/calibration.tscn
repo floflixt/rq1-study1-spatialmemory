@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://c557eon4owsi1"]
+
+[ext_resource type="Script" path="res://scenes/calibration.gd" id="1_maiuw"]
+[ext_resource type="Material" uid="uid://os6a4rg82o4" path="res://components/pale_yellow_material.tres" id="4_6x0lb"]
+[ext_resource type="Material" uid="uid://j1dru4oueexp" path="res://components/pale_blue_material.tres" id="5_8ckq8"]
+[ext_resource type="PackedScene" uid="uid://by3a66atwv3v2" path="res://components/calibration_cube.tscn" id="5_veti1"]
+[ext_resource type="Material" uid="uid://dxjh530q6n6us" path="res://components/pale_orange_material.tres" id="6_088ac"]
+[ext_resource type="Material" uid="uid://cacunhp1r1fwd" path="res://components/blue_material.tres" id="8_6r6b5"]
+[ext_resource type="Material" uid="uid://c6mh7rs7set2y" path="res://components/red_material.tres" id="9_44hsl"]
+[ext_resource type="Material" uid="uid://6i6b52wdtj7y" path="res://components/green_material.tres" id="10_8k84x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eq3mi"]
+size = Vector3(0.07, 0.07, 0.07)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dntoo"]
+size = Vector3(0.1, 0.02, 0.02)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7t6js"]
+size = Vector3(0.3, 0.3, 0.02)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ew5u"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[node name="Calibration" type="Node3D"]
+script = ExtResource("1_maiuw")
+
+[node name="CalibratedOrigin" type="MeshInstance3D" parent="."]
+material_override = ExtResource("10_8k84x")
+mesh = SubResource("BoxMesh_eq3mi")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CalibratedOrigin"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00298257, 0, 0.04825)
+material_override = ExtResource("8_6r6b5")
+mesh = SubResource("BoxMesh_dntoo")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("8_6r6b5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CalibratedOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0504926, 0, 0)
+material_override = ExtResource("9_44hsl")
+mesh = SubResource("BoxMesh_dntoo")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("9_44hsl")
+
+[node name="Images" type="Node3D" parent="."]
+
+[node name="ExampleFrame" parent="Images" instance=ExtResource("5_veti1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020865, 0.643858, -0.157955)
+
+[node name="MeshInstance3D" parent="Images/ExampleFrame" index="1"]
+mesh = SubResource("BoxMesh_7t6js")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Images/ExampleFrame/MeshInstance3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04182)
+mesh = SubResource("BoxMesh_1ew5u")
+surface_material_override/0 = ExtResource("8_6r6b5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Images/ExampleFrame/MeshInstance3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150541, 0, 0)
+mesh = SubResource("BoxMesh_1ew5u")
+surface_material_override/0 = ExtResource("9_44hsl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Images/ExampleFrame/MeshInstance3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149223, 0)
+mesh = SubResource("BoxMesh_1ew5u")
+surface_material_override/0 = ExtResource("10_8k84x")
+
+[node name="Location" type="Label3D" parent="Images/ExampleFrame"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+layers = 3
+billboard = 2
+no_depth_test = true
+text = "..."
+
+[node name="CalibrationCubeYellow" parent="." instance=ExtResource("5_veti1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32507, 0, 0)
+
+[node name="MeshInstance3D" parent="CalibrationCubeYellow" index="1"]
+material_override = ExtResource("4_6x0lb")
+
+[node name="CalibrationCubeOrange" parent="." instance=ExtResource("5_veti1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44313, 0, 0)
+
+[node name="MeshInstance3D" parent="CalibrationCubeOrange" index="1"]
+material_override = ExtResource("6_088ac")
+
+[node name="CalibrationCubeBlue" parent="." instance=ExtResource("5_veti1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0411515, 0, 0.471729)
+
+[node name="MeshInstance3D" parent="CalibrationCubeBlue" index="1"]
+material_override = ExtResource("5_8ckq8")
+
+[node name="CalibrationCubeWhite" parent="." instance=ExtResource("5_veti1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412725, 5.96046e-08, 0.397765)
+
+[node name="RotationHelper" type="Marker3D" parent="."]
+
+[editable path="Images/ExampleFrame"]
+[editable path="CalibrationCubeYellow"]
+[editable path="CalibrationCubeOrange"]
+[editable path="CalibrationCubeBlue"]
+[editable path="CalibrationCubeWhite"]

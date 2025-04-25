@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx2ulcwmp4yeo"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_gotof"]
+[ext_resource type="Script" path="res://components/rating_tablet.gd" id="1_m5rul"]
+[ext_resource type="PackedScene" uid="uid://beh2xxui1np6d" path="res://components/combined_ratings.tscn" id="2_xl6fh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wrf08"]
+size = Vector3(0.4, 0.4, 0.05)
+
+[node name="RatingTablet" type="Node3D"]
+script = ExtResource("1_m5rul")
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("1_gotof")]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0.0265191)
+scene = ExtResource("2_xl6fh")
+viewport_size = Vector2(500, 250)
+unshaded = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_wrf08")

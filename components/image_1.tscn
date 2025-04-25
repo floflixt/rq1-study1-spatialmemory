@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdj3m8bdscn70"]
+
+[ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="1_f31p6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6ca2d"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xthps"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ygis"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_xthps")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0f0g"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 0.02)
+
+[node name="Image1" instance=ExtResource("1_f31p6")]
+
+[node name="Screen" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_6ca2d")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ygis")
+
+[node name="CollisionShape3D" parent="RatingTablet/MeshInstance3D/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_u0f0g")
+
+[editable path="RatingTablet/MeshInstance3D/Viewport2Din3D"]

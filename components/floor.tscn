@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://fcj1ajawesf2"]
+
+[ext_resource type="Script" path="res://components/floor.gd" id="1_s8gkx"]
+[ext_resource type="Shader" path="res://components/floor.gdshader" id="2_icuci"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jsam1"]
+size = Vector3(10, 10, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2jf8"]
+render_priority = 0
+shader = ExtResource("2_icuci")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ellsn"]
+radius = 0.02
+height = 0.04
+
+[node name="Floor" type="Node3D"]
+script = ExtResource("1_s8gkx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+layers = 3
+cast_shadow = 0
+mesh = SubResource("BoxMesh_jsam1")
+surface_material_override/0 = SubResource("ShaderMaterial_m2jf8")
+
+[node name="Label3D" type="Label3D" parent="."]
+billboard = 1
+no_depth_test = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.91797)
+light_energy = 1.718
+shadow_enabled = true
+shadow_opacity = 0.3
+directional_shadow_split_1 = 0.001
+directional_shadow_split_2 = 0.005
+directional_shadow_split_3 = 0.01
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 7.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.245659)
+mesh = SubResource("SphereMesh_ellsn")

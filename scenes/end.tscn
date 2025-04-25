@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://coie1v0325x0v"]
+
+[ext_resource type="Script" path="res://scenes/end.gd" id="1_dynlw"]
+
+[node name="End" type="Node3D" groups=["setup"]]
+script = ExtResource("1_dynlw")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://by3a66atwv3v2"]
+
+[ext_resource type="PackedScene" uid="uid://dkw7fi5xn7v14" path="res://components/pickable_object.tscn" id="1_8y3mo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s24qy"]
+size = Vector3(0.077, 0.077, 0.077)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kyj3d"]
+size = Vector3(0.075, 0.075, 0.075)
+
+[node name="CalibrationCube" instance=ExtResource("1_8y3mo")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_s24qy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_kyj3d")

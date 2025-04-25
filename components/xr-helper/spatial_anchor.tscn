@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfjqyg5wmjxbd"]
+
+[ext_resource type="Script" path="res://components/xr-helper/spatial_anchor.gd" id="1_jp83s"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_s6ril"]
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gb2w"]
+albedo_color = Color(0.980231, 0.354376, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kf802"]
+height = 0.2
+radius = 0.1
+
+[node name="SpatialAnchor" type="Area3D"]
+collision_mask = 0
+script = ExtResource("1_jp83s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_s6ril")
+surface_material_override/0 = SubResource("StandardMaterial3D_1gb2w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CylinderShape3D_kf802")
