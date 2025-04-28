@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsbj2v7r5p0hr"]
+
+[ext_resource type="Script" path="res://components/recognition_test.gd" id="1_jtedr"]
+
+[node name="RecognitionTest" type="CanvasLayer"]
+script = ExtResource("1_jtedr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_top = -2.0
+offset_right = 40.0
+offset_bottom = 38.0
+alignment = 1
+
+[node name="ImageWasPresent" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Image was present"
+
+[node name="ImageWasNotPresent" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Image was NOT present"
+
+[connection signal="pressed" from="HBoxContainer/ImageWasPresent" to="." method="_on_image_was_present_pressed"]
+[connection signal="pressed" from="HBoxContainer/ImageWasNotPresent" to="." method="_on_image_was_not_present_pressed"]

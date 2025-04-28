@@ -34,26 +34,31 @@ script = ExtResource("1_xhj2j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.339358, 0.53, 0.136964)
 image_texture = "europeana.jpg"
 image = ExtResource("3_vauyq")
+is_new_image = false
 
 [node name="PickableImageFrame2" parent="Images" instance=ExtResource("1_q154c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0343496, 0.19, -1.02951)
 image_texture = "paul-blenkhorn-2.jpg"
 image = ExtResource("4_ypcax")
+is_new_image = false
 
 [node name="PickableImageFrame3" parent="Images" instance=ExtResource("1_q154c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.591399, 0.244998, -0.555281)
 image_texture = "paul-blenkhorn.jpg"
 image = ExtResource("5_g0xfu")
+is_new_image = false
 
 [node name="PickableImageFrame4" parent="Images" instance=ExtResource("1_q154c")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.50659, 0.57, -0.614434)
 image_texture = "steve-johnson.jpg"
 image = ExtResource("6_un4jg")
+is_new_image = false
 
 [node name="PickableImageFrame5" parent="Images" instance=ExtResource("1_q154c")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.341399, 0.134998, 0.224719)
 image_texture = "usgs.jpg"
 image = ExtResource("7_b2212")
+is_new_image = false
 
 [node name="FollowHMD" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

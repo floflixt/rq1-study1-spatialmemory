@@ -179,3 +179,15 @@ func _on_end_save_final_ratings() -> void:
 
 func _on_task_practice_learning_all_ratings_complete() -> void:
 	switch_to_next_scene()
+	
+# pass this on to the recall scene to get the next image
+func present_next_image(hand_position: Transform3D) -> void:
+	match EXPAR.current_scene:
+		EXPAR.ExpState.TASK_PRACTICE_RECALL:
+			get_tree().call_group("xr", "debug_message", "SceneManager/PracticeRecall: Trying to show next image...")
+			task_practice_recall_scene.present_next_image(hand_position)
+		EXPAR.ExpState.RECALL_PHASE:
+			get_tree().call_group("xr", "debug_message", "SceneManager/Recall: Trying to show next image...")
+			recall_phase_scene.present_next_image(hand_position)
+		_:
+			get_tree().call_group("xr", "debug_message", "SceneManager: Failed to get correct RECALL version practice vs real")

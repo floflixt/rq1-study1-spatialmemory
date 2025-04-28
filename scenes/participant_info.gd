@@ -1,6 +1,6 @@
 extends Node3D
 
-signal participant_info_collected()
+signal participant_info_collected
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

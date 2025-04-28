@@ -112,11 +112,16 @@ func _on_right_hand_pose_detector_pose_started(p_name: String) -> void:
 		#pass
 		if EXPAR.is_debug_mode:
 			# manual scene switching, only in debug mode
-			#scene_switch_requested.emit()
-			pass
+			scene_switch_requested.emit()
+			#pass
 	if p_name == "OpenHand":
 		EXPAR.current_right_gesture = "OpenHand"
-		
+		match EXPAR.current_scene:
+			EXPAR.ExpState.TASK_PRACTICE_LEARNING, EXPAR.ExpState.LEARNING_PHASE:
+				rating_tablet_requested.emit($RightVirtualController/TabletLocation.global_transform)
+			EXPAR.ExpState.TASK_PRACTICE_RECALL, EXPAR.ExpState.RECALL_PHASE:
+				debug_message("next_image_requested-Right")
+				next_image_requested.emit($RightVirtualController/TabletLocation.global_transform)
 		
 		
 	#if p_name == "ThumbsUp" and (EXPAR.current_scene == EXPAR.ExpState.START):
@@ -157,6 +162,7 @@ func _on_left_hand_pose_detector_pose_started(p_name: String) -> void:
 			EXPAR.ExpState.TASK_PRACTICE_LEARNING, EXPAR.ExpState.LEARNING_PHASE:
 				rating_tablet_requested.emit($LeftVirtualController/TabletLocation.global_transform)
 			EXPAR.ExpState.TASK_PRACTICE_RECALL, EXPAR.ExpState.RECALL_PHASE:
+				debug_message("next_image_requested-LEFT")
 				next_image_requested.emit($LeftVirtualController/TabletLocation.global_transform)
 
 	#if p_name == "ThumbsUp":
@@ -233,14 +239,17 @@ func _disable_poking(poke_node: XRToolsPoke) -> void:
 func _on_left_hand_collision_body_entered(body: Node3D) -> void:
 	# if we are colliding with an image, highlight that image
 	if body.is_in_group("images"):
-		body.toggle_highlighted()
+		# only change highlight if we are in the learning phase
+		if EXPAR.current_expversion == EXPAR.ExpVersion.LEARNING:
+			body.toggle_highlighted()
 		# debug information
 		$LeftVirtualController/LeftHandCollision/Label3D.text = body.name
 		debug_message("LeftHandCollision:" + body.name)
 		
 func _on_right_hand_collision_body_entered(body: Node3D) -> void:
 	if body.is_in_group("images"):
-		body.toggle_highlighted()
+		if EXPAR.current_expversion == EXPAR.ExpVersion.LEARNING:
+			body.toggle_highlighted()
 		# debug information
 		$RightVirtualController/RightHandCollision/Label3D.text = body.name
 		debug_message("RightHandCollision:" + body.name)

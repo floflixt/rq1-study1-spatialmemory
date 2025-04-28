@@ -1,10 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhxifaj1wen0p"]
+[gd_scene load_steps=9 format=3 uid="uid://dhxifaj1wen0p"]
 
 [ext_resource type="Script" path="res://scenes/recall_phase.gd" id="1_8gqp3"]
+[ext_resource type="PackedScene" uid="uid://se8kdypldi4o" path="res://components/images.tscn" id="2_1edc7"]
+[ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="3_cet50"]
+[ext_resource type="Texture2D" uid="uid://b2put2lcsv0lj" path="res://assets/new_images/europeana.jpg" id="4_1mtfk"]
+[ext_resource type="Texture2D" uid="uid://d0rff6n7o57pn" path="res://assets/new_images/paul-blenkhorn-2.jpg" id="5_smvh3"]
+[ext_resource type="Texture2D" uid="uid://7jrfuhtglmjr" path="res://assets/new_images/paul-blenkhorn.jpg" id="6_jes27"]
+[ext_resource type="Texture2D" uid="uid://dcgh78slkgv7i" path="res://assets/new_images/steve-johnson.jpg" id="7_0ovlh"]
+[ext_resource type="Texture2D" uid="uid://d3jyxga2an4in" path="res://assets/new_images/usgs.jpg" id="8_7r0hf"]
 
-[node name="RecallPhase" type="Node3D"]
+[node name="RecallPhase" type="Node3D" groups=["setup"]]
 script = ExtResource("1_8gqp3")
 
-[node name="ImagesNotPlaced" type="Node3D" parent="."]
+[node name="Images" parent="." instance=ExtResource("2_1edc7")]
 
-[node name="ImagesPlaced" type="Node3D" parent="."]
+[node name="NewImages" type="Node3D" parent="."]
+
+[node name="NEWPickableImageFrame1" parent="NewImages" instance=ExtResource("3_cet50")]
+transform = Transform3D(0.0528239, 0, 0.998604, 0, 1, 0, -0.998604, 0, 0.0528239, -1.1041, -0.00139567, 0.76543)
+image_texture = "europeana.jpg"
+image = ExtResource("4_1mtfk")
+is_new_image = true
+
+[node name="NEWPickableImageFrame2" parent="NewImages" instance=ExtResource("3_cet50")]
+transform = Transform3D(0.0528239, 0, 0.998604, 0, 1, 0, -0.998604, 0, 0.0528239, -1.1041, -0.00722918, 0.0341053)
+image_texture = "paul-blenkhorn-2.jpg"
+image = ExtResource("5_smvh3")
+is_new_image = true
+
+[node name="NEWPickableImageFrame3" parent="NewImages" instance=ExtResource("3_cet50")]
+transform = Transform3D(0.0528239, 0, 0.998604, 0, 1, 0, -0.998604, 0, 0.0528239, -1.1041, 0.521829, 0.747552)
+image_texture = "paul-blenkhorn.jpg"
+image = ExtResource("6_jes27")
+is_new_image = true
+
+[node name="NEWPickableImageFrame4" parent="NewImages" instance=ExtResource("3_cet50")]
+transform = Transform3D(0.0528239, 0, 0.998604, 0, 1, 0, -0.998604, 0, 0.0528239, -1.1041, 0.573014, 0.0577385)
+image_texture = "steve-johnson.jpg"
+image = ExtResource("7_0ovlh")
+is_new_image = true
+
+[node name="NEWPickableImageFrame5" parent="NewImages" instance=ExtResource("3_cet50")]
+transform = Transform3D(0.0528239, 0, 0.998604, 0, 1, 0, -0.998604, 0, 0.0528239, -1.1041, 0, 0.400598)
+image_texture = "usgs.jpg"
+image = ExtResource("8_7r0hf")
+is_new_image = true
+
+[node name="PlacedImages" type="Node3D" parent="."]
+
+[editable path="Images"]

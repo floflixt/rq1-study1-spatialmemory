@@ -20,7 +20,7 @@ var sgic : String = "XX-00-XX-00-XX" # this default code is invalid!
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	xr.debug_feedback("Main scene ready!")
+	xr.debug_message("Main scene ready!")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -78,5 +78,5 @@ func _on_scene_manager_debug_message(message: String) -> void:
 
 
 func _on_xr_origin_3d_next_image_requested(left_hand_position: Transform3D) -> void:
-	# TODO: get next unplaced image and place it at hand transform
-	pass # Replace with function body.
+	xr.debug_message("MAIN:trying to show next image...")
+	scene_manager.present_next_image(left_hand_position)

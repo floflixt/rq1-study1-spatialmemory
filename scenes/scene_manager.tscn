@@ -43,7 +43,7 @@ process_mode = 4
 visible = false
 script = ExtResource("10_x7aqw")
 
-[node name="LearningPhase" parent="." groups=["setup"] instance=ExtResource("11_cv6vs")]
+[node name="LearningPhase" parent="." instance=ExtResource("11_cv6vs")]
 process_mode = 4
 visible = false
 

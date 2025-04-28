@@ -7,6 +7,8 @@ extends XRToolsPickable
 @export var rating_complete : bool = false
 @export var final_ratings : String
 
+@export var is_new_image: bool = false
+
 @export var elapsed_time : float = 0.0
 
 var orange : Material = preload("res://components/orange_material.tres")
@@ -19,6 +21,7 @@ var green : Material = preload("res://components/green_material.tres")
 func _ready() -> void:
 	add_to_group("images")
 	hide_rating_tablet()
+	hide_recognition_tablet()
 	$Image.texture = image
 
 # raycasting happens here, independent of visual framerate
@@ -84,6 +87,10 @@ func show_rating_tablet(left_hand_position: Transform3D) -> void:
 		$RatingTablet.visible = true
 		$RatingTablet.process_mode = Node.PROCESS_MODE_INHERIT
 		
+func show_recognition_tablet() -> void:
+	$RecognitionTablet.visible = true
+	$RecognitionTablet.process_mode = Node.PROCESS_MODE_INHERIT
+
 func hide_rating_tablet() -> void:
 	# disable rating tablet
 	$RatingTablet.visible = false
@@ -96,6 +103,11 @@ func hide_rating_tablet() -> void:
 	# now everything is done, the EXPAR can forget which image is the current one
 	EXPAR.currently_highlighted_image = null
 
+
+func hide_recognition_tablet() -> void:
+	$RecognitionTablet.visible = false
+	$RecognitionTablet.process_mode = Node.PROCESS_MODE_DISABLED
+	# 
 # 
 func _on_combined_ratings_rating_confirmed(ratings: String) -> void:
 	# this happens only by pressing the okay button, so we can say the rating is complete
@@ -122,11 +134,21 @@ func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 
 func update_texture(phase: String) -> void:
 	#get_tree().call_group("xr", "debug_message", "texture updated:" + self.name)
-	if not phase == "TUTORIAL":
-		$Image.texture = load("res://assets/images/" + image_texture)
 	#else:
 		#$Image.texture = load("res://assets/turotial_images/" + image_texture)
-
+	match phase:
+		"TUTORIAL":
+			pass
+		"RECALL":
+			if is_new_image:
+				$Image.texture = load("res://assets/new_images/" + image_texture)
+				get_tree().call_group("xr", "debug_message", "new image texture:" + image_texture)
+			else:
+				$Image.texture = load("res://assets/images/" + image_texture)	
+				get_tree().call_group("xr", "debug_message", "standard image texture:" + image_texture)
+		_:
+			get_tree().call_group("xr", "debug_message", "image texture updated - default")
+			$Image.texture = load("res://assets/images/" + image_texture)
 
 func save_ratings(ratings: String) -> void:
 	var complete_data_string: String
@@ -140,3 +162,34 @@ func save_ratings(ratings: String) -> void:
 func save_final_ratings() -> void:
 	save_ratings(final_ratings)
 	
+func make_available_for_placing(hand_transform: Transform3D) -> void:
+	get_tree().call_group("xr", "debug_message", "making image available for placing..." + self.name)
+	self.visible = true
+	#get_tree().call_group("xr", "debug_message", "visible set to true")
+	self.update_texture("RECALL")
+	get_tree().call_group("xr", "debug_message", "texture updated")
+	self.process_mode = Node.PROCESS_MODE_INHERIT
+	#get_tree().call_group("xr", "debug_message", "process mode enabled")
+	self.global_transform = hand_transform
+	#get_tree().call_group("xr", "debug_message", "transform set to hand_transform:" + MY.transf_to_str(hand_transform))
+	# rotate upright
+	var curr_rotation_vector = self.get_global_rotation()
+	var tween = get_tree().create_tween()
+	curr_rotation_vector.z = 0
+	# reset rotation by animating
+	tween.tween_property(self, "global_rotation", curr_rotation_vector, 0.3)
+	#get_tree().call_group("xr", "debug_message", "rotated upright")
+	show_recognition_tablet()
+
+
+func _on_recognition_test_response_new_image() -> void:
+	save_recognition_response("response_new")
+	hide_recognition_tablet()
+
+
+func _on_recognition_test_response_image_was_present() -> void:
+	save_recognition_response("response_image_was_present")
+	hide_recognition_tablet()
+	
+func save_recognition_response(response: String) -> void:
+	pass

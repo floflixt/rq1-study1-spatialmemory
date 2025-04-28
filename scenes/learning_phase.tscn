@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/learning_phase.gd" id="1_sr725"]
 [ext_resource type="PackedScene" uid="uid://se8kdypldi4o" path="res://components/images.tscn" id="2_q87m2"]
 
-[node name="LearningPhase" type="Node3D"]
+[node name="LearningPhase" type="Node3D" groups=["setup"]]
 script = ExtResource("1_sr725")
 
 [node name="Images" parent="." instance=ExtResource("2_q87m2")]
