@@ -5,19 +5,38 @@
 [node name="RecognitionTest" type="CanvasLayer"]
 script = ExtResource("1_jtedr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_top = -2.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
-offset_bottom = 38.0
+offset_bottom = 40.0
+theme_override_constants/separation = 30
+
+[node name="RecognitionTask" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Was this image present during your last visit?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
 alignment = 1
 
-[node name="ImageWasPresent" type="Button" parent="HBoxContainer"]
+[node name="ImageWasPresent" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Image was present"
+text = "  YES  "
 
-[node name="ImageWasNotPresent" type="Button" parent="HBoxContainer"]
+[node name="ImageWasNotPresent" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Image was NOT present"
+text = "   NO   "
 
-[connection signal="pressed" from="HBoxContainer/ImageWasPresent" to="." method="_on_image_was_present_pressed"]
-[connection signal="pressed" from="HBoxContainer/ImageWasNotPresent" to="." method="_on_image_was_not_present_pressed"]
+[node name="RecognitionFeedback" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ImageWasPresent" to="." method="_on_image_was_present_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ImageWasNotPresent" to="." method="_on_image_was_not_present_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -11,9 +11,15 @@ extends XRToolsPickable
 
 @export var elapsed_time : float = 0.0
 
+@export var confirm_counter : int = 0
+@export var placement_confirmed : bool = false
+@export var can_confirm : bool = false
+@export var response_to_save : String = ""
+
 var orange : Material = preload("res://components/orange_material.tres")
 var black : Material = preload("res://components/black_material.tres")
 var green : Material = preload("res://components/green_material.tres")
+var yellow : Material = preload("res://components/pale_yellow_material.tres")
 
 ###############################################################################################
 
@@ -43,7 +49,20 @@ func _physics_process(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	# only if we are currently waiting for confirming a placement, we set the frame color
+	if can_confirm:
+		if confirm_counter < 100:
+			set_frame_material(black)
+		if confirm_counter > 100:
+			set_frame_material(orange)
+		if confirm_counter > 200:
+			set_frame_material(yellow)
+		if confirm_counter > 300:
+			set_frame_material(green)
+		if confirm_counter > 360:
+			placement_confirmed = true
+
+###################################################################
 
 # reset rotation to upright
 func _on_released(pickable: Variant, by: Variant) -> void:
@@ -59,6 +78,7 @@ func _on_released(pickable: Variant, by: Variant) -> void:
 	tween.tween_property(self, "global_rotation", curr_rotation_vector, 0.3)
 	
 func toggle_highlighted() -> void:
+	get_tree().call_group("xr", "debug_message", "toggle highlight called")
 	is_highlighted = not is_highlighted
 	# now change the frame material + hide rating tablet if not highlighted anymore
 	if is_highlighted:
@@ -107,8 +127,10 @@ func hide_rating_tablet() -> void:
 func hide_recognition_tablet() -> void:
 	$RecognitionTablet.visible = false
 	$RecognitionTablet.process_mode = Node.PROCESS_MODE_DISABLED
-	# 
-# 
+	# make placement of image active
+	self.enabled = true
+
+
 func _on_combined_ratings_rating_confirmed(ratings: String) -> void:
 	# this happens only by pressing the okay button, so we can say the rating is complete
 	rating_complete = true
@@ -138,14 +160,21 @@ func update_texture(phase: String) -> void:
 		#$Image.texture = load("res://assets/turotial_images/" + image_texture)
 	match phase:
 		"TUTORIAL":
-			pass
+			$Image.texture = load("res://assets/tutorial_images/" + image_texture)
+			get_tree().call_group("xr", "debug_message", "new tutorial image texture:" + image_texture)
+			if is_new_image:
+				$RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest.image_was_present = false
+			else:
+				$RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest.image_was_present = true
 		"RECALL":
 			if is_new_image:
 				$Image.texture = load("res://assets/new_images/" + image_texture)
 				get_tree().call_group("xr", "debug_message", "new image texture:" + image_texture)
+				$RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest.image_was_present = false
 			else:
 				$Image.texture = load("res://assets/images/" + image_texture)	
 				get_tree().call_group("xr", "debug_message", "standard image texture:" + image_texture)
+				$RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest.image_was_present = true
 		_:
 			get_tree().call_group("xr", "debug_message", "image texture updated - default")
 			$Image.texture = load("res://assets/images/" + image_texture)
@@ -162,13 +191,38 @@ func save_ratings(ratings: String) -> void:
 func save_final_ratings() -> void:
 	save_ratings(final_ratings)
 	
+func save_location() -> void:
+	# disable the image
+	self.visible = false
+	self.process_mode = Node.PROCESS_MODE_DISABLED
+	
+	# save the final location of this image
+	save_image_info(false)
+	
+	
+	
+func save_image_info(before_response_is_given: bool) -> void:
+	var response_string: String = ""
+	if before_response_is_given:
+		# we need to add a final value (which is the response time until button press)
+		response_string = "spawn_location" + "," + str(Time.get_ticks_msec())
+	else:
+		response_string = response_to_save
+	var file : FileAccess = FileAccess.open(EXPAR.placement_file, FileAccess.READ_WRITE)
+	file.seek_end()
+	file.store_line(self.name + "," + image_texture + "," + str(snapped(elapsed_time, .001)) + "," + MY.transf_to_csv(self.transform) + "," + str(is_new_image) + "," + response_string)
+	file.close()
+	
+	
 func make_available_for_placing(hand_transform: Transform3D) -> void:
 	get_tree().call_group("xr", "debug_message", "making image available for placing..." + self.name)
 	self.visible = true
-	#get_tree().call_group("xr", "debug_message", "visible set to true")
-	self.update_texture("RECALL")
-	get_tree().call_group("xr", "debug_message", "texture updated")
 	self.process_mode = Node.PROCESS_MODE_INHERIT
+	# do NOT make the image moveable yet
+	self.enabled = false
+	#get_tree().call_group("xr", "debug_message", "visible set to true")
+	#self.update_texture("RECALL")
+	#get_tree().call_group("xr", "debug_message", "texture updated")
 	#get_tree().call_group("xr", "debug_message", "process mode enabled")
 	self.global_transform = hand_transform
 	#get_tree().call_group("xr", "debug_message", "transform set to hand_transform:" + MY.transf_to_str(hand_transform))
@@ -180,16 +234,16 @@ func make_available_for_placing(hand_transform: Transform3D) -> void:
 	tween.tween_property(self, "global_rotation", curr_rotation_vector, 0.3)
 	#get_tree().call_group("xr", "debug_message", "rotated upright")
 	show_recognition_tablet()
-
-
-func _on_recognition_test_response_new_image() -> void:
-	save_recognition_response("response_new")
-	hide_recognition_tablet()
-
-
-func _on_recognition_test_response_image_was_present() -> void:
-	save_recognition_response("response_image_was_present")
-	hide_recognition_tablet()
 	
-func save_recognition_response(response: String) -> void:
-	pass
+	# save the initial transform where this image appears (BEFORE RESPONSE IS GIVEN -> true)
+	save_image_info(true)
+
+func _on_recognition_test_response(response_string: String, continue_placing: bool) -> void:
+	response_to_save = response_string
+	hide_recognition_tablet()
+	can_confirm = true
+	if not continue_placing:
+		# simply confirm the placement as if the participant is done placing, this will
+		# automatically take care of saving the final location and hiding the image as well as
+		# making placing the next image placement possible 
+		placement_confirmed = true

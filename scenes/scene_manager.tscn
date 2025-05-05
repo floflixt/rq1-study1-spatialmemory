@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ci58r10k3gssl"]
+[gd_scene load_steps=13 format=3 uid="uid://ci58r10k3gssl"]
 
 [ext_resource type="Script" path="res://components/scene_manager.gd" id="1_jetxe"]
 [ext_resource type="PackedScene" uid="uid://csxv2b1wtmqwq" path="res://scenes/start.tscn" id="2_pngmi"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c557eon4owsi1" path="res://scenes/calibration.tscn" id="6_gpa3a"]
 [ext_resource type="PackedScene" uid="uid://5g7vup568p2t" path="res://scenes/task_practice_learning.tscn" id="7_v5r8y"]
 [ext_resource type="PackedScene" uid="uid://dgkwte1yt8ipm" path="res://scenes/task_practice_recall.tscn" id="9_f7otk"]
-[ext_resource type="Script" path="res://scenes/task_practice_recall.gd" id="10_x7aqw"]
 [ext_resource type="PackedScene" uid="uid://denrepv1xy6xf" path="res://scenes/learning_phase.tscn" id="11_cv6vs"]
 [ext_resource type="PackedScene" uid="uid://dhxifaj1wen0p" path="res://scenes/recall_phase.tscn" id="13_wncjq"]
 [ext_resource type="PackedScene" uid="uid://cvab6smwjw1im" path="res://scenes/error.tscn" id="15_85mcm"]
@@ -18,6 +17,7 @@
 script = ExtResource("1_jetxe")
 
 [node name="Start" parent="." instance=ExtResource("2_pngmi")]
+visible = false
 
 [node name="ParticipantInfo" parent="." instance=ExtResource("4_x5ymu")]
 process_mode = 4
@@ -34,14 +34,13 @@ process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09801, 0)
 visible = false
 
-[node name="TaskPracticeLearning" parent="." groups=["setup"] instance=ExtResource("7_v5r8y")]
+[node name="TaskPracticeLearning" parent="." instance=ExtResource("7_v5r8y")]
 process_mode = 4
 visible = false
 
 [node name="TaskPracticeRecall" parent="." instance=ExtResource("9_f7otk")]
 process_mode = 4
 visible = false
-script = ExtResource("10_x7aqw")
 
 [node name="LearningPhase" parent="." instance=ExtResource("11_cv6vs")]
 process_mode = 4
@@ -63,4 +62,6 @@ visible = false
 [connection signal="tutorial_finished" from="Tutorial" to="." method="_on_tutorial_tutorial_finished"]
 [connection signal="calibration_complete" from="Calibration" to="." method="_on_calibration_calibration_complete"]
 [connection signal="all_ratings_complete" from="TaskPracticeLearning" to="." method="_on_task_practice_learning_all_ratings_complete"]
+[connection signal="recall_phase_complete" from="TaskPracticeRecall" to="." method="_on_task_practice_recall_recall_phase_complete"]
+[connection signal="recall_phase_complete" from="RecallPhase" to="." method="_on_recall_phase_recall_phase_complete"]
 [connection signal="save_final_ratings" from="End" to="." method="_on_end_save_final_ratings"]

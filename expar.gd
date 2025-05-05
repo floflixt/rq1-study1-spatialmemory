@@ -136,6 +136,8 @@ func create_save_files(exp_version: String) -> bool:
 		ratings_file = documents_path + sgic + "_ratings.txt"
 		if not FileAccess.file_exists(ratings_file):
 			var file : FileAccess = FileAccess.open(ratings_file, FileAccess.WRITE)
+			# write the header
+			file.store_line("image,currTime,dwellTime,colour,complexity,liking,ai")
 			file.close()
 			get_tree().call_group("xr", "participant_feedback", "ratings file successfully created!", Color.GREEN)
 		else:
@@ -146,6 +148,7 @@ func create_save_files(exp_version: String) -> bool:
 		placement_file = documents_path + sgic + "_placements.txt"
 		if not FileAccess.file_exists(placement_file):
 			var file : FileAccess = FileAccess.open(placement_file, FileAccess.WRITE)
+			file.store_line("node,image,elapsedTime,currTime,basis.x.x,basis.y.x,basis.z.x,origin.x,basis.x.y,basis.y.y,basis.z.y,origin.y,basis.x.z,basis.y.z.,basis.z.z,origin.z,isNewImage,responseString,timeOfResponseButtonPress")
 			file.close()
 			get_tree().call_group("xr", "participant_feedback", "placement file successfully created!", Color.GREEN)
 		else:

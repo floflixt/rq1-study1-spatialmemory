@@ -26,7 +26,7 @@ func transf_to_csv(tr: Transform3D) -> String:
 	return str(str(Time.get_ticks_msec()) + "," +\
 	str(snapped(tr.basis.x.x, 0.001)) + "," + str(snapped(tr.basis.y.x, 0.001)) + "," + str(snapped(tr.basis.z.x, 0.001)) + "," + str(snapped(tr.origin.x, 0.001)) + "," +\
 	str(snapped(tr.basis.x.y, 0.001)) + "," + str(snapped(tr.basis.y.y, 0.001)) + "," + str(snapped(tr.basis.z.y, 0.001)) + "," + str(snapped(tr.origin.y, 0.001)) + "," +\
-	str(snapped(tr.basis.x.z, 0.001)) + "," + str(snapped(tr.basis.y.z, 0.001)) + "," + str(snapped(tr.basis.z.z, 0.001)) + "," + str(snapped(tr.origin.z, 0.001)) + "\n")
+	str(snapped(tr.basis.x.z, 0.001)) + "," + str(snapped(tr.basis.y.z, 0.001)) + "," + str(snapped(tr.basis.z.z, 0.001)) + "," + str(snapped(tr.origin.z, 0.001)))
 
 
 ## function to calculate the distance between two transforms

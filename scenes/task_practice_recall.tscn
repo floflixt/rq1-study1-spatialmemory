@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://dgkwte1yt8ipm"]
+[gd_scene load_steps=9 format=3 uid="uid://dgkwte1yt8ipm"]
 
-[node name="TaskPracticeRecall" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="1_53g80"]
+[ext_resource type="Script" path="res://scenes/task_practice_recall.gd" id="1_g04ev"]
+[ext_resource type="Texture2D" uid="uid://dcgh78slkgv7i" path="res://assets/tutorial_images/steve-johnson.jpg" id="3_thawd"]
+[ext_resource type="Texture2D" uid="uid://b2put2lcsv0lj" path="res://assets/tutorial_images/europeana.jpg" id="4_vtllg"]
+[ext_resource type="Texture2D" uid="uid://d0rff6n7o57pn" path="res://assets/tutorial_images/paul-blenkhorn-2.jpg" id="5_snvtl"]
+[ext_resource type="Texture2D" uid="uid://cypbeb0g0sm1l" path="res://assets/tutorial_images/anniroenkae.jpg" id="6_mmjg5"]
+[ext_resource type="Texture2D" uid="uid://cilxddqyyyhfn" path="res://assets/tutorial_images/bymalens.jpg" id="7_150qx"]
+[ext_resource type="Texture2D" uid="uid://ko0prgc4wh82" path="res://assets/tutorial_images/googledeepmind.jpg" id="8_6fg47"]
+
+[node name="TaskPracticeRecall" type="Node3D" groups=["setup"]]
+script = ExtResource("1_g04ev")
+
+[node name="Images" type="Node3D" parent="."]
+
+[node name="PickableImageFrame1" parent="Images" instance=ExtResource("1_53g80")]
+transform = Transform3D(-0.601815, 0, 0.798635, 0, 1, 0, -0.798635, 0, -0.601815, 0.089, 0.279, 1.259)
+image_texture = "steve-johnson.jpg"
+image = ExtResource("3_thawd")
+
+[node name="PickableImageFrame2" parent="Images" instance=ExtResource("1_53g80")]
+transform = Transform3D(-0.273959, 0, 0.961741, 0, 1, 0, -0.961741, 0, -0.273959, -0.586, 0.65, -1.355)
+image_texture = "europeana.jpg"
+image = ExtResource("4_vtllg")
+
+[node name="PickableImageFrame3" parent="Images" instance=ExtResource("1_53g80")]
+transform = Transform3D(0.285688, 0, -0.958323, 0, 1, 0, 0.958323, 0, 0.285688, 1.884, 0.656, 0.153)
+image_texture = "paul-blenkhorn-2.jpg"
+image = ExtResource("5_snvtl")
+
+[node name="NewImages" type="Node3D" parent="."]
+
+[node name="NEWPickableImageFrame1" parent="NewImages" instance=ExtResource("1_53g80")]
+image_texture = "anniroenkae.jpg"
+image = ExtResource("6_mmjg5")
+
+[node name="NEWPickableImageFrame2" parent="NewImages" instance=ExtResource("1_53g80")]
+image_texture = "bymalens.jpg"
+image = ExtResource("7_150qx")
+
+[node name="NEWPickableImageFrame3" parent="NewImages" instance=ExtResource("1_53g80")]
+image_texture = "googledeepmind.jpg"
+image = ExtResource("8_6fg47")
+
+[node name="PlacedImages" type="Node3D" parent="."]

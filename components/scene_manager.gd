@@ -45,6 +45,9 @@ func _process(delta: float) -> void:
 func switch_to_scene(new_scene_name: EXPAR.ExpState) -> void:
 	# disable the current scene, then switch to the next
 	_disable_scene(EXPAR.current_scene)
+	
+	await get_tree().create_timer(2).timeout
+	
 	# update which scene is the current one
 	EXPAR.current_scene = new_scene_name
 	
@@ -94,6 +97,8 @@ func switch_to_next_scene() -> void:
 			switch_to_scene(EXPAR.ExpState.END)
 		EXPAR.ExpState.RECALL_PHASE:
 			switch_to_scene(EXPAR.ExpState.END)
+		EXPAR.ExpState.ERROR, EXPAR.ExpState.END:
+			get_tree().quit()
 		_:
 			switch_to_scene(EXPAR.ExpState.ERROR)
 
@@ -191,3 +196,11 @@ func present_next_image(hand_position: Transform3D) -> void:
 			recall_phase_scene.present_next_image(hand_position)
 		_:
 			get_tree().call_group("xr", "debug_message", "SceneManager: Failed to get correct RECALL version practice vs real")
+
+
+func _on_recall_phase_recall_phase_complete() -> void:
+	switch_to_next_scene()
+
+
+func _on_task_practice_recall_recall_phase_complete() -> void:
+	switch_to_next_scene()

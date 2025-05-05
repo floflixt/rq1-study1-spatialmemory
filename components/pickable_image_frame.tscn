@@ -28,14 +28,14 @@ albedo_color = Color(0.154876, 0.154876, 0.154876, 1)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_50gw7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lj5j5"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3se4y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32yr4"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_50gw7")
+albedo_texture = SubResource("ViewportTexture_lj5j5")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5k2t"]
@@ -52,14 +52,14 @@ size = Vector3(0.3, 0.2, 0.02)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tw1j3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ogt6f"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3e08"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43t6a"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_tw1j3")
+albedo_texture = SubResource("ViewportTexture_ogt6f")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_35n62"]
@@ -77,6 +77,10 @@ rating_complete = false
 final_ratings = ""
 is_new_image = false
 elapsed_time = 0.0
+confirm_counter = 0
+placement_confirmed = false
+can_confirm = false
+response_to_save = ""
 ranged_grab_method = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
@@ -104,7 +108,7 @@ mesh = SubResource("BoxMesh_pulxf")
 surface_material_override/0 = SubResource("StandardMaterial3D_wvwtq")
 
 [node name="Viewport2Din3D" parent="RatingTablet/MeshInstance3D" index="0" instance=ExtResource("5_gqwec")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.0140991)
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, -0.000231519, 0.000231504, 0.0140991)
 collision_layer = 5242880
 viewport_size = Vector2(500, 200)
 unshaded = true
@@ -116,7 +120,7 @@ size = Vector2i(500, 200)
 
 [node name="Screen" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_mvrtx")
-surface_material_override/0 = SubResource("StandardMaterial3D_3se4y")
+surface_material_override/0 = SubResource("StandardMaterial3D_32yr4")
 
 [node name="StaticBody3D" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="2"]
 collision_layer = 5242880
@@ -127,6 +131,7 @@ shape = SubResource("BoxShape3D_w5k2t")
 
 [node name="VisibleLabel" type="Label3D" parent="." index="5"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.147933, 0.0356976)
+layers = 2
 billboard = 2
 no_depth_test = true
 text = "...."
@@ -171,21 +176,21 @@ material_override = ExtResource("7_m6iof")
 mesh = SubResource("BoxMesh_a2qap")
 
 [node name="Viewport2Din3D" parent="RecognitionTablet/MeshInstance3D" index="0" instance=ExtResource("5_gqwec")]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0.0109875)
-viewport_size = Vector2(500, 200)
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0, 0.0109875)
+viewport_size = Vector2(375, 200)
 unshaded = true
 
 [node name="Viewport" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="0"]
-size = Vector2i(500, 200)
+size = Vector2i(375, 200)
 
 [node name="RecognitionTest" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport" index="0" instance=ExtResource("8_22x2b")]
 
 [node name="Screen" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_qwrw5")
-surface_material_override/0 = SubResource("StandardMaterial3D_q3e08")
+surface_material_override/0 = SubResource("StandardMaterial3D_43t6a")
 
 [node name="StaticBody3D" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="2"]
-viewport_size = Vector2(500, 200)
+viewport_size = Vector2(375, 200)
 
 [node name="CollisionShape3D" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_35n62")
@@ -193,8 +198,7 @@ shape = SubResource("BoxShape3D_35n62")
 [connection signal="rating_confirmed" from="RatingTablet/MeshInstance3D/Viewport2Din3D/Viewport/CombinedRatings" to="." method="_on_combined_ratings_rating_confirmed"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
-[connection signal="response_image_was_present" from="RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest" to="." method="_on_recognition_test_response_image_was_present"]
-[connection signal="response_new_image" from="RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest" to="." method="_on_recognition_test_response_new_image"]
+[connection signal="response" from="RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest" to="." method="_on_recognition_test_response"]
 
 [editable path="RatingTablet/MeshInstance3D/Viewport2Din3D"]
 [editable path="RecognitionTablet/MeshInstance3D/Viewport2Din3D"]
