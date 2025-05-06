@@ -8,8 +8,13 @@ script = ExtResource("1_sr725")
 
 [node name="Images" parent="." instance=ExtResource("2_q87m2")]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer20m" type="Timer" parent="."]
 wait_time = 1200.0
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Timer10m" type="Timer" parent="."]
+wait_time = 600.0
+one_shot = true
+
+[connection signal="timeout" from="Timer20m" to="." method="_on_timer_20m_timeout"]
+[connection signal="timeout" from="Timer10m" to="." method="_on_timer_10m_timeout"]

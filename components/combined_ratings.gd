@@ -9,10 +9,10 @@ signal rating_confirmed(ratings: String)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$VBoxContainer/TabContainer.set_tab_title(0, "Farbenfroh")
-	$VBoxContainer/TabContainer.set_tab_title(1, "Komplexität")
-	$VBoxContainer/TabContainer.set_tab_title(2, "Gefallen")
-	$VBoxContainer/TabContainer.set_tab_title(3, "KI-generiert")
+	$VBoxContainer/TabContainer.set_tab_title(0, "COLOURFULNESS")
+	$VBoxContainer/TabContainer.set_tab_title(1, "COMPLEXITY")
+	$VBoxContainer/TabContainer.set_tab_title(2, "LIKE")
+	$VBoxContainer/TabContainer.set_tab_title(3, "AI_GENERATED")
 	
 
 

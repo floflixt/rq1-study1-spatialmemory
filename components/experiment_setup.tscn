@@ -26,6 +26,21 @@ popup/item_0/text = "16"
 popup/item_1/text = "XXX?"
 popup/item_1/id = 1
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "ParticipantLanguage
+"
+
+[node name="ParticipantLanguage" type="OptionButton" parent="VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "DE"
+popup/item_1/text = "EN"
+popup/item_1/id = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -39,6 +54,20 @@ layout_mode = 2
 item_count = 2
 popup/item_0/text = "LEARNING"
 popup/item_1/text = "RECALL"
+popup/item_1/id = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Furniture Condition"
+
+[node name="FurnitureShiftCondition" type="OptionButton" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "NO-shift"
+popup/item_1/text = "FURNITURE-shift"
 popup/item_1/id = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
@@ -71,7 +100,13 @@ layout_mode = 2
 text = "START EXPERIMENT
 (go to tutorial)"
 
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "TEST"
+
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer2/QuestNumberSelection" to="." method="_on_quest_number_selection_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer5/ParticipantLanguage" to="." method="_on_participant_language_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/ExperimentVersionSelection" to="." method="_on_experiment_version_selection_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer4/FurnitureShiftCondition" to="." method="_on_furniture_shift_condition_item_selected"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer3/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="VBoxContainer/StartExperiment" to="." method="_on_start_experiment_pressed"]

@@ -63,5 +63,6 @@ visible = false
 [connection signal="calibration_complete" from="Calibration" to="." method="_on_calibration_calibration_complete"]
 [connection signal="all_ratings_complete" from="TaskPracticeLearning" to="." method="_on_task_practice_learning_all_ratings_complete"]
 [connection signal="recall_phase_complete" from="TaskPracticeRecall" to="." method="_on_task_practice_recall_recall_phase_complete"]
+[connection signal="learning_phase_finished" from="LearningPhase" to="." method="_on_learning_phase_learning_phase_finished"]
 [connection signal="recall_phase_complete" from="RecallPhase" to="." method="_on_recall_phase_recall_phase_complete"]
 [connection signal="save_final_ratings" from="End" to="." method="_on_end_save_final_ratings"]

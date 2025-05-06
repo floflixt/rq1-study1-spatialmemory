@@ -57,6 +57,10 @@ images=""
 xr=""
 setup=""
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/translations.de.translation", "res://assets/translations.en.translation")
+
 [layer_names]
 
 3d_render/layer_1="AlwaysVisible"

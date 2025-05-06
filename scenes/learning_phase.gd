@@ -1,5 +1,9 @@
 extends Node3D
 
+@export var can_finish_learning_phase : bool = false
+@export var finish_learning_counter : int = 0
+
+signal learning_phase_finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,7 +12,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if EXPAR.current_right_gesture == "ThumbsUp" and EXPAR.current_left_gesture == "ThumbsUp" and can_finish_learning_phase:
+		# increase the counter by one per frame
+		finish_learning_counter += 1
+	else:
+		# reset the counter
+		finish_learning_counter = 0
+	if finish_learning_counter > 300:
+		save_final_ratings()
+		learning_phase_finished.emit()
 
 
 func setup() -> void:
@@ -31,8 +43,9 @@ func setup() -> void:
 	file.close()
 	get_tree().call_group("xr", "debug_message", "LEARNING - ImageLocations file created!")
 	
-	# start experiment timer
-	$Timer.start()
+	# start experiment timers
+	$Timer10m.start()
+	$Timer20m.start()
 	
 	
 ## this function is only intended to be run once after all ratings are collected
@@ -43,7 +56,11 @@ func save_final_ratings() -> void:
 		image_node.save_final_ratings()
 
 # if the timer for the experiment has run out
-func _on_timer_timeout() -> void:
-	get_tree().call_group("xr", "participant_feedback", "Task Done!", Color.GREEN)
+func _on_timer_20m_timeout() -> void:
+	get_tree().call_group("xr", "participant_feedback", "WARNING_20_MINUTES", Color.GREEN)
 	# save all current ratings
 	save_final_ratings()
+	can_finish_learning_phase = true
+
+func _on_timer_10m_timeout() -> void:
+	get_tree().call_group("xr", "participant_feedback", "WARNING_10_MINUTES", Color.GREEN_YELLOW)

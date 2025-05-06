@@ -204,3 +204,7 @@ func _on_recall_phase_recall_phase_complete() -> void:
 
 func _on_task_practice_recall_recall_phase_complete() -> void:
 	switch_to_next_scene()
+
+
+func _on_learning_phase_learning_phase_finished() -> void:
+	switch_to_next_scene()

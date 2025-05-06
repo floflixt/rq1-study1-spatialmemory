@@ -1,0 +1,26 @@
+keys,en,de
+TEST,test_english,test_deutsch
+COLOURFULNESS,Colours,Farben
+IMAGE_COLOUR,This image is...,Dieses Bild ist...
+NOT_AT_ALL_COLOURFUL,not at all colourful,überhaupt nicht farbenfroh
+VERY_COLOURFUL,very colourful, sehr farbenfroh
+COMPLEXITY,Complexity,Komplexität
+IMAGE_COMPLEX,This image is visually...,Dieses Bild ist visuell...
+VERY_SIMPLE,very sinmple,sehr simpel
+VERY_COMPLEX,very complex,sehr komplex
+LIKE,Like,Gefallen
+IMAGE_LIKE,I like this image...,Dieses Bild gefällt mir...
+NOT_AT_ALL,not at all,überhaupt nicht
+VERY_MUCH,very much,sehr gut
+AI_GENERATED,AI-generated,KI-generiert
+IMAGE_AI,XXXconvincing?,XXXconvincing?
+VERY_EASY,very easyXXX,sehr einfachXXX
+VERY_HARD,very hardXXX,sehr schwerXXX
+SAVE_RATING,Save ratings,Bewertung speichern
+RECOGNITION_TASK,Was this image present during your last visit?,War dieses Bild bei Deinem letzten Besuch vorhanden?
+YES,Yes,Ja
+NO,No,Nein
+CORRECT,Correct,Richtig
+INCORRECT,Incorrect,Falsch
+WARNING_20_MINUTES,20 minutes are over - please finish the task.,20 Minuten sind vorbei - bitte beende Deine Aufgabe.
+WARNING_10_MINUTES,INFO: 10 minutes are over,INFO: 10 Minuten sind vorbei

@@ -33,7 +33,7 @@ metadata/_tab_index = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Colours"]
 layout_mode = 2
-text = "Dieses Bild ist..."
+text = "IMAGE_COLOUR"
 horizontal_alignment = 1
 
 [node name="ColourSlider" type="HSlider" parent="VBoxContainer/TabContainer/Colours"]
@@ -52,7 +52,7 @@ theme_override_constants/separation = 50
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Colours/HBoxContainer"]
 layout_mode = 2
-text = "überhaupt nicht farbenfroh"
+text = "NOT_AT_ALL_COLOURFUL"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/Colours/HBoxContainer"]
 layout_mode = 2
@@ -60,7 +60,7 @@ size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Colours/HBoxContainer"]
 layout_mode = 2
-text = "sehr farbenfroh"
+text = "VERY_COLOURFUL"
 
 [node name="Complexity" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 visible = false
@@ -71,7 +71,7 @@ metadata/_tab_index = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Complexity"]
 layout_mode = 2
-text = "Dieses Bild ist visuell..."
+text = "IMAGE_COMPLEX"
 horizontal_alignment = 1
 
 [node name="ComplexitySlider" type="HSlider" parent="VBoxContainer/TabContainer/Complexity"]
@@ -90,7 +90,7 @@ theme_override_constants/separation = 50
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Complexity/HBoxContainer"]
 layout_mode = 2
-text = "sehr simpel    "
+text = "VERY_SIMPLE"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/Complexity/HBoxContainer"]
 layout_mode = 2
@@ -98,7 +98,7 @@ size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Complexity/HBoxContainer"]
 layout_mode = 2
-text = "  sehr komplex"
+text = "VERY_COMPLEX"
 
 [node name="Like" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 visible = false
@@ -109,7 +109,7 @@ metadata/_tab_index = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Like"]
 layout_mode = 2
-text = "Dieses Bild gefällt mir..."
+text = "IMAGE_LIKE"
 horizontal_alignment = 1
 
 [node name="LikeSlider" type="HSlider" parent="VBoxContainer/TabContainer/Like"]
@@ -129,7 +129,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
 layout_mode = 2
-text = "überhaupt nicht"
+text = "NOT_AT_ALL"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
 layout_mode = 2
@@ -137,7 +137,7 @@ size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
 layout_mode = 2
-text = "       sehr gut"
+text = "VERY_MUCH"
 
 [node name="AI" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 visible = false
@@ -148,7 +148,7 @@ metadata/_tab_index = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/AI"]
 layout_mode = 2
-text = "Dieses Bild ist als KI-generiert erkennbar:"
+text = "IMAGE_AI"
 horizontal_alignment = 1
 
 [node name="AISlider" type="HSlider" parent="VBoxContainer/TabContainer/AI"]
@@ -168,7 +168,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
 layout_mode = 2
-text = "sehr schwer    "
+text = "VERY_EASY"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
 layout_mode = 2
@@ -176,7 +176,7 @@ size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
 layout_mode = 2
-text = "   sehr einfach"
+text = "VERY_HARD"
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 layout_mode = 2
@@ -189,7 +189,7 @@ step = 1.0
 [node name="OkayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 disabled = true
-text = "SAVE RATING"
+text = "SAVE_RATING"
 
 [connection signal="drag_ended" from="VBoxContainer/TabContainer/Colours/ColourSlider" to="." method="_on_colour_slider_drag_ended"]
 [connection signal="drag_ended" from="VBoxContainer/TabContainer/Complexity/ComplexitySlider" to="." method="_on_complexity_slider_drag_ended"]

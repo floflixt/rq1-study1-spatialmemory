@@ -36,14 +36,14 @@ size = Vector2(0.1, 0.1)
 resource_local_to_scene = true
 size = Vector2(3, 2.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2ldxk"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wrgk3"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjxbd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3f2l"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2ldxk")
+albedo_texture = SubResource("ViewportTexture_wrgk3")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f12r8"]
@@ -98,23 +98,23 @@ mesh = SubResource("PlaneMesh_8j026")
 surface_material_override/0 = ExtResource("4_ry3u0")
 
 [node name="Viewport2Din3D" parent="CalibrationCube/KeyboardIndicator" instance=ExtResource("5_gu5rn")]
-transform = Transform3D(0.03, 0, 0, 0, -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0.000338316, -0.000338316)
+transform = Transform3D(0.033, 0, 0, 0, -1.66103e-09, 0.033, 0, -0.038, -1.44248e-09, 0, 0.000338316, -0.000338316)
 screen_size = Vector2(3, 2.5)
-viewport_size = Vector2(300, 250)
+viewport_size = Vector2(300, 400)
 unshaded = true
 
 [node name="Viewport" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D" index="0"]
-size = Vector2i(300, 250)
+size = Vector2i(300, 400)
 
 [node name="ExperimentSetup" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D/Viewport" index="0" instance=ExtResource("6_5fuei")]
 
 [node name="Screen" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_frnnv")
-surface_material_override/0 = SubResource("StandardMaterial3D_qjxbd")
+surface_material_override/0 = SubResource("StandardMaterial3D_b3f2l")
 
 [node name="StaticBody3D" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D" index="2"]
 screen_size = Vector2(3, 2.5)
-viewport_size = Vector2(300, 250)
+viewport_size = Vector2(300, 400)
 
 [node name="CollisionShape3D" parent="CalibrationCube/KeyboardIndicator/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_f12r8")

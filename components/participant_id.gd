@@ -24,6 +24,8 @@ func _process(delta: float) -> void:
 	# enable button to continue if the code is valid
 	$VBoxContainer/HBoxContainer6/Button.disabled = not is_valid_sgic
 	
+	#$VBoxContainer/Label2.text = "TEST"
+	
 
 ## the following functions serve to go to the next input field if enter is pressed
 ## and convert letters to upper case

@@ -12,7 +12,7 @@ theme_override_constants/separation = 30
 
 [node name="RecognitionTask" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Was this image present during your last visit?"
+text = "RECOGNITION_TASK"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]

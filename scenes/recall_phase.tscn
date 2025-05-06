@@ -17,31 +17,26 @@ script = ExtResource("1_8gqp3")
 [node name="NewImages" type="Node3D" parent="."]
 
 [node name="NEWPickableImageFrame1" parent="NewImages" instance=ExtResource("3_cet50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 image_texture = "europeana.jpg"
 image = ExtResource("4_1mtfk")
 is_new_image = true
 
 [node name="NEWPickableImageFrame2" parent="NewImages" instance=ExtResource("3_cet50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 image_texture = "paul-blenkhorn-2.jpg"
 image = ExtResource("5_smvh3")
 is_new_image = true
 
 [node name="NEWPickableImageFrame3" parent="NewImages" instance=ExtResource("3_cet50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 image_texture = "paul-blenkhorn.jpg"
 image = ExtResource("6_jes27")
 is_new_image = true
 
 [node name="NEWPickableImageFrame4" parent="NewImages" instance=ExtResource("3_cet50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 image_texture = "steve-johnson.jpg"
 image = ExtResource("7_0ovlh")
 is_new_image = true
 
 [node name="NEWPickableImageFrame5" parent="NewImages" instance=ExtResource("3_cet50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 image_texture = "usgs.jpg"
 image = ExtResource("8_7r0hf")
 is_new_image = true
