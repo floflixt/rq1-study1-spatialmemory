@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5g7vup568p2t"]
+[gd_scene load_steps=16 format=3 uid="uid://5g7vup568p2t"]
 
 [ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="1_q154c"]
 [ext_resource type="Script" path="res://scenes/task_practice_learning.gd" id="1_xhj2j"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://cerku00otgooj" path="res://components/black_material.tres" id="8_uqqlq"]
 [ext_resource type="Material" uid="uid://6i6b52wdtj7y" path="res://components/green_material.tres" id="9_tmnc1"]
 [ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="10_2vjwe"]
+[ext_resource type="PackedScene" uid="uid://dvppkprpx8gyx" path="res://scenes/furniture.tscn" id="11_2muk2"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_j0trt"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -62,7 +63,7 @@ layers = 2
 mesh = SubResource("PrismMesh_j0trt")
 
 [node name="GestureRecognition" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.390763, -0.538092, 0.650886, -1.10623e-08, 0.584571, 0.707107, -0.920491, 0.228429, -0.276311, 0.260047, 0.0272435, -0.143304)
+transform = Transform3D(0.83998, -0.317198, 0.383688, -3.11105e-08, 0.584571, 0.707107, -0.542617, -0.491028, 0.593956, 0.268367, 0.0272435, 0.103775)
 mesh = SubResource("BoxMesh_ipcga")
 surface_material_override/0 = ExtResource("8_uqqlq")
 
@@ -98,5 +99,7 @@ duration = 0.5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GestureRecognition/TutorialComleteButton/InteractableAreaButton"]
 transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_g4n6w")
+
+[node name="Furniture" parent="." instance=ExtResource("11_2muk2")]
 
 [connection signal="button_pressed" from="GestureRecognition/TutorialComleteButton/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]

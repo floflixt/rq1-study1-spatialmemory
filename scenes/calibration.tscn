@@ -45,7 +45,7 @@ surface_material_override/0 = ExtResource("9_44hsl")
 [node name="Images" type="Node3D" parent="."]
 
 [node name="ExampleFrame" parent="Images" instance=ExtResource("5_veti1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020865, 0.643858, -0.157955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020865, 0.643858, -0.426946)
 
 [node name="CollisionShape3D" parent="Images/ExampleFrame" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000595704, 0.00053072, -0.000164554)

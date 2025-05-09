@@ -24,6 +24,11 @@ process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08598, 0)
 visible = false
 
+[node name="Tutorial" parent="." instance=ExtResource("3_krgor")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09878, 0)
+visible = false
+
 [node name="Calibration" parent="." instance=ExtResource("6_gpa3a")]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09801, 0)
@@ -31,11 +36,6 @@ visible = false
 
 [node name="TaskPracticeLearning" parent="." instance=ExtResource("7_v5r8y")]
 process_mode = 4
-visible = false
-
-[node name="Tutorial" parent="." instance=ExtResource("3_krgor")]
-process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09878, 0)
 visible = false
 
 [node name="TaskPracticeRecall" parent="." instance=ExtResource("9_f7otk")]
@@ -59,9 +59,9 @@ visible = false
 
 [connection signal="experiment_setup_finished" from="Start" to="." method="_on_start_experiment_setup_finished"]
 [connection signal="participant_info_collected" from="ParticipantInfo" to="." method="_on_participant_info_participant_info_collected"]
+[connection signal="tutorial_finished" from="Tutorial" to="." method="_on_tutorial_tutorial_finished"]
 [connection signal="calibration_complete" from="Calibration" to="." method="_on_calibration_calibration_complete"]
 [connection signal="all_ratings_complete" from="TaskPracticeLearning" to="." method="_on_task_practice_learning_all_ratings_complete"]
-[connection signal="tutorial_finished" from="Tutorial" to="." method="_on_tutorial_tutorial_finished"]
 [connection signal="recall_phase_complete" from="TaskPracticeRecall" to="." method="_on_task_practice_recall_recall_phase_complete"]
 [connection signal="learning_phase_finished" from="LearningPhase" to="." method="_on_learning_phase_learning_phase_finished"]
 [connection signal="recall_phase_complete" from="RecallPhase" to="." method="_on_recall_phase_recall_phase_complete"]

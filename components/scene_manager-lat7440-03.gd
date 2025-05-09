@@ -78,17 +78,17 @@ func switch_to_next_scene() -> void:
 		EXPAR.ExpState.START:
 			switch_to_scene(EXPAR.ExpState.PARTICIPANT_INFO)
 		EXPAR.ExpState.PARTICIPANT_INFO:
+			switch_to_scene(EXPAR.ExpState.TUTORIAL)
+		EXPAR.ExpState.TUTORIAL:
 			switch_to_scene(EXPAR.ExpState.CALIBRATION)
 		EXPAR.ExpState.CALIBRATION:
 			match EXPAR.current_expversion:
 				EXPAR.ExpVersion.LEARNING:
 					switch_to_scene(EXPAR.ExpState.TASK_PRACTICE_LEARNING)
 				EXPAR.ExpVersion.RECALL:
-					switch_to_scene(EXPAR.ExpState.TUTORIAL)
+					switch_to_scene(EXPAR.ExpState.TASK_PRACTICE_RECALL)
 				_:
 					switch_to_scene(EXPAR.ExpState.ERROR)
-		EXPAR.ExpState.TUTORIAL:
-			switch_to_scene(EXPAR.ExpState.TASK_PRACTICE_RECALL)
 		EXPAR.ExpState.TASK_PRACTICE_LEARNING:
 			switch_to_scene(EXPAR.ExpState.LEARNING_PHASE)
 		EXPAR.ExpState.TASK_PRACTICE_RECALL:

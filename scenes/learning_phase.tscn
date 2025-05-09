@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://denrepv1xy6xf"]
+[gd_scene load_steps=4 format=3 uid="uid://denrepv1xy6xf"]
 
 [ext_resource type="Script" path="res://scenes/learning_phase.gd" id="1_sr725"]
 [ext_resource type="PackedScene" uid="uid://se8kdypldi4o" path="res://components/images.tscn" id="2_q87m2"]
+[ext_resource type="PackedScene" uid="uid://dvppkprpx8gyx" path="res://scenes/furniture.tscn" id="3_e82fw"]
 
 [node name="LearningPhase" type="Node3D" groups=["setup"]]
 script = ExtResource("1_sr725")
@@ -15,6 +16,8 @@ one_shot = true
 [node name="Timer10m" type="Timer" parent="."]
 wait_time = 600.0
 one_shot = true
+
+[node name="Furniture" parent="." instance=ExtResource("3_e82fw")]
 
 [connection signal="timeout" from="Timer20m" to="." method="_on_timer_20m_timeout"]
 [connection signal="timeout" from="Timer10m" to="." method="_on_timer_10m_timeout"]
