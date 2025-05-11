@@ -37,12 +37,14 @@ func _physics_process(delta: float) -> void:
 		$RayCast3D.target_position = to_local(EXPAR.camera_transform.origin)
 	if $ImageFrameRay.enabled:
 		$ImageFrameRay.target_position = to_local(EXPAR.camera_transform.origin)
+	if $RayCastHideBehindFurniture.enabled:
+		$RayCastHideBehindFurniture.target_position = to_local(EXPAR.camera_transform.origin)
 	
 	# first, we check if the ImageFrameRay is hitting the image frame
 	# -> that would mean that the RayCast3D is facing forwards, so we should be able to see the image
 	if $ImageFrameRay.get_collider().name == "ImageArea":
 		# we are in front, so we can update the time - IF the image is also in the cameraCone 
-		if $RayCast3D.is_colliding() and $RayCast3D.get_collider().name == "CameraVisibleArea":
+		if $RayCast3D.is_colliding() and $RayCast3D.get_collider().name == "CameraVisibleArea" and not $RayCastHideBehindFurniture.is_colliding():
 			elapsed_time += delta
 	$VisibleLabel.text = str(snapped(elapsed_time, .001))
 	#$VisibleLabel.text += "\n" + $RayCast3D.get_collider().name + "\nback: " + $ImageFrameRay.get_collider().name
@@ -149,10 +151,12 @@ func set_pickupability(new_state: bool) -> void:
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
 	$RayCast3D.enabled = true
 	$ImageFrameRay.enabled = true
+	$RayCastHideBehindFurniture.enabled = true
 	
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	$RayCast3D.enabled = false
 	$ImageFrameRay.enabled = false
+	$RayCastHideBehindFurniture.enabled = false
 
 func update_texture(phase: String) -> void:
 	#get_tree().call_group("xr", "debug_message", "texture updated:" + self.name)

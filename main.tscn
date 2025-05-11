@@ -8,7 +8,10 @@
 [sub_resource type="Environment" id="Environment_npe0s"]
 background_mode = 1
 background_color = Color(0, 0, 0, 0)
+ambient_light_source = 1
 ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.0
+reflected_light_source = 1
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_y6vsj")
@@ -17,20 +20,23 @@ script = ExtResource("1_y6vsj")
 enable_passthrough = true
 target_refresh_rate = 120.0
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.903388, -0.423064, 0.0700528, 0.241227, 0.636419, 0.732653, -0.354542, -0.644971, 0.676988, 0, 0, 0)
+layers = 3
+light_cull_mask = 4294967291
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.218034, -0.912142, 0.34707, -0.606906, 0.405224, 0.68371, -0.764282, -0.0615671, -0.641937, 0.79635, 0, 0)
+layers = 3
+light_cull_mask = 4294967291
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.625047, 0.287989, -0.725519, -0.606906, 0.405223, 0.68371, 0.490899, 0.867673, -0.0785015, 0.79635, 0, 0)
+layers = 3
+light_cull_mask = 4294967291
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_npe0s")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.903388, -0.423064, 0.0700528, 0.241227, 0.636419, 0.732653, -0.354542, -0.644971, 0.676987, 0, 0, 0)
-shadow_enabled = true
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.218034, -0.912142, 0.34707, -0.606906, 0.405224, 0.68371, -0.764282, -0.0615665, -0.641937, 0.79635, 0, 0)
-shadow_enabled = true
-
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(-0.625048, 0.28799, -0.725519, -0.606906, 0.405224, 0.68371, 0.490899, 0.867672, -0.0785012, 0.79635, 0, 0)
-shadow_enabled = true
 
 [node name="XROrigin3D" parent="." instance=ExtResource("3_yq6tj")]
 

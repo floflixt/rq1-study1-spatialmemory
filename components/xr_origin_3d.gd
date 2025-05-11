@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	$XRCamera3D/Feedback/CurrentScene.text = EXPAR.ExpState.keys()[EXPAR.current_scene]
 	$XRCamera3D/Feedback/FrameRate.text = str(Engine.get_frames_per_second()) + " Hz"
 	
-	$RightVirtualController/Marker3D/MarkerPosition.text = "global_transform\n" + MY.transf_to_str($RightVirtualController/Marker3D/MarkerPosition.global_transform)
+	$RightVirtualController/Marker3D/MarkerPosition.text = "global_transform\n" + MY.transf_to_str($RightVirtualController/Marker3D/MarkerPosition.global_transform) +"\n\n" +	MY.vec_to_str($RightVirtualController/Marker3D/MarkerPosition.global_rotation_degrees)
 	
 	EXPAR.camera_transform = $XRCamera3D.global_transform
 	

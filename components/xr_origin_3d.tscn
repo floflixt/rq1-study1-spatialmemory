@@ -99,7 +99,7 @@ current = true
 script = ExtResource("1_mwkcx")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
-cull_mask = 3
+cull_mask = 7
 current = true
 
 [node name="VRCommonShaderCache" parent="XRCamera3D" instance=ExtResource("1_tynxx")]
