@@ -20,6 +20,12 @@ func transf_to_str(tr: Transform3D) -> String:
 	str(snapped(tr.basis.x.y, 0.001)) + " - " + str(snapped(tr.basis.y.y, 0.001)) + " - " + str(snapped(tr.basis.z.y, 0.001)) + " - " + str(snapped(tr.origin.y, 0.001)) + "\n" +\
 	str(snapped(tr.basis.x.z, 0.001)) + " - " + str(snapped(tr.basis.y.z, 0.001)) + " - " + str(snapped(tr.basis.z.z, 0.001)) + " - " + str(snapped(tr.origin.z, 0.001)))
 
+func vec_to_csv(vec: Vector3) -> String:
+	var x: float = snapped(vec.x, 0.001)
+	var y: float = snapped(vec.y, 0.001)
+	var z: float = snapped(vec.z, 0.001)
+	return str(Time.get_ticks_msec()) + "," + str(x, ",", y, ",", z)
+	
 	
 ## function to make a csv-like string for saving transform3D
 func transf_to_csv(tr: Transform3D) -> String:

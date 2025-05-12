@@ -214,7 +214,7 @@ func save_image_info(before_response_is_given: bool) -> void:
 		response_string = response_to_save
 	var file : FileAccess = FileAccess.open(EXPAR.placement_file, FileAccess.READ_WRITE)
 	file.seek_end()
-	file.store_line(self.name + "," + image_texture + "," + str(snapped(elapsed_time, .001)) + "," + MY.transf_to_csv(self.transform) + "," + str(is_new_image) + "," + response_string)
+	file.store_line(self.name + "," + image_texture + "," + str(snapped(elapsed_time, .001)) + "," + MY.transf_to_csv(self.transform) + "," + str(is_new_image) + "," + response_string + "," + MY.vec_to_csv(self.rotation_degrees) + ",frameSave")
 	file.close()
 	
 	

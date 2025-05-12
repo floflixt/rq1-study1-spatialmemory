@@ -106,7 +106,7 @@ func create_save_files(exp_version: String) -> bool:
 			questnr_string = "TODO"
 	var info: Dictionary
 	info = {
-		"start_date_time": Time.get_datetime_string_from_system(true),
+		"start_date_time": Time.get_datetime_string_from_system(false, false),
 		"debug_mode": is_debug_mode,
 		"rng_seed": rng_seed,
 		"language": language,
@@ -128,7 +128,7 @@ func create_save_files(exp_version: String) -> bool:
 	savefile_images = documents_path + sgic + "_" + exp_version + "_image_locations.txt"
 	if not FileAccess.file_exists(savefile_images):
 		var file: FileAccess = FileAccess.open(savefile_images, FileAccess.WRITE)
-		file.store_line("node,image,currTime,basis.x.x,basis.y.x,basis.z.x,origin.x,basis.x.y,basis.y.y,basis.z.y,origin.y,basis.x.z,basis.y.z.,basis.z.z,origin.z")
+		file.store_line("node,image,currTime,basis.x.x,basis.y.x,basis.z.x,origin.x,basis.x.y,basis.y.y,basis.z.y,origin.y,basis.x.z,basis.y.z.,basis.z.z,origin.z,currTimeDeg,rot.x,rot.y,rot.z,phase")
 		file.close()
 	else:
 		return false
@@ -153,7 +153,7 @@ func create_save_files(exp_version: String) -> bool:
 		placement_file = documents_path + sgic + "_placements.txt"
 		if not FileAccess.file_exists(placement_file):
 			var file : FileAccess = FileAccess.open(placement_file, FileAccess.WRITE)
-			file.store_line("node,image,elapsedTime,currTime,basis.x.x,basis.y.x,basis.z.x,origin.x,basis.x.y,basis.y.y,basis.z.y,origin.y,basis.x.z,basis.y.z.,basis.z.z,origin.z,isNewImage,responseString,timeOfResponseButtonPress")
+			file.store_line("node,image,elapsedTime,currTime,basis.x.x,basis.y.x,basis.z.x,origin.x,basis.x.y,basis.y.y,basis.z.y,origin.y,basis.x.z,basis.y.z.,basis.z.z,origin.z,isNewImage,responseString,timeOfResponseButtonPress,currTimeDeg,rot.x,rot.y,rot.z,phase")
 			file.close()
 			#get_tree().call_group("xr", "participant_feedback", "placement file successfully created!", Color.GREEN)
 		else:

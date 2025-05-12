@@ -109,6 +109,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0493448, 0, 0)
 
 [node name="ParticipantFeedback" type="Label3D" parent="XRCamera3D/Feedback"]
 transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, -1)
+layers = 3
 no_depth_test = true
 modulate = Color(0, 1, 0.0117647, 1)
 text = "ParticipantFeedback"
@@ -125,12 +126,12 @@ font_size = 19
 
 [node name="CurrentScene" type="Label3D" parent="XRCamera3D/Feedback"]
 transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, -0.50556, -0.146222, -1)
-layers = 2
+layers = 3
 text = "CurrentScene"
 
 [node name="DebugMessage" type="Label3D" parent="XRCamera3D/Feedback"]
 transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0.404844, -0.228112, -0.955803)
-layers = 2
+layers = 3
 no_depth_test = true
 text = "DebugMessages:
 "
@@ -138,7 +139,7 @@ vertical_alignment = 2
 
 [node name="FrameRate" type="Label3D" parent="XRCamera3D/Feedback"]
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, -0.551578, -0.0869775, -1)
-layers = 2
+layers = 3
 text = "XX Hz"
 font_size = 19
 horizontal_alignment = 2

@@ -48,7 +48,7 @@ func setup() -> void:
 		
 		# also, save the original image locations (not necessary)
 		file.seek_end()
-		file.store_line(pickable_image_node.name + "," + image_file_name + "," + MY.transf_to_csv(pickable_image_node.transform))
+		file.store_line(pickable_image_node.name + "," + image_file_name + "," + MY.transf_to_csv(pickable_image_node.transform) + "," + MY.vec_to_csv(pickable_image_node.rotation_degrees) + ",practiceRecall")
 	file.close()
 	
 

@@ -40,7 +40,7 @@ func setup() -> void:
 		image_file_name = pickable_image_node.image_texture
 		# save the frame transforms as well as the assigned images
 		file.seek_end()
-		file.store_line(pickable_image_node.name + "," + image_file_name + "," + MY.transf_to_csv(pickable_image_node.transform))
+		file.store_line(pickable_image_node.name + "," + image_file_name + "," + MY.transf_to_csv(pickable_image_node.transform) + "," + MY.vec_to_csv(pickable_image_node.rotation_degrees) + ",practiceLearning")
 		#file.seek_end()
 		#file.store_line("GLOBAL_" + pickable_image_node.name + "," + image_file_name + "," + MY.transf_to_csv(pickable_image_node.global_transform))
 	file.close()

@@ -180,6 +180,7 @@ func _on_calibration_calibration_complete() -> void:
 # called when the end scene is set up AND we are in the LEARNING phase
 func _on_end_save_final_ratings() -> void:
 	task_practice_learning_scene.save_final_ratings()
+	learning_phase_scene.save_final_ratings()
 
 
 func _on_task_practice_learning_all_ratings_complete() -> void:
