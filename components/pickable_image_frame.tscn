@@ -1,12 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://5x2on57afeoh"]
+[gd_scene load_steps=23 format=3 uid="uid://5x2on57afeoh"]
 
 [ext_resource type="PackedScene" uid="uid://dkw7fi5xn7v14" path="res://components/pickable_object.tscn" id="1_7ujo2"]
 [ext_resource type="Script" path="res://components/pickable_image_frame.gd" id="2_1ay1r"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="3_d66jv"]
 [ext_resource type="Material" uid="uid://bbk5aaachmy4h" path="res://components/orange_material.tres" id="3_fh5ii"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_gqwec"]
+[ext_resource type="Material" uid="uid://blvqwdcqr5o28" path="res://components/tablet_background_black_material.tres" id="5_p5pb4"]
 [ext_resource type="PackedScene" uid="uid://beh2xxui1np6d" path="res://components/combined_ratings.tscn" id="6_a7dkf"]
-[ext_resource type="Material" uid="uid://cerku00otgooj" path="res://components/black_material.tres" id="7_m6iof"]
 [ext_resource type="PackedScene" uid="uid://bsbj2v7r5p0hr" path="res://components/recognition_test.tscn" id="8_22x2b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b3jbh"]
@@ -21,21 +21,18 @@ size = Vector2(1024, 1024)
 [sub_resource type="BoxMesh" id="BoxMesh_pulxf"]
 size = Vector3(0.3, 0.2, 0.02)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvwtq"]
-albedo_color = Color(0.154876, 0.154876, 0.154876, 1)
-
 [sub_resource type="QuadMesh" id="QuadMesh_mvrtx"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dk8iq"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hfs6y"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_op48n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xh0pi"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_dk8iq")
+albedo_texture = SubResource("ViewportTexture_hfs6y")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5k2t"]
@@ -52,14 +49,14 @@ size = Vector3(0.3, 0.2, 0.02)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_eb2de"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_r1udp"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxg2o"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2w4n"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_eb2de")
+albedo_texture = SubResource("ViewportTexture_r1udp")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_35n62"]
@@ -104,27 +101,28 @@ texture = SubResource("PlaceholderTexture2D_yhewn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305453, -0.00655177)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RatingTablet" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.17709, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_pulxf")
-surface_material_override/0 = SubResource("StandardMaterial3D_wvwtq")
+surface_material_override/0 = ExtResource("5_p5pb4")
 
 [node name="Viewport2Din3D" parent="RatingTablet/MeshInstance3D" index="0" instance=ExtResource("5_gqwec")]
 transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, -0.000231519, 0.000231504, 0.0140991)
 collision_layer = 5242880
-viewport_size = Vector2(500, 200)
+viewport_size = Vector2(750, 400)
 unshaded = true
 
 [node name="Viewport" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="0"]
-size = Vector2i(500, 200)
+size = Vector2i(750, 400)
 
 [node name="CombinedRatings" parent="RatingTablet/MeshInstance3D/Viewport2Din3D/Viewport" index="0" instance=ExtResource("6_a7dkf")]
 
 [node name="Screen" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_mvrtx")
-surface_material_override/0 = SubResource("StandardMaterial3D_op48n")
+surface_material_override/0 = SubResource("StandardMaterial3D_xh0pi")
 
 [node name="StaticBody3D" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="2"]
 collision_layer = 5242880
-viewport_size = Vector2(500, 200)
+viewport_size = Vector2(750, 400)
 
 [node name="CollisionShape3D" parent="RatingTablet/MeshInstance3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_w5k2t")
@@ -176,25 +174,26 @@ aabb = AABB(-0.0659989, -0.0961837, -0.0135158, 0.131998, 0.192367, 0.0270315)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.293205, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RecognitionTablet" index="0"]
-material_override = ExtResource("7_m6iof")
 mesh = SubResource("BoxMesh_a2qap")
+surface_material_override/0 = ExtResource("5_p5pb4")
 
 [node name="Viewport2Din3D" parent="RecognitionTablet/MeshInstance3D" index="0" instance=ExtResource("5_gqwec")]
 transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0, 0.0109875)
-viewport_size = Vector2(375, 200)
+viewport_size = Vector2(750, 400)
 unshaded = true
 
 [node name="Viewport" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="0"]
-size = Vector2i(375, 200)
+size = Vector2i(750, 400)
+size_2d_override = Vector2i(750, 400)
 
 [node name="RecognitionTest" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport" index="0" instance=ExtResource("8_22x2b")]
 
 [node name="Screen" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_qwrw5")
-surface_material_override/0 = SubResource("StandardMaterial3D_kxg2o")
+surface_material_override/0 = SubResource("StandardMaterial3D_v2w4n")
 
 [node name="StaticBody3D" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="2"]
-viewport_size = Vector2(375, 200)
+viewport_size = Vector2(750, 400)
 
 [node name="CollisionShape3D" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_35n62")

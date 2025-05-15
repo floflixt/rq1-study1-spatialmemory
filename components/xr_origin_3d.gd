@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	$XRCamera3D/Feedback/CurrentScene.text = EXPAR.ExpState.keys()[EXPAR.current_scene]
 	$XRCamera3D/Feedback/FrameRate.text = str(Engine.get_frames_per_second()) + " Hz"
 	
-	$RightVirtualController/Marker3D/MarkerPosition.text = "global_transform\n" + MY.transf_to_str($RightVirtualController/Marker3D/MarkerPosition.global_transform) +"\n\n" +	MY.vec_to_str($RightVirtualController/Marker3D/MarkerPosition.global_rotation_degrees)
+	#$RightVirtualController/Marker3D/MarkerPosition.text = "global_transform\n" + MY.transf_to_str($RightVirtualController/Marker3D/MarkerPosition.global_transform) +"\n\n" +	MY.vec_to_str($RightVirtualController/Marker3D/MarkerPosition.global_rotation_degrees)
 	
 	EXPAR.camera_transform = $XRCamera3D.global_transform
 	
@@ -97,7 +97,8 @@ func debug_message(message: String) -> void:
 
 
 func _on_right_hand_pose_detector_pose_started(p_name: String) -> void:
-	$RightTrackedHand/RightHandLabel.text = p_name
+	#$RightTrackedHand/RightHandLabel.text = p_name
+	#get_tree().call_group("log", "log", "xr_origin_3d.gd/on_right_hand_pose_detector_pose_started()/RIGHT-START-" + p_name)
 	if p_name == "Fist":
 		EXPAR.current_right_gesture = "Fist"
 	if p_name == "Point":
@@ -120,7 +121,7 @@ func _on_right_hand_pose_detector_pose_started(p_name: String) -> void:
 			EXPAR.ExpState.TASK_PRACTICE_LEARNING, EXPAR.ExpState.LEARNING_PHASE:
 				rating_tablet_requested.emit($RightVirtualController/TabletLocation.global_transform)
 			EXPAR.ExpState.TASK_PRACTICE_RECALL, EXPAR.ExpState.RECALL_PHASE:
-				debug_message("next_image_requested-Right")
+				#debug_message("next_image_requested-Right")
 				next_image_requested.emit($RightVirtualController/TabletLocation.global_transform)
 		
 		
@@ -138,12 +139,14 @@ func _on_right_hand_pose_detector_pose_started(p_name: String) -> void:
 
 func _on_right_hand_pose_detector_pose_ended(p_name: String) -> void:
 	EXPAR.current_right_gesture = "..."
+	#get_tree().call_group("log", "log", "xr_origin_3d.gd/on_right_hand_pose_detector_pose_ended()/RIGHT-END-" + p_name)
 	if p_name == "Point":
 		_disable_poking($RightTrackedHand/RightHandHumanoid2/RightHandHumanoid/Skeleton3D/BoneAttachment3D/Poke)
 	
 
 func _on_left_hand_pose_detector_pose_started(p_name: String) -> void:
-	$LeftTrackedHand/LeftHandLabel.text = p_name
+	#$LeftTrackedHand/LeftHandLabel.text = p_name
+	#get_tree().call_group("log", "log", "xr_origin_3d.gd/on_left_hand_pose_detector_pose_started()/LEFT-START-" + p_name)
 	if p_name == "Fist":
 		EXPAR.current_left_gesture = "Fist"
 	if p_name == "Point":
@@ -162,7 +165,7 @@ func _on_left_hand_pose_detector_pose_started(p_name: String) -> void:
 			EXPAR.ExpState.TASK_PRACTICE_LEARNING, EXPAR.ExpState.LEARNING_PHASE:
 				rating_tablet_requested.emit($LeftVirtualController/TabletLocation.global_transform)
 			EXPAR.ExpState.TASK_PRACTICE_RECALL, EXPAR.ExpState.RECALL_PHASE:
-				debug_message("next_image_requested-LEFT")
+				#debug_message("next_image_requested-LEFT")
 				next_image_requested.emit($LeftVirtualController/TabletLocation.global_transform)
 
 	#if p_name == "ThumbsUp":
@@ -186,6 +189,7 @@ func _on_left_hand_pose_detector_pose_started(p_name: String) -> void:
 
 func _on_left_hand_pose_detector_pose_ended(p_name: String) -> void:
 	EXPAR.current_left_gesture = "..."
+	#get_tree().call_group("log", "log", "xr_origin_3d.gd/on_left_hand_pose_detector_pose_ended()/LEFT-END-" + p_name)
 	if p_name == "Point":
 		_disable_poking($LeftTrackedHand/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D/BoneAttachment3D/Poke)
 
@@ -243,16 +247,19 @@ func _on_left_hand_collision_body_entered(body: Node3D) -> void:
 		if EXPAR.current_expversion == EXPAR.ExpVersion.LEARNING:
 			body.toggle_highlighted()
 		# debug information
-		$LeftVirtualController/LeftHandCollision/Label3D.text = body.name
-		debug_message("LeftHandCollision:" + body.name)
+		#$LeftVirtualController/LeftHandCollision/Label3D.text = body.name
+		#debug_message("LeftHandCollision:" + body.name)
+		get_tree().call_group("log", "log", "xr_origin_3d.gd/_on_left_hand_collision_body_entered()/LFET-" + body.name)
 		
 func _on_right_hand_collision_body_entered(body: Node3D) -> void:
 	if body.is_in_group("images"):
 		if EXPAR.current_expversion == EXPAR.ExpVersion.LEARNING:
 			body.toggle_highlighted()
 		# debug information
-		$RightVirtualController/RightHandCollision/Label3D.text = body.name
-		debug_message("RightHandCollision:" + body.name)
+		#$RightVirtualController/RightHandCollision/Label3D.text = body.name
+		#debug_message("RightHandCollision:" + body.name)
+		get_tree().call_group("log", "log", "xr_origin_3d.gd/_on_right_hand_collision_body_entered()/RIGHT-" + body.name)
+
 
 func enable_ranged() -> void:
 	$RightVirtualController/FunctionPickup.ranged_enable = true

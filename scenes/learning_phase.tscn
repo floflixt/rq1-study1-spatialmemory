@@ -14,10 +14,15 @@ wait_time = 1200.0
 one_shot = true
 
 [node name="Timer10m" type="Timer" parent="."]
-wait_time = 600.0
+wait_time = 60.0
 one_shot = true
 
 [node name="Furniture" parent="." instance=ExtResource("3_e82fw")]
 
+[node name="AllRatingsCompleteCheck" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="Timer20m" to="." method="_on_timer_20m_timeout"]
 [connection signal="timeout" from="Timer10m" to="." method="_on_timer_10m_timeout"]
+[connection signal="timeout" from="AllRatingsCompleteCheck" to="." method="_on_all_ratings_complete_check_timeout"]

@@ -126,12 +126,12 @@ font_size = 19
 
 [node name="CurrentScene" type="Label3D" parent="XRCamera3D/Feedback"]
 transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, -0.50556, -0.146222, -1)
-layers = 3
+layers = 2
 text = "CurrentScene"
 
 [node name="DebugMessage" type="Label3D" parent="XRCamera3D/Feedback"]
-transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0.404844, -0.228112, -0.955803)
-layers = 3
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0.239494, -0.228112, -0.955803)
+layers = 2
 no_depth_test = true
 text = "DebugMessages:
 "
@@ -283,7 +283,9 @@ ranged_distance = 10.0
 ranged_angle = 25.0
 
 [node name="Marker3D" type="Marker3D" parent="RightVirtualController"]
+process_mode = 4
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.114436)
+visible = false
 
 [node name="MarkerPosition" type="Label3D" parent="RightVirtualController/Marker3D"]
 transform = Transform3D(-0.05, 0, 7.54979e-09, 0, 0.05, 0, -7.54979e-09, 0, -0.05, 0.0608936, 0.0548714, -7.45058e-09)

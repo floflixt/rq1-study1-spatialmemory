@@ -13,7 +13,7 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.0
 reflected_light_source = 1
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" groups=["log"]]
 script = ExtResource("1_y6vsj")
 
 [node name="StartXR" parent="." instance=ExtResource("2_xrdlg")]
@@ -40,10 +40,20 @@ environment = SubResource("Environment_npe0s")
 
 [node name="XROrigin3D" parent="." instance=ExtResource("3_yq6tj")]
 
+[node name="BoneAttachment3D" parent="XROrigin3D/LeftTrackedHand/LeftHandHumanoid2/LeftHandHumanoid/Skeleton3D" index="2"]
+transform = Transform3D(0.0148923, 0.3927, 0.919546, -0.993092, 0.112853, -0.0321113, -0.116383, -0.912716, 0.391668, -0.0111001, 0.0429431, -0.171614)
+
+[node name="BoneAttachment3D" parent="XROrigin3D/RightTrackedHand/RightHandHumanoid2/RightHandHumanoid/Skeleton3D" index="2"]
+transform = Transform3D(0.0190384, -0.392689, -0.919474, 0.993227, 0.112853, -0.0276318, 0.114616, -0.912721, 0.392177, 0.0111, 0.042943, -0.171613)
+
 [node name="OpenXRFbSceneManager" parent="XROrigin3D" index="5"]
 visible = false
 
 [node name="SceneManager" parent="." instance=ExtResource("4_cxhar")]
+
+[node name="HMDTrackerTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
 
 [connection signal="pose_recentered" from="StartXR" to="." method="_on_start_xr_pose_recentered"]
 [connection signal="xr_ended" from="StartXR" to="." method="_on_start_xr_xr_ended"]
@@ -51,6 +61,7 @@ visible = false
 [connection signal="next_image_requested" from="XROrigin3D" to="." method="_on_xr_origin_3d_next_image_requested"]
 [connection signal="rating_tablet_requested" from="XROrigin3D" to="." method="_on_xr_origin_3d_rating_tablet_requested"]
 [connection signal="scene_switch_requested" from="XROrigin3D" to="." method="_on_xr_origin_3d_scene_switch_requested"]
+[connection signal="timeout" from="HMDTrackerTimer" to="." method="_on_hmd_tracker_timer_timeout"]
 
 [editable path="XROrigin3D"]
 [editable path="XROrigin3D/LeftTrackedHand/LeftHandHumanoid2"]

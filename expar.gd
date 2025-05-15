@@ -9,6 +9,8 @@ var documents_path : String
 var participant_info_file : String
 var ratings_file : String
 var placement_file : String
+var log_file : String
+var tracking_file : String = "NOFILE"
 #var test_file_tracking : String
 #var test_file : FileAccess
 var images_array : Array[String]
@@ -95,6 +97,19 @@ func _process(delta: float) -> void:
 		#sec_since_last_save = 0
 
 func create_save_files(exp_version: String) -> bool:
+	####### LOG FILE ########
+	log_file = documents_path + sgic + "_" + exp_version + "_LOG.txt"
+	if not FileAccess.file_exists(log_file):
+		var file : FileAccess = FileAccess.open(log_file, FileAccess.READ_WRITE)
+		file.store_string(Time.get_datetime_string_from_system(false) + ":created log file (" + str(Time.get_ticks_msec()) + " ticks_msec)\n")
+		file.close()
+	
+	tracking_file = documents_path + sgic + "_" + exp_version + "_TRACKING.txt"
+	if not FileAccess.file_exists(tracking_file):
+		var file : FileAccess = FileAccess.open(tracking_file, FileAccess.READ_WRITE)
+		file.store_string("currTime,x,y,z,rot.y\n")
+		file.close()
+	
 	####### INFO FILE #########
 	participant_info_file = documents_path + sgic + "_" + exp_version + "_INFO.json"
 	# information to save
@@ -119,9 +134,9 @@ func create_save_files(exp_version: String) -> bool:
 		var file : FileAccess = FileAccess.open(participant_info_file, FileAccess.WRITE)
 		file.store_string(JSON.stringify(info, "\t"))
 		file.close()
-		#get_tree().call_group("xr", "participant_feedback", "INFO file successfully created!", Color.GREEN)
+		get_tree().call_group("log", "log", "expar.gd/create_save_files()/participant_info_file created")
 	else:
-		#get_tree().call_group("xr", "participant_feedback", "INFO file already exists!", Color.RED)
+		get_tree().call_group("log", "log", "expar.gd/create_save_files()/failed to create participant_info_file")
 		return false
 
 	######## IMAGE LOCATIONS FILE  ###########
@@ -130,7 +145,9 @@ func create_save_files(exp_version: String) -> bool:
 		var file: FileAccess = FileAccess.open(savefile_images, FileAccess.WRITE)
 		file.store_line("node,image,currTime,basis.x.x,basis.y.x,basis.z.x,origin.x,basis.x.y,basis.y.y,basis.z.y,origin.y,basis.x.z,basis.y.z.,basis.z.z,origin.z,currTimeDeg,rot.x,rot.y,rot.z,phase")
 		file.close()
+		get_tree().call_group("log", "log", "expar.gd/create_save_files()/savefile_images created")
 	else:
+		get_tree().call_group("log", "log", "expar.gd/create_save_files()/failed to create savefile_images")
 		return false
 	
 	
@@ -142,7 +159,8 @@ func create_save_files(exp_version: String) -> bool:
 		if not FileAccess.file_exists(ratings_file):
 			var file : FileAccess = FileAccess.open(ratings_file, FileAccess.WRITE)
 			# write the header
-			file.store_line("image,currTime,dwellTime,colour,complexity,liking,ai")
+			#file.store_line("image,currTime,dwellTime,colour,complexity,liking,ai")
+			file.store_line("image,currTime,dwellTime,liking,ai")
 			file.close()
 			#get_tree().call_group("xr", "participant_feedback", "ratings file successfully created!", Color.GREEN)
 		else:

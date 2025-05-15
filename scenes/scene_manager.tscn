@@ -50,6 +50,8 @@ process_mode = 4
 visible = false
 
 [node name="Error" parent="." instance=ExtResource("15_85mcm")]
+process_mode = 4
+visible = false
 script = ExtResource("16_mg8vx")
 
 [node name="End" parent="." instance=ExtResource("17_ftafs")]
@@ -64,4 +66,5 @@ visible = false
 [connection signal="recall_phase_complete" from="TaskPracticeRecall" to="." method="_on_task_practice_recall_recall_phase_complete"]
 [connection signal="learning_phase_finished" from="LearningPhase" to="." method="_on_learning_phase_learning_phase_finished"]
 [connection signal="recall_phase_complete" from="RecallPhase" to="." method="_on_recall_phase_recall_phase_complete"]
+[connection signal="experiment_complete" from="End" to="." method="_on_end_experiment_complete"]
 [connection signal="save_final_ratings" from="End" to="." method="_on_end_save_final_ratings"]

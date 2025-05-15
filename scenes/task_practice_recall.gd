@@ -22,12 +22,15 @@ func _process(delta: float) -> void:
 		else:
 			# reset the counter
 			image_to_place.confirm_counter = 0
+			#get_tree().call_group("log", "log", "task_practice_recall.gd/_process()/confirm_counter reset")
 		if image_to_place.placement_confirmed:
 			image_to_place.save_location()
 			currently_placing = false
+			get_tree().call_group("log", "log", "task_practice_recall.gd/_process()/placement confirmed")
+			
 
 func setup() -> void:
-	get_tree().call_group("xr", "debug_message", "PRACTICE - RECALL - SETUP")
+	#get_tree().call_group("xr", "debug_message", "PRACTICE - RECALL - SETUP")
 	var file : FileAccess = FileAccess.open(EXPAR.savefile_images, FileAccess.READ_WRITE)
 	# first, assign the correct images to the  originally presented images
 	# this is the same code as in the learning phase
@@ -63,7 +66,7 @@ func setup() -> void:
 # this is called if the OPENHAND gesture is detected
 func present_next_image(hand_transform: Transform3D) -> void:
 	# only do the following if the participant is not currently placing another image
-	get_tree().call_group("xr", "debug_message", "currently_placing:" + str(currently_placing))
+	#get_tree().call_group("xr", "debug_message", "currently_placing:" + str(currently_placing))
 	if not currently_placing:
 		# if there are no more images to place
 		if $Images.get_child_count() == 0:
@@ -72,7 +75,8 @@ func present_next_image(hand_transform: Transform3D) -> void:
 		# first, we get a random node from those that have not yet been placed
 		# the array has already been shuffled, so we just pop
 		image_to_place = not_placed_images.pop_back()
-		get_tree().call_group("xr", "debug_message", "trying to place image: " + image_to_place.name)
+		#get_tree().call_group("xr", "debug_message", "trying to place image: " + image_to_place.name)
+		get_tree().call_group("log", "log", "task_practice_recall.gd/present_next_image()/trying to place image " + image_to_place.name)
 		# enable this one image
 		image_to_place.reparent($PlacedImages)
 		image_to_place.make_available_for_placing(hand_transform)

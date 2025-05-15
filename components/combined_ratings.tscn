@@ -11,6 +11,7 @@ bg_color = Color(1.8771e-06, 0.726165, 0.174285, 1)
 script = ExtResource("1_61f4x")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(750, 400)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,100 +22,27 @@ theme_override_constants/separation = 15
 [node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 38
 tab_alignment = 1
-current_tab = 0
-
-[node name="Colours" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-metadata/_tab_index = 0
-
-[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Colours"]
-layout_mode = 2
-text = "IMAGE_COLOUR"
-horizontal_alignment = 1
-
-[node name="ColourSlider" type="HSlider" parent="VBoxContainer/TabContainer/Colours"]
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 7.0
-value = 4.0
-tick_count = 7
-ticks_on_borders = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Colours"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 50
-
-[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Colours/HBoxContainer"]
-layout_mode = 2
-text = "NOT_AT_ALL_COLOURFUL"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/Colours/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Colours/HBoxContainer"]
-layout_mode = 2
-text = "VERY_COLOURFUL"
-
-[node name="Complexity" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 10
-alignment = 1
-metadata/_tab_index = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Complexity"]
-layout_mode = 2
-text = "IMAGE_COMPLEX"
-horizontal_alignment = 1
-
-[node name="ComplexitySlider" type="HSlider" parent="VBoxContainer/TabContainer/Complexity"]
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 1.0
-max_value = 7.0
-value = 4.0
-tick_count = 7
-ticks_on_borders = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabContainer/Complexity"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 50
-
-[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Complexity/HBoxContainer"]
-layout_mode = 2
-text = "VERY_SIMPLE"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/Complexity/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Complexity/HBoxContainer"]
-layout_mode = 2
-text = "VERY_COMPLEX"
+current_tab = 1
 
 [node name="Like" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
-metadata/_tab_index = 2
+metadata/_tab_index = 0
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Like"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "IMAGE_LIKE"
 horizontal_alignment = 1
 
 [node name="LikeSlider" type="HSlider" parent="VBoxContainer/TabContainer/Like"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 min_value = 1.0
 max_value = 7.0
 value = 4.0
@@ -127,8 +55,12 @@ size_flags_vertical = 3
 theme_override_constants/separation = 50
 alignment = 1
 
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
+layout_mode = 2
+
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "NOT_AT_ALL"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
@@ -137,23 +69,28 @@ size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "VERY_MUCH"
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/TabContainer/Like/HBoxContainer"]
+layout_mode = 2
+
 [node name="AI" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
-metadata/_tab_index = 3
+metadata/_tab_index = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/AI"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "IMAGE_AI"
 horizontal_alignment = 1
 
 [node name="AISlider" type="HSlider" parent="VBoxContainer/TabContainer/AI"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 min_value = 1.0
 max_value = 7.0
 value = 4.0
@@ -166,8 +103,12 @@ size_flags_vertical = 3
 theme_override_constants/separation = 50
 alignment = 1
 
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
+layout_mode = 2
+
 [node name="Label" type="Label" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "VERY_EASY"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
@@ -176,23 +117,26 @@ size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "VERY_HARD"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/TabContainer/AI/HBoxContainer"]
+layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/background = SubResource("StyleBoxFlat_2d0u0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_kuot1")
-max_value = 4.0
+max_value = 2.0
 step = 1.0
 
 [node name="OkayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 disabled = true
 text = "SAVE_RATING"
 
-[connection signal="drag_ended" from="VBoxContainer/TabContainer/Colours/ColourSlider" to="." method="_on_colour_slider_drag_ended"]
-[connection signal="drag_ended" from="VBoxContainer/TabContainer/Complexity/ComplexitySlider" to="." method="_on_complexity_slider_drag_ended"]
 [connection signal="drag_ended" from="VBoxContainer/TabContainer/Like/LikeSlider" to="." method="_on_like_slider_drag_ended"]
 [connection signal="drag_ended" from="VBoxContainer/TabContainer/AI/AISlider" to="." method="_on_ai_slider_drag_ended"]
 [connection signal="pressed" from="VBoxContainer/OkayButton" to="." method="_on_okay_button_pressed"]

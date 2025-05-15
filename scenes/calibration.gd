@@ -45,9 +45,26 @@ func _process(delta: float) -> void:
 	$Images/ExampleFrame/Location.text = cal_text
 	
 	if EXPAR.current_left_gesture == "Point" and EXPAR.current_right_gesture == "ThumbsUp":
+		save_calibration_info()
 		calibration_complete.emit()
 		
 	# set this location relative to the calibrated origin
 	#$DemoWhiteboard.global_transform.origin = $Origin.global_transform.origin - Vector3(1.187, 0.753, 0.414)
 	 # and rotate the image correctly
 	#$DemoWhiteboard.global_transform = $DemoWhiteboard.global_transform.rotated_local(Vector3.UP, )
+
+func save_calibration_info() -> void:
+	var calibration_info: Dictionary
+	calibration_info = {
+		"calibrated_origin_in_global_space": MY.vec_to_csv($CalibratedOrigin.global_position),
+		"calibrated_origin_in_calibration_scene": MY.vec_to_csv($CalibratedOrigin.position),
+		"orange_cube_relative_to_origin": MY.vec_to_csv($CalibrationCubeOrange.position),
+		"yellow_cube_relative_to_origin": MY.vec_to_csv($CalibrationCubeYellow.position),
+		"blue_cube_relative_to_origin": MY.vec_to_csv($CalibrationCubeBlue.position),
+		"white_cube_relative_to_origin": MY.vec_to_csv($CalibrationCubeWhite.position),
+	}
+	var file : FileAccess = FileAccess.open(EXPAR.participant_info_file, FileAccess.READ_WRITE)
+	file.seek_end()
+	file.store_string("\n" + JSON.stringify(calibration_info, "\t"))
+	file.close()
+	get_tree().call_group("log", "log", "calibration.gd/save_calibration_info()/saved info")

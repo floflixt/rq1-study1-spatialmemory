@@ -1,12 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://5g7vup568p2t"]
+[gd_scene load_steps=14 format=3 uid="uid://5g7vup568p2t"]
 
 [ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="1_q154c"]
 [ext_resource type="Script" path="res://scenes/task_practice_learning.gd" id="1_xhj2j"]
 [ext_resource type="Texture2D" uid="uid://b2put2lcsv0lj" path="res://assets/tutorial_images/europeana.jpg" id="3_vauyq"]
 [ext_resource type="Texture2D" uid="uid://d0rff6n7o57pn" path="res://assets/tutorial_images/paul-blenkhorn-2.jpg" id="4_ypcax"]
-[ext_resource type="Texture2D" uid="uid://7jrfuhtglmjr" path="res://assets/tutorial_images/paul-blenkhorn.jpg" id="5_g0xfu"]
 [ext_resource type="Texture2D" uid="uid://dcgh78slkgv7i" path="res://assets/tutorial_images/steve-johnson.jpg" id="6_un4jg"]
-[ext_resource type="Texture2D" uid="uid://d3jyxga2an4in" path="res://assets/tutorial_images/usgs.jpg" id="7_b2212"]
 [ext_resource type="Material" uid="uid://cerku00otgooj" path="res://components/black_material.tres" id="8_uqqlq"]
 [ext_resource type="Material" uid="uid://6i6b52wdtj7y" path="res://components/green_material.tres" id="9_tmnc1"]
 [ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="10_2vjwe"]
@@ -41,21 +39,10 @@ transform = Transform3D(0.286063, 0, -0.958211, 0, 1, 0, 0.958211, 0, 0.286063, 
 image_texture = "paul-blenkhorn-2.jpg"
 image = ExtResource("4_ypcax")
 
-[node name="PickableImageFrame3" parent="Images" instance=ExtResource("1_q154c")]
-transform = Transform3D(0.981792, 0, 0.18996, 0, 1, 0, -0.18996, 0, 0.981792, 0.544, 0.344, -3.683)
-image_texture = "paul-blenkhorn.jpg"
-image = ExtResource("5_g0xfu")
-
 [node name="PickableImageFrame4" parent="Images" instance=ExtResource("1_q154c")]
 transform = Transform3D(-0.601758, 0, 0.798679, 0, 1, 0, -0.798679, 0, -0.601758, 0.089, 0.279, 1.259)
 image_texture = "steve-johnson.jpg"
 image = ExtResource("6_un4jg")
-
-[node name="PickableImageFrame5" parent="Images" instance=ExtResource("1_q154c")]
-transform = Transform3D(0.235, 0, -0.972, 0, 1, 0, 0.972, 0, 0.235, 1.455, 0.481, -2.117)
-rotation_edit_mode = 2
-image_texture = "usgs.jpg"
-image = ExtResource("7_b2212")
 
 [node name="FollowHMD" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

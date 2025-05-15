@@ -78,9 +78,11 @@ func _on_released(pickable: Variant, by: Variant) -> void:
 	# reset rotation by animating
 	#self.set_global_rotation(curr_rotation_vector)
 	tween.tween_property(self, "global_rotation", curr_rotation_vector, 0.3)
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/_on_released()/released " + self.name)	
 	
 func toggle_highlighted() -> void:
-	get_tree().call_group("xr", "debug_message", "toggle highlight called")
+	#get_tree().call_group("xr", "debug_message", "toggle highlight called")
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/toggle_highlighted()/highlight toggled " + self.name)	
 	is_highlighted = not is_highlighted
 	# now change the frame material + hide rating tablet if not highlighted anymore
 	if is_highlighted:
@@ -108,19 +110,23 @@ func show_rating_tablet(left_hand_position: Transform3D) -> void:
 		tween.tween_property($RatingTablet, "global_rotation", curr_rotation_vector, 0.3)
 		$RatingTablet.visible = true
 		$RatingTablet.process_mode = Node.PROCESS_MODE_INHERIT
+		get_tree().call_group("log", "log", "pickable_image_frame.gd/show_rating_tablet()/rating tablet shown")
 		
 func show_recognition_tablet() -> void:
 	$RecognitionTablet.visible = true
 	$RecognitionTablet.process_mode = Node.PROCESS_MODE_INHERIT
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/show_recognition_tablet()/recognition tablet shown")
 
 func hide_rating_tablet() -> void:
 	# disable rating tablet
 	$RatingTablet.visible = false
 	$RatingTablet.process_mode = Node.PROCESS_MODE_DISABLED
 	set_frame_material(black)
+	#get_tree().call_group("log", "log", "pickable_image_frame.gd/hide_rating_tablet()/rating tablet hidden")
 	# instead of making the frame black:
 	if rating_complete:
 		set_frame_material(green)
+		get_tree().call_group("log", "log", "pickable_image_frame.gd/hide_rating_tablet()/rating complete")
 	
 	# now everything is done, the EXPAR can forget which image is the current one
 	EXPAR.currently_highlighted_image = null
@@ -130,7 +136,8 @@ func hide_recognition_tablet() -> void:
 	$RecognitionTablet.visible = false
 	$RecognitionTablet.process_mode = Node.PROCESS_MODE_DISABLED
 	# make placement of image active
-	self.enabled = true
+	self.set_pickupability(true)
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/hide_recognition_tablet()/recognition tablet hidden")
 
 
 func _on_combined_ratings_rating_confirmed(ratings: String) -> void:
@@ -139,13 +146,14 @@ func _on_combined_ratings_rating_confirmed(ratings: String) -> void:
 	hide_rating_tablet()
 	final_ratings = ratings
 	save_ratings(ratings)
-	
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/_on_combined_ratings_rating_confirmed()/ratings confirmed")
 	
 func set_frame_material(new_material: Material) -> void:
 	$Frame/FrameMesh.set_surface_override_material(0, new_material)
 
 func set_pickupability(new_state: bool) -> void:
 	self.enabled = new_state
+	self.freeze = not new_state
 
 
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
@@ -165,7 +173,8 @@ func update_texture(phase: String) -> void:
 	match phase:
 		"TUTORIAL":
 			$Image.texture = load("res://assets/tutorial_images/" + image_texture)
-			get_tree().call_group("xr", "debug_message", "new tutorial image texture:" + image_texture)
+			#get_tree().call_group("xr", "debug_message", "new tutorial image texture:" + image_texture)
+			get_tree().call_group("log", "log", "pickable_image_frame.gd/update_texture()/tutorial texture " + image_texture)
 			if is_new_image:
 				$RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest.image_was_present = false
 			else:
@@ -173,14 +182,17 @@ func update_texture(phase: String) -> void:
 		"RECALL":
 			if is_new_image:
 				$Image.texture = load("res://assets/new_images/" + image_texture)
-				get_tree().call_group("xr", "debug_message", "new image texture:" + image_texture)
+				#get_tree().call_group("xr", "debug_message", "new image texture:" + image_texture)
+				get_tree().call_group("log", "log", "pickable_image_frame.gd/update_texture()/recall NEW texture " + image_texture)
 				$RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest.image_was_present = false
 			else:
 				$Image.texture = load("res://assets/images/" + image_texture)	
-				get_tree().call_group("xr", "debug_message", "standard image texture:" + image_texture)
+				#get_tree().call_group("xr", "debug_message", "standard image texture:" + image_texture)
+				get_tree().call_group("log", "log", "pickable_image_frame.gd/update_texture()/recall NOT_NEW texture " + image_texture)
 				$RecognitionTablet/MeshInstance3D/Viewport2Din3D/Viewport/RecognitionTest.image_was_present = true
 		_:
-			get_tree().call_group("xr", "debug_message", "image texture updated - default")
+			#get_tree().call_group("xr", "debug_message", "image texture updated - default")
+			get_tree().call_group("log", "log", "pickable_image_frame.gd/update_texture()/texture updated ___default " + image_texture)
 			$Image.texture = load("res://assets/images/" + image_texture)
 
 func save_ratings(ratings: String) -> void:
@@ -191,6 +203,7 @@ func save_ratings(ratings: String) -> void:
 	file.store_line(complete_data_string)
 	file.close()
 	get_tree().call_group("xr", "debug_message", complete_data_string)
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/save_ratings()/" + complete_data_string)
 
 func save_final_ratings() -> void:
 	save_ratings(final_ratings)
@@ -216,14 +229,15 @@ func save_image_info(before_response_is_given: bool) -> void:
 	file.seek_end()
 	file.store_line(self.name + "," + image_texture + "," + str(snapped(elapsed_time, .001)) + "," + MY.transf_to_csv(self.transform) + "," + str(is_new_image) + "," + response_string + "," + MY.vec_to_csv(self.rotation_degrees) + ",frameSave")
 	file.close()
-	
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/save_image_info()/info saved - " + response_string)	
 	
 func make_available_for_placing(hand_transform: Transform3D) -> void:
-	get_tree().call_group("xr", "debug_message", "making image available for placing..." + self.name)
+	#get_tree().call_group("xr", "debug_message", "making image available for placing..." + self.name)
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/make_available_for_placing()/making available for placing image " + self.name)
 	self.visible = true
 	self.process_mode = Node.PROCESS_MODE_INHERIT
 	# do NOT make the image moveable yet
-	self.enabled = false
+	self.set_pickupability(false)
 	#get_tree().call_group("xr", "debug_message", "visible set to true")
 	#self.update_texture("RECALL")
 	#get_tree().call_group("xr", "debug_message", "texture updated")
@@ -251,3 +265,5 @@ func _on_recognition_test_response(response_string: String, continue_placing: bo
 		# automatically take care of saving the final location and hiding the image as well as
 		# making placing the next image placement possible 
 		placement_confirmed = true
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/_on_recognition_test_response()/response given " + response_to_save)
+	

@@ -67,4 +67,5 @@ func _on_interactable_area_button_button_pressed(button: Variant) -> void:
 	$GestureRecognition/TutorialComleteButton.visible = false
 	$GestureRecognition/TutorialComleteButton.process_mode = Node.PROCESS_MODE_DISABLED
 	$TimerTutorialComplete.start()
+	get_tree().call_group("log", "log", "tutorial.gd/_on_interactable_area_button_button_pressed()/button pressed")
 	get_tree().call_group("xr", "participant_feedback", "Tutorial complete!\n\nPlease wait a moment...", Color.GREEN)

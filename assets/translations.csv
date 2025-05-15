@@ -13,9 +13,9 @@ IMAGE_LIKE,I like this image...,Dieses Bild gefällt mir...
 NOT_AT_ALL,not at all,überhaupt nicht
 VERY_MUCH,very much,sehr gut
 AI_GENERATED,AI-generated,KI-generiert
-IMAGE_AI,XXXconvincing?,XXXconvincing?
-VERY_EASY,very easyXXX,sehr einfachXXX
-VERY_HARD,very hardXXX,sehr schwerXXX
+IMAGE_AI,How easy is it to tell that\nthis image is AI-generated?,Wie einfach ist dieses Bild\nals KI-generiert erkennbar?
+VERY_EASY,very hard,sehr schwer
+VERY_HARD,very easy,sehr einfach
 SAVE_RATING,Save ratings,Bewertung speichern
 RECOGNITION_TASK,Was this image present during your last visit?,War dieses Bild bei Deinem letzten Besuch vorhanden?
 YES,Yes,Ja
@@ -24,3 +24,5 @@ CORRECT,Correct,Richtig
 INCORRECT,Incorrect,Falsch
 WARNING_20_MINUTES,20 minutes are over - please finish the task.,20 Minuten sind vorbei - bitte beende Deine Aufgabe.
 WARNING_10_MINUTES,INFO: 10 minutes are over,INFO: 10 Minuten sind vorbei
+ALL_RATINGS_COMPLETE,You're done!\n\nPlease gice two thumbs up!,Du bist fertig!\n\nBitte gib zwei Daumen nach oben!
+EXPERIMENT_COMPLETE,You have completed the experiment!\n\nThank you for participating!\n\nYou can now take off the Headset\nand call the experimenter.,Du hast das Experiment beendet!\n\nVielen Dank für Deine Teilnahme!\n\nDu kannst jetzt die VR-Brille abnehmen\nund den Versuchsleiter rufen.
