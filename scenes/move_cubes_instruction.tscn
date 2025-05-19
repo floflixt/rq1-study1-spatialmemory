@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ba4mp6krpo4bq"]
+
+[node name="MoveCubesInstruction" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(750, 400)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "For this experiment, you will need to learn to place virtual objects in the room.
+
+For this, do the following:
+
+1. Grab one of the opaque cubes by touching it and making a fist
+2. Move your fist to the transparent cube of the same colour
+3. Open your fist to let go of the cube
+
+If you want a more accurate placement, you can use the \"Pointing\" gesture to
+nudge the cube in a direction.
+
+Note that you can move around to see more accurately if the cube is in the centre.
+
+Please try to place both cubes at the transparent locations as accurately as possible."

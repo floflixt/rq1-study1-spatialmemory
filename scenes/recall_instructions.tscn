@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bth8gyqhlweds"]
+
+[node name="RecallInstructions" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(750, 400)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "How to place images:
+
+1. Make an \"Open Hand\" gesture in front of you, with the palm towards your face
+2. An image will appear, together with a tablet below it. Respond to the question by touching
+     the correct button.
+3. You will see whether your response was correct.
+
+If the image was NOT in the room, it will disappear, and you can start again at step 1.
+
+If the image was in this room last time, the image will stay. You can now grab it (like the cubes)
+and move it around.
+Place the image where you remember it.
+
+Once you are satisfied with the placement, make a \"Thumbs Up\" gesture with both hands in
+front of you to confirm. The colour of the frame will change, and once the image
+disappears, you can continue again at step 1."

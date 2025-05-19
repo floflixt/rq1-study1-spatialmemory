@@ -280,7 +280,7 @@ tracker = &"/user/hand_pose_controller/right"
 grab_distance = 0.06
 ranged_enable = false
 ranged_distance = 10.0
-ranged_angle = 25.0
+ranged_angle = 45.0
 
 [node name="Marker3D" type="Marker3D" parent="RightVirtualController"]
 process_mode = 4

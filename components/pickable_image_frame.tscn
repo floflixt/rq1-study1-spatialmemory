@@ -25,14 +25,14 @@ size = Vector3(0.3, 0.2, 0.02)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hfs6y"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yxqlc"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xh0pi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msh0c"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_hfs6y")
+albedo_texture = SubResource("ViewportTexture_yxqlc")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5k2t"]
@@ -49,14 +49,14 @@ size = Vector3(0.3, 0.2, 0.02)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_r1udp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_a27fl"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2w4n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy40p"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_r1udp")
+albedo_texture = SubResource("ViewportTexture_a27fl")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_35n62"]
@@ -118,7 +118,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_mvrtx")
-surface_material_override/0 = SubResource("StandardMaterial3D_xh0pi")
+surface_material_override/0 = SubResource("StandardMaterial3D_msh0c")
 
 [node name="StaticBody3D" parent="RatingTablet/MeshInstance3D/Viewport2Din3D" index="2"]
 collision_layer = 5242880
@@ -190,7 +190,7 @@ size_2d_override = Vector2i(750, 400)
 
 [node name="Screen" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_qwrw5")
-surface_material_override/0 = SubResource("StandardMaterial3D_v2w4n")
+surface_material_override/0 = SubResource("StandardMaterial3D_uy40p")
 
 [node name="StaticBody3D" parent="RecognitionTablet/MeshInstance3D/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgkwte1yt8ipm"]
+[gd_scene load_steps=18 format=3 uid="uid://dgkwte1yt8ipm"]
 
 [ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="1_53g80"]
 [ext_resource type="Script" path="res://scenes/task_practice_recall.gd" id="1_g04ev"]
@@ -8,6 +8,31 @@
 [ext_resource type="Texture2D" uid="uid://cypbeb0g0sm1l" path="res://assets/tutorial_images/anniroenkae.jpg" id="6_mmjg5"]
 [ext_resource type="Texture2D" uid="uid://cilxddqyyyhfn" path="res://assets/tutorial_images/bymalens.jpg" id="7_150qx"]
 [ext_resource type="Texture2D" uid="uid://ko0prgc4wh82" path="res://assets/tutorial_images/googledeepmind.jpg" id="8_6fg47"]
+[ext_resource type="PackedScene" uid="uid://dvppkprpx8gyx" path="res://scenes/furniture.tscn" id="9_apnbo"]
+[ext_resource type="Material" uid="uid://blvqwdcqr5o28" path="res://components/tablet_background_black_material.tres" id="10_nf2cx"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="11_w1l84"]
+[ext_resource type="PackedScene" uid="uid://bth8gyqhlweds" path="res://scenes/recall_instructions.tscn" id="12_sasl1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6wdtj"]
+size = Vector3(0.5, 0.4, 0.05)
+
+[sub_resource type="QuadMesh" id="QuadMesh_axpqw"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a55e1"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hf044"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_a55e1")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gbvy4"]
+resource_local_to_scene = true
+size = Vector3(3, 2, 0.02)
 
 [node name="TaskPracticeRecall" type="Node3D" groups=["setup"]]
 script = ExtResource("1_g04ev")
@@ -36,11 +61,42 @@ image_texture = "anniroenkae.jpg"
 image = ExtResource("6_mmjg5")
 
 [node name="NEWPickableImageFrame2" parent="NewImages" instance=ExtResource("1_53g80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514776, 0, -0.38444)
 image_texture = "bymalens.jpg"
 image = ExtResource("7_150qx")
 
 [node name="NEWPickableImageFrame3" parent="NewImages" instance=ExtResource("1_53g80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.705961, 0, -0.0133194)
 image_texture = "googledeepmind.jpg"
 image = ExtResource("8_6fg47")
 
 [node name="PlacedImages" type="Node3D" parent="."]
+
+[node name="Furniture" parent="." instance=ExtResource("9_apnbo")]
+
+[node name="RecallInstructions" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.981946, 0, 0.189164, 0, 1, 0, -0.189164, 0, 0.981946, 0, 0.60425, -0.11718)
+mesh = SubResource("BoxMesh_6wdtj")
+surface_material_override/0 = ExtResource("10_nf2cx")
+
+[node name="Viewport2Din3D" parent="RecallInstructions" instance=ExtResource("11_w1l84")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -0.00571268, 0, 0.0296544)
+viewport_size = Vector2(750, 420)
+unshaded = true
+
+[node name="Viewport" parent="RecallInstructions/Viewport2Din3D" index="0"]
+size = Vector2i(750, 420)
+
+[node name="RecallInstructions" parent="RecallInstructions/Viewport2Din3D/Viewport" index="0" instance=ExtResource("12_sasl1")]
+
+[node name="Screen" parent="RecallInstructions/Viewport2Din3D" index="1"]
+mesh = SubResource("QuadMesh_axpqw")
+surface_material_override/0 = SubResource("StandardMaterial3D_hf044")
+
+[node name="StaticBody3D" parent="RecallInstructions/Viewport2Din3D" index="2"]
+viewport_size = Vector2(750, 420)
+
+[node name="CollisionShape3D" parent="RecallInstructions/Viewport2Din3D/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_gbvy4")
+
+[editable path="RecallInstructions/Viewport2Din3D"]

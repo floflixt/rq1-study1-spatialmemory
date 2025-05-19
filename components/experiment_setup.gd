@@ -17,7 +17,7 @@ func _on_quest_number_selection_item_selected(index: int) -> void:
 		0:
 			EXPAR.current_questnr = EXPAR.QuestNumber.SIXTEEN
 		1:
-			EXPAR.current_questnr = EXPAR.QuestNumber.TODO
+			EXPAR.current_questnr = EXPAR.QuestNumber.XXX
 
 
 func _on_experiment_version_selection_item_selected(index: int) -> void:

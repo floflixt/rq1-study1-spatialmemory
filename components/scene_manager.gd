@@ -48,6 +48,7 @@ func switch_to_scene(new_scene_name: EXPAR.ExpState) -> void:
 	# disable the current scene, then switch to the next
 	_disable_scene(EXPAR.current_scene)
 	
+	get_tree().call_group("xr", "participant_feedback", "WAIT", Color.WHITE)
 	await get_tree().create_timer(1.5).timeout
 	
 	# update which scene is the current one
@@ -198,6 +199,8 @@ func _on_recall_phase_recall_phase_complete() -> void:
 	switch_to_next_scene()
 
 func _on_task_practice_recall_recall_phase_complete() -> void:
+	get_tree().call_group("xr", "participant_feedback", "EXP_START", Color.WHITE)
+	await get_tree().create_timer(1).timeout
 	switch_to_next_scene()
 
 func _on_learning_phase_learning_phase_finished() -> void:

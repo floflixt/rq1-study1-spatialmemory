@@ -22,9 +22,6 @@ var sgic : String = "XX-00-XX-00-XX" # this default code is invalid!
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#ProjectSettings.set_setting("debug/file_logging/log_path", OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS, true) + "/last.log")
-	#print("log file test write")
-	#$HMDTrackerTimer.start()
 	pass
 
 
@@ -32,10 +29,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# keep track of transforms
 	calibration_cube = $SceneManager/Start.initial_calibration_transform
-	
-	#hmd_transform = $XROrigin3D/XRCamera3D.transform.origin #- $SceneManager/Calibration/CalibratedOrigin.global_transform.origin
-	#hmd_transform = XRServer.get_hmd_transform().origin
-	#$XROrigin3D/XRCamera3D/XRMessageLabel.text = transf_to_str(hmd_transform)
 
 #################################################################################### SIGNALS + DEBUG
 
@@ -58,8 +51,6 @@ func _on_scene_manager_scene_enabled(scene_name: String) -> void:
 
 func _on_xr_origin_3d_scene_switch_requested() -> void:
 	scene_manager.switch_to_next_scene()
-	# depending on the current scene, do something?
-	# or should this signal only be emitted with the correct scene to switch to attached?
 
 # when the correct gesture is being gestured, show the rating tablet at the left hand
 func _on_xr_origin_3d_rating_tablet_requested(left_hand_position: Transform3D) -> void:
@@ -73,7 +64,7 @@ func _on_xr_origin_3d_next_image_requested(left_hand_position: Transform3D) -> v
 	self.log("main.gd/_on_xr_origin_3d_next_image_requested()/trying to show next image...")
 	scene_manager.present_next_image(left_hand_position)
 	
-################################################################################################ LOG
+##################################################################################### LOG + TRACKING
 
 func log(info: String) -> void:
 	var log_info: String = Time.get_datetime_string_from_system(false) + ":" + info
@@ -81,12 +72,14 @@ func log(info: String) -> void:
 	file.seek_end()
 	file.store_line(log_info)
 	file.close()
+	# in debug mode, show the log
+	# WARNING: might seriously impact performance!
 	if EXPAR.is_debug_mode:
 		xr.debug_message(log_info)
 
 
 func _on_hmd_tracker_timer_timeout() -> void:
-	hmd_location = MY.vec_to_csv($XROrigin3D/XRCamera3D.global_position - $SceneManager/Calibration/CalibratedOrigin.global_position) + "," + str(snapped($XROrigin3D/XRCamera3D.rotation_degrees.y - $SceneManager/Calibration/CalibratedOrigin.rotation_degrees.y, 0.001))
+	hmd_location = MY.vec_to_csv($XROrigin3D/XRCamera3D.global_position - $SceneManager/Calibration/CalibratedOrigin.global_position) + "," + str(snapped($XROrigin3D/XRCamera3D.rotation_degrees.x - $SceneManager/Calibration/CalibratedOrigin.rotation_degrees.x, 0.001)) + "," + str(snapped($XROrigin3D/XRCamera3D.rotation_degrees.y - $SceneManager/Calibration/CalibratedOrigin.rotation_degrees.y, 0.001)) + "," + str(snapped($XROrigin3D/XRCamera3D.rotation_degrees.z - $SceneManager/Calibration/CalibratedOrigin.rotation_degrees.z, 0.001))
 	#xr.debug_message(hmd_location)
 	var tfile: FileAccess = FileAccess.open(EXPAR.tracking_file, FileAccess.READ_WRITE)
 	tfile.seek_end()

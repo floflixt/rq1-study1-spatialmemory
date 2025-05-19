@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	var new_transf: Transform3D = EXPAR.camera_transform
 	new_transf.origin.y = 0
 	#new_transf.basis.y = Vector3(0, 1, 0)
-	$FollowHMD.global_transform.origin = new_transf.origin
+	#$FollowHMD.global_transform.origin = new_transf.origin
 	
 	# show the current gestures
 	$GestureRecognition/GestureLeft.text = EXPAR.current_left_gesture

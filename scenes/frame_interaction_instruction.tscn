@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ou53qfu8jk4b"]
+
+[node name="FrameInteractionInstruction" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(750, 400)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "How to rate the images:
+
+"
+uppercase = true
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "1. Touch the image with your hand, so that the frame is orange"
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "2. Make an \"Open Hand\" gesture where you want the interface
+    to appear"
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "3. With a \"Pointing\" gesture, touch the rating scale"
+
+[node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "4. Touch the tab at the top to go to the second rating scale.
+
+"
+
+[node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "If you have given a rating for both questions, the \"Save ratings\" button
+becomes available. Only after you have clicked it, the ratings are saved.
+
+If you have rated a picture, it will have a green frame.
+
+Please go on and rate all three images in this room to get used to the gestures."

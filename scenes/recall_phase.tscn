@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhxifaj1wen0p"]
+[gd_scene load_steps=10 format=3 uid="uid://dhxifaj1wen0p"]
 
 [ext_resource type="Script" path="res://scenes/recall_phase.gd" id="1_8gqp3"]
 [ext_resource type="PackedScene" uid="uid://se8kdypldi4o" path="res://components/images.tscn" id="2_1edc7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://7jrfuhtglmjr" path="res://assets/tutorial_images/paul-blenkhorn.jpg" id="6_jes27"]
 [ext_resource type="Texture2D" uid="uid://dcgh78slkgv7i" path="res://assets/tutorial_images/steve-johnson.jpg" id="7_0ovlh"]
 [ext_resource type="Texture2D" uid="uid://d3jyxga2an4in" path="res://assets/tutorial_images/usgs.jpg" id="8_7r0hf"]
+[ext_resource type="PackedScene" uid="uid://dvppkprpx8gyx" path="res://scenes/furniture.tscn" id="9_0n1vx"]
 
 [node name="RecallPhase" type="Node3D" groups=["setup"]]
 script = ExtResource("1_8gqp3")
@@ -42,5 +43,7 @@ image = ExtResource("8_7r0hf")
 is_new_image = true
 
 [node name="PlacedImages" type="Node3D" parent="."]
+
+[node name="Furniture" parent="." instance=ExtResource("9_0n1vx")]
 
 [editable path="Images"]

@@ -26,3 +26,6 @@ WARNING_20_MINUTES,20 minutes are over - please finish the task.,20 Minuten sind
 WARNING_10_MINUTES,INFO: 10 minutes are over,INFO: 10 Minuten sind vorbei
 ALL_RATINGS_COMPLETE,You're done!\n\nPlease gice two thumbs up!,Du bist fertig!\n\nBitte gib zwei Daumen nach oben!
 EXPERIMENT_COMPLETE,You have completed the experiment!\n\nThank you for participating!\n\nYou can now take off the Headset\nand call the experimenter.,Du hast das Experiment beendet!\n\nVielen Dank für Deine Teilnahme!\n\nDu kannst jetzt die VR-Brille abnehmen\nund den Versuchsleiter rufen.
+WAIT,Please wait...,Bitte warten...
+EXP_START,The experimental phase starts now.,Das Experiment beginnt jetzt.
+PRACTICE_INSTRUCTIONS_LEARNING_TITLE,Practice Phase,Übungsphase

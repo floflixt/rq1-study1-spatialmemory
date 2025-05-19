@@ -17,6 +17,8 @@ func setup() -> void:
 	if EXPAR.current_expversion == EXPAR.ExpVersion.LEARNING:
 		save_final_ratings.emit()
 		$FinalTimer.start()
+	else:
+		$FinalTimer.start()
 	
 
 

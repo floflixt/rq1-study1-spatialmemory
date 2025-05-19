@@ -63,7 +63,7 @@ func save_calibration_info() -> void:
 		"blue_cube_relative_to_origin": MY.vec_to_csv($CalibrationCubeBlue.position),
 		"white_cube_relative_to_origin": MY.vec_to_csv($CalibrationCubeWhite.position),
 	}
-	var file : FileAccess = FileAccess.open(EXPAR.participant_info_file, FileAccess.READ_WRITE)
+	var file : FileAccess = FileAccess.open(EXPAR.participant_calibration_file, FileAccess.READ_WRITE)
 	file.seek_end()
 	file.store_string("\n" + JSON.stringify(calibration_info, "\t"))
 	file.close()
