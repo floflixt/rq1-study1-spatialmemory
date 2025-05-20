@@ -3,6 +3,9 @@ extends Node3D
 var learning_tutorial_complete : bool
 var button_clicked : bool = false
 
+var l_gesture : String
+var r_gesture : String
+
 signal all_ratings_complete
 
 # Called when the node enters the scene tree for the first time.
@@ -18,8 +21,27 @@ func _process(delta: float) -> void:
 	#$FollowHMD.global_transform.origin = new_transf.origin
 	
 	# show the current gestures
-	$GestureRecognition/GestureLeft.text = EXPAR.current_left_gesture
-	$GestureRecognition/GestureRight.text = EXPAR.current_right_gesture
+	match EXPAR.current_left_gesture:
+		"ThumbsUp":
+			l_gesture = "THUMBSUP"
+		"Point":
+			l_gesture = "POINTING"
+		"Fist":
+			l_gesture = "FIST"
+		"OpenHand":
+			l_gesture = "OPENHAND"
+	match EXPAR.current_right_gesture:
+		"ThumbsUp":
+			r_gesture = "THUMBSUP"
+		"Point":
+			r_gesture = "POINTING"
+		"Fist":
+			r_gesture = "FIST"
+		"OpenHand":
+			r_gesture = "OPENHAND"
+			
+	$GestureRecognition/GestureLeft.text = l_gesture
+	$GestureRecognition/GestureRight.text = r_gesture
 	
 	# if ratings have been given for all 5 images, allow to continue to actual experiment
 	learning_tutorial_complete = $Images/PickableImageFrame1.rating_complete and $Images/PickableImageFrame2.rating_complete and $Images/PickableImageFrame4.rating_complete

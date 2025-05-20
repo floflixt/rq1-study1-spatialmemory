@@ -7,6 +7,9 @@ var blue_correct : bool = false
 var red_correct : bool = false
 var can_complete_tutorial : bool = false
 
+var l_gesture : String
+var r_gesture : String
+
 signal tutorial_finished
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +23,31 @@ func _process(delta: float) -> void:
 	$Origin.text = "TutorialOrigin\n" + MY.transf_to_str(self.global_transform)
 
 	# show the current gestures
-	$GestureRecognition/GestureLeft.text = EXPAR.current_left_gesture
-	$GestureRecognition/GestureRight.text = EXPAR.current_right_gesture
+	match EXPAR.current_left_gesture:
+		"ThumbsUp":
+			l_gesture = "THUMBSUP"
+		"Point":
+			l_gesture = "POINTING"
+		"Fist":
+			l_gesture = "FIST"
+		"OpenHand":
+			l_gesture = "OPENHAND"
+		_:
+			l_gesture = "..."
+	match EXPAR.current_right_gesture:
+		"ThumbsUp":
+			r_gesture = "THUMBSUP"
+		"Point":
+			r_gesture = "POINTING"
+		"Fist":
+			r_gesture = "FIST"
+		"OpenHand":
+			r_gesture = "OPENHAND"
+		_:
+			r_gesture  = "..."
+			
+	$GestureRecognition/GestureLeft.text = l_gesture
+	$GestureRecognition/GestureRight.text = r_gesture
 	
 	# continue to next phase
 	if blue_correct and red_correct:

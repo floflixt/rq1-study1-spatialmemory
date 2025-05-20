@@ -14,36 +14,38 @@ alignment = 1
 layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 10)
 layout_mode = 2
-text = "How to rate the images:
-
-"
+text = "HOW_TO_RATE"
+autowrap_mode = 2
 uppercase = true
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 10)
 layout_mode = 2
-text = "1. Touch the image with your hand, so that the frame is orange"
+text = "RATE_1"
+autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 10)
 layout_mode = 2
-text = "2. Make an \"Open Hand\" gesture where you want the interface
-    to appear"
+text = "RATE_2"
+autowrap_mode = 2
 
 [node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 10)
 layout_mode = 2
-text = "3. With a \"Pointing\" gesture, touch the rating scale"
+text = "RATE_3"
+autowrap_mode = 2
 
 [node name="Label6" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 10)
 layout_mode = 2
-text = "4. Touch the tab at the top to go to the second rating scale.
-
-"
+text = "RATE_4"
+autowrap_mode = 2
 
 [node name="Label5" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(650, 10)
 layout_mode = 2
-text = "If you have given a rating for both questions, the \"Save ratings\" button
-becomes available. Only after you have clicked it, the ratings are saved.
-
-If you have rated a picture, it will have a green frame.
-
-Please go on and rate all three images in this room to get used to the gestures."
+text = "RATE_5"
+autowrap_mode = 2

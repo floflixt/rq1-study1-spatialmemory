@@ -24,14 +24,16 @@ theme_override_constants/separation = 100
 alignment = 1
 
 [node name="ImageWasPresent" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "  YES  "
+text = "YES"
 
 [node name="ImageWasNotPresent" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "   NO   "
+text = "NO"
 
 [node name="RecognitionFeedback" type="Label" parent="VBoxContainer"]
 layout_mode = 2

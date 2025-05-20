@@ -1,14 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhxifaj1wen0p"]
+[gd_scene load_steps=20 format=3 uid="uid://dhxifaj1wen0p"]
 
 [ext_resource type="Script" path="res://scenes/recall_phase.gd" id="1_8gqp3"]
 [ext_resource type="PackedScene" uid="uid://se8kdypldi4o" path="res://components/images.tscn" id="2_1edc7"]
 [ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="3_cet50"]
-[ext_resource type="Texture2D" uid="uid://b2put2lcsv0lj" path="res://assets/tutorial_images/europeana.jpg" id="4_1mtfk"]
-[ext_resource type="Texture2D" uid="uid://d0rff6n7o57pn" path="res://assets/tutorial_images/paul-blenkhorn-2.jpg" id="5_smvh3"]
-[ext_resource type="Texture2D" uid="uid://7jrfuhtglmjr" path="res://assets/tutorial_images/paul-blenkhorn.jpg" id="6_jes27"]
-[ext_resource type="Texture2D" uid="uid://dcgh78slkgv7i" path="res://assets/tutorial_images/steve-johnson.jpg" id="7_0ovlh"]
-[ext_resource type="Texture2D" uid="uid://d3jyxga2an4in" path="res://assets/tutorial_images/usgs.jpg" id="8_7r0hf"]
-[ext_resource type="PackedScene" uid="uid://dvppkprpx8gyx" path="res://scenes/furniture.tscn" id="9_0n1vx"]
+[ext_resource type="Texture2D" uid="uid://bqbkupfhw0qar" path="res://assets/new_images/00004-1259974095.png" id="4_mgx2t"]
+[ext_resource type="Texture2D" uid="uid://djmj0nsqn02ne" path="res://assets/new_images/00010-4085559791.png" id="5_eyehm"]
+[ext_resource type="Texture2D" uid="uid://bjq4desiu5he1" path="res://assets/new_images/00012-3221561322.png" id="6_s44v8"]
+[ext_resource type="Texture2D" uid="uid://dildykv1nvi85" path="res://assets/new_images/00013-3221561323.png" id="7_0g14b"]
+[ext_resource type="Texture2D" uid="uid://cy02fwnhqqklk" path="res://assets/new_images/00019-1512366212.png" id="8_bsudx"]
+[ext_resource type="Texture2D" uid="uid://yjwmw0hu86fh" path="res://assets/new_images/00026-1433289066.png" id="9_1k5a7"]
+[ext_resource type="Texture2D" uid="uid://cren6tlotju77" path="res://assets/new_images/00036-3019415261.png" id="10_5edrv"]
+[ext_resource type="Texture2D" uid="uid://cnorvibwj6w3y" path="res://assets/new_images/00052-850677410.png" id="11_hag7c"]
+[ext_resource type="Texture2D" uid="uid://dy70dtl7chp6c" path="res://assets/new_images/00087-3633945194.png" id="12_p4w38"]
+[ext_resource type="Texture2D" uid="uid://ctyux2bolwwxt" path="res://assets/new_images/00089-212936856.png" id="13_grji0"]
+[ext_resource type="Texture2D" uid="uid://bmj1kpd842i8t" path="res://assets/new_images/00103-2531505497.png" id="14_uxxn6"]
+[ext_resource type="Texture2D" uid="uid://04i8kby0yon" path="res://assets/new_images/00134-1240331893.png" id="15_oemv7"]
+[ext_resource type="Texture2D" uid="uid://bifdkhisuig4j" path="res://assets/new_images/00153-1820056054.png" id="16_dmsvo"]
+[ext_resource type="Texture2D" uid="uid://bkctalvy1tk45" path="res://assets/new_images/00158-1453835199.png" id="17_x2isa"]
+[ext_resource type="Texture2D" uid="uid://dch6fvrkthrx5" path="res://assets/new_images/00160-3402163013.png" id="18_kvd5m"]
+[ext_resource type="Texture2D" uid="uid://d0magbid66n2v" path="res://assets/new_images/00172-3658612153.png" id="19_kd53t"]
 
 [node name="RecallPhase" type="Node3D" groups=["setup"]]
 script = ExtResource("1_8gqp3")
@@ -18,32 +28,85 @@ script = ExtResource("1_8gqp3")
 [node name="NewImages" type="Node3D" parent="."]
 
 [node name="NEWPickableImageFrame1" parent="NewImages" instance=ExtResource("3_cet50")]
-image_texture = "europeana.jpg"
-image = ExtResource("4_1mtfk")
+image_texture = "00004-1259974095.png"
+image = ExtResource("4_mgx2t")
 is_new_image = true
 
 [node name="NEWPickableImageFrame2" parent="NewImages" instance=ExtResource("3_cet50")]
-image_texture = "paul-blenkhorn-2.jpg"
-image = ExtResource("5_smvh3")
+image_texture = "00010-4085559791.png"
+image = ExtResource("5_eyehm")
 is_new_image = true
 
 [node name="NEWPickableImageFrame3" parent="NewImages" instance=ExtResource("3_cet50")]
-image_texture = "paul-blenkhorn.jpg"
-image = ExtResource("6_jes27")
+image_texture = "00012-3221561322.png"
+image = ExtResource("6_s44v8")
 is_new_image = true
 
 [node name="NEWPickableImageFrame4" parent="NewImages" instance=ExtResource("3_cet50")]
-image_texture = "steve-johnson.jpg"
-image = ExtResource("7_0ovlh")
+image_texture = "00013-3221561323.png"
+image = ExtResource("7_0g14b")
 is_new_image = true
 
 [node name="NEWPickableImageFrame5" parent="NewImages" instance=ExtResource("3_cet50")]
-image_texture = "usgs.jpg"
-image = ExtResource("8_7r0hf")
+image_texture = "00019-1512366212.png"
+image = ExtResource("8_bsudx")
+is_new_image = true
+
+[node name="NEWPickableImageFrame6" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00026-1433289066.png"
+image = ExtResource("9_1k5a7")
+is_new_image = true
+
+[node name="NEWPickableImageFrame7" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00036-3019415261.png"
+image = ExtResource("10_5edrv")
+is_new_image = true
+
+[node name="NEWPickableImageFrame8" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00052-850677410.png"
+image = ExtResource("11_hag7c")
+is_new_image = true
+
+[node name="NEWPickableImageFrame9" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00087-3633945194.png"
+image = ExtResource("12_p4w38")
+is_new_image = true
+
+[node name="NEWPickableImageFrame10" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00089-212936856.png"
+image = ExtResource("13_grji0")
+is_new_image = true
+
+[node name="NEWPickableImageFrame11" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00103-2531505497.png"
+image = ExtResource("14_uxxn6")
+is_new_image = true
+
+[node name="NEWPickableImageFrame12" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00134-1240331893.png"
+image = ExtResource("15_oemv7")
+is_new_image = true
+
+[node name="NEWPickableImageFrame13" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00153-1820056054.png"
+image = ExtResource("16_dmsvo")
+is_new_image = true
+
+[node name="NEWPickableImageFrame14" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00158-1453835199.png"
+image = ExtResource("17_x2isa")
+is_new_image = true
+
+[node name="NEWPickableImageFrame15" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00160-3402163013.png"
+image = ExtResource("18_kvd5m")
+is_new_image = true
+
+[node name="NEWPickableImageFrame16" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00172-3658612153.png"
+image = ExtResource("19_kd53t")
 is_new_image = true
 
 [node name="PlacedImages" type="Node3D" parent="."]
-
-[node name="Furniture" parent="." instance=ExtResource("9_0n1vx")]
 
 [editable path="Images"]

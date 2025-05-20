@@ -34,14 +34,14 @@ size = Vector3(0.73, 0.515, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4yxmh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dh0ux"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luqy1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu2y3"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_4yxmh")
+albedo_texture = SubResource("ViewportTexture_dh0ux")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5kpy"]
@@ -55,14 +55,14 @@ size = Vector3(0.4, 0.3, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_60nmj"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_d435n"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ba08r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ltj6"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_60nmj")
+albedo_texture = SubResource("ViewportTexture_d435n")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_islj5"]
@@ -103,16 +103,14 @@ surface_material_override/0 = ExtResource("6_nou6q")
 
 [node name="Label3D" type="Label3D" parent="GestureRecognition"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 7.45058e-09, 0.2, 0, 0.079622, 0.0312521)
-text = "GESTURES
-
-left hand                    right hand"
+text = "GESTURES"
 
 [node name="GestureLeft" type="Label3D" parent="GestureRecognition"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 1.49012e-08, 0, 7.45058e-09, 0.2, -0.15, -0.0773116, 0.0273183)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 1.49012e-08, 0, 7.45058e-09, 0.2, -0.12814, -0.0773116, 0.0273183)
 text = "..."
 
 [node name="GestureRight" type="Label3D" parent="GestureRecognition"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 1.49012e-08, 0, 7.45058e-09, 0.2, 0.15, -0.0773116, 0.0273183)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 1.49012e-08, 0, 7.45058e-09, 0.2, 0.131765, -0.0773116, 0.0273183)
 text = "..."
 
 [node name="Label3D2" type="Label3D" parent="GestureRecognition"]
@@ -152,7 +150,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_r177x")
-surface_material_override/0 = SubResource("StandardMaterial3D_luqy1")
+surface_material_override/0 = SubResource("StandardMaterial3D_pu2y3")
 
 [node name="StaticBody3D" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -168,7 +166,7 @@ mesh = SubResource("BoxMesh_3vigb")
 surface_material_override/0 = ExtResource("6_nou6q")
 
 [node name="Viewport2Din3D" parent="PracticeFrameInteractionInstruction" instance=ExtResource("9_k0a7t")]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, -0.00958878, 0.0375177)
+transform = Transform3D(0.13, 0, 0, 0, 0.13, 0, 0, 0, 0.13, -0.0175137, 0.00920105, 0.0375178)
 viewport_size = Vector2(750, 400)
 unshaded = true
 
@@ -178,8 +176,9 @@ size = Vector2i(750, 400)
 [node name="FrameInteractionInstruction" parent="PracticeFrameInteractionInstruction/Viewport2Din3D/Viewport" index="0" instance=ExtResource("12_fo4xe")]
 
 [node name="Screen" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144191, -0.0828453, 4.88013e-07)
 mesh = SubResource("QuadMesh_gxd5e")
-surface_material_override/0 = SubResource("StandardMaterial3D_ba08r")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ltj6")
 
 [node name="StaticBody3D" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
