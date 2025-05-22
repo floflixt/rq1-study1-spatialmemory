@@ -81,19 +81,21 @@ func _on_released(pickable: Variant, by: Variant) -> void:
 	get_tree().call_group("log", "log", "pickable_image_frame.gd/_on_released()/released " + self.name)	
 	
 func toggle_highlighted() -> void:
-	#get_tree().call_group("xr", "debug_message", "toggle highlight called")
-	get_tree().call_group("log", "log", "pickable_image_frame.gd/toggle_highlighted()/highlight toggled " + self.name)	
-	is_highlighted = not is_highlighted
+	get_tree().call_group("log", "log", "pickable_image_frame.gd/toggle_highlighted()/highlight toggled " + self.name)
 	# now change the frame material + hide rating tablet if not highlighted anymore
 	if is_highlighted:
+		hide_rating_tablet()
+		is_highlighted = not is_highlighted
+	else:
 		# tell all other images to be not highlighted anymore
 		get_tree().call_group("images", "hide_rating_tablet")
 		# then highlight this image
 		set_frame_material(orange)
 		# make it known to everybody that this is the currently highlighted image
 		EXPAR.currently_highlighted_image = self
-	else:
-		hide_rating_tablet()
+		is_highlighted = not is_highlighted
+
+		
 
 
 func show_rating_tablet(left_hand_position: Transform3D) -> void:
@@ -118,18 +120,21 @@ func show_recognition_tablet() -> void:
 	get_tree().call_group("log", "log", "pickable_image_frame.gd/show_recognition_tablet()/recognition tablet shown")
 
 func hide_rating_tablet() -> void:
-	# disable rating tablet
-	$RatingTablet.visible = false
-	$RatingTablet.process_mode = Node.PROCESS_MODE_DISABLED
-	set_frame_material(black)
-	#get_tree().call_group("log", "log", "pickable_image_frame.gd/hide_rating_tablet()/rating tablet hidden")
-	# instead of making the frame black:
-	if rating_complete:
-		set_frame_material(green)
-		get_tree().call_group("log", "log", "pickable_image_frame.gd/hide_rating_tablet()/rating complete")
+	# this function might cause small lags if the frame material is set too often in a short time
+	# son only do this stuff if it is the currently highlighted image or the tablet is visible
+	if is_highlighted or $RatingTablet.visible:
+		# disable rating tablet
+		$RatingTablet.visible = false
+		$RatingTablet.process_mode = Node.PROCESS_MODE_DISABLED
+		set_frame_material(black)
+		#get_tree().call_group("log", "log", "pickable_image_frame.gd/hide_rating_tablet()/rating tablet hidden")
+		# instead of making the frame black:
+		if rating_complete:
+			set_frame_material(green)
+			get_tree().call_group("log", "log", "pickable_image_frame.gd/hide_rating_tablet()/rating complete")
 	
-	# now everything is done, the EXPAR can forget which image is the current one
-	EXPAR.currently_highlighted_image = null
+		# now everything is done, the EXPAR can forget which image is the current one
+		EXPAR.currently_highlighted_image = null
 
 
 func hide_recognition_tablet() -> void:

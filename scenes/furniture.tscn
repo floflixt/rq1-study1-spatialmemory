@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://dvppkprpx8gyx"]
+[gd_scene load_steps=48 format=4 uid="uid://dvppkprpx8gyx"]
 
 [ext_resource type="Shader" path="res://components/xr-helper/transparent_xr_shader.gdshader" id="1_uww4o"]
 
@@ -269,7 +269,7 @@ shader = ExtResource("1_uww4o")
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4yv8"]
 material = SubResource("ShaderMaterial_6hekk")
-size = Vector3(1.3, 1.5, 0.05)
+size = Vector3(1.3, 1.5, 0.02)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6tqy7"]
 render_priority = 0
@@ -278,10 +278,17 @@ shader = ExtResource("1_uww4o")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pcu2h"]
 data = PackedVector3Array(-0.65, 0.75, 0.025, 0.65, 0.75, 0.025, -0.65, -0.75, 0.025, 0.65, 0.75, 0.025, 0.65, -0.75, 0.025, -0.65, -0.75, 0.025, 0.65, 0.75, -0.025, -0.65, 0.75, -0.025, 0.65, -0.75, -0.025, -0.65, 0.75, -0.025, -0.65, -0.75, -0.025, 0.65, -0.75, -0.025, 0.65, 0.75, 0.025, 0.65, 0.75, -0.025, 0.65, -0.75, 0.025, 0.65, 0.75, -0.025, 0.65, -0.75, -0.025, 0.65, -0.75, 0.025, -0.65, 0.75, -0.025, -0.65, 0.75, 0.025, -0.65, -0.75, -0.025, -0.65, 0.75, 0.025, -0.65, -0.75, 0.025, -0.65, -0.75, -0.025, 0.65, 0.75, 0.025, -0.65, 0.75, 0.025, 0.65, 0.75, -0.025, -0.65, 0.75, 0.025, -0.65, 0.75, -0.025, 0.65, 0.75, -0.025, -0.65, -0.75, 0.025, 0.65, -0.75, 0.025, -0.65, -0.75, -0.025, 0.65, -0.75, 0.025, 0.65, -0.75, -0.025, -0.65, -0.75, -0.025)
 
+[sub_resource type="BoxMesh" id="BoxMesh_vh386"]
+size = Vector3(1.5, 1, 1.765)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4snn"]
+render_priority = 0
+shader = ExtResource("1_uww4o")
+
 [node name="Furniture" type="Node3D"]
 
 [node name="BigCupboard" type="Node3D" parent="."]
-transform = Transform3D(0.980512, 0, 0.19646, 0, 1, 0, -0.19646, 0, 0.980512, 1.6389, -0.366563, -1.15534)
+transform = Transform3D(0.980512, 0, 0.19646, 0, 1, 0, -0.19646, 0, 0.980512, 1.73082, -0.369854, -0.696574)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BigCupboard"]
 layers = 4
@@ -367,7 +374,7 @@ collision_mask = 4096
 shape = SubResource("ConcavePolygonShape3D_fcaxq")
 
 [node name="Kallax_2x4" type="Node3D" parent="."]
-transform = Transform3D(0.174851, 0, -0.984595, 0, 1, 0, 0.984595, 0, 0.174851, -0.791393, -0.949892, -1.45353)
+transform = Transform3D(0.213133, 0, -0.977023, 0, 1, 0, 0.977023, 0, 0.213133, -0.811192, -0.949892, -1.47495)
 
 [node name="Cube_002" type="MeshInstance3D" parent="Kallax_2x4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3645, 0.7165, 0)
@@ -444,7 +451,7 @@ collision_mask = 4096
 shape = SubResource("ConcavePolygonShape3D_1klp0")
 
 [node name="MoveablePinnwand" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.981175, 0, 0.193121, 0, 1, 0, -0.193121, 0, 0.981175, -0.0807342, 0.232371, -0.190797)
+transform = Transform3D(0.973163, 0, 0.230117, 0, 1, 0, -0.230117, 0, 0.973163, -0.0493651, 0.232371, -0.0401705)
 layers = 4
 cast_shadow = 0
 mesh = SubResource("BoxMesh_g4yv8")
@@ -456,3 +463,8 @@ collision_mask = 4096
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoveablePinnwand/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pcu2h")
+
+[node name="Table" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.977585, 0, 0.19736, 0, 1, 0, -0.21054, 0, 0.91639, 1.56242, -0.717717, -2.20957)
+mesh = SubResource("BoxMesh_vh386")
+surface_material_override/0 = SubResource("ShaderMaterial_w4snn")

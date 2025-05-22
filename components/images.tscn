@@ -6,52 +6,51 @@
 [node name="Images" type="Node3D"]
 script = ExtResource("1_lsf8p")
 
-[node name="PickableImageFrame1" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(-0.253805, 0, 0.967255, 0, 1, 0, -0.967255, 0, -0.253805, -0.594, 0.309, -1.312)
+[node name="KallaxMove" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(-0.256854, 0, 0.96645, 0, 1, 0, -0.96645, 0, -0.256854, -0.609, 0.3, -1.329)
 rotation_edit_mode = 2
 
-[node name="PickableImageFrame2" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(-0.96287, 0, -0.269964, 0, 1, 0, 0.269964, 0, -0.96287, -0.896, 0.672, -1.836)
-rotation_edit_mode = 2
+[node name="SmallKallaxFix" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.459967, 0, 0.887936, 0, 1, 0, -0.887936, 0, 0.459967, -0.638, -0.39, -0.777)
 
-[node name="PickableImageFrame3" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.190923, 0, -0.981605, 0, 1, 0, 0.981605, 0, 0.190923, 1.513, 0.632, -1.137)
+[node name="SmallKallaxMove" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.765921, 0, -0.642934, 0, 1, 0, 0.642934, 0, 0.765921, 0.65, -0.402, -3.497)
 
-[node name="PickableImageFrame4" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.975524, 0, 0.219893, 0, 1, 0, -0.219893, 0, 0.975524, -0.019, 0.538, -0.146)
+[node name="SmallTableFix" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.433966, 0, 0.900929, 0, 1, 0, -0.900929, 0, 0.433966, -1.03, -0.09, -2.871)
 
-[node name="PickableImageFrame5" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(-0.202837, 0, 0.979213, 0, 1, 0, -0.979213, 0, -0.202837, -0.03, 0.288, 1.102)
+[node name="LargeTableMove1" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.19996, 0, -0.979804, 0, 1, 0, 0.979804, 0, 0.19996, 1.257, -0.042, -2.067)
 
-[node name="PickableImageFrame6" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(-0.992896, 0, -0.118987, 0, 1, 0, 0.118987, 0, -0.992896, 1.628, 0.466, 1.296)
+[node name="LargeTableMove2" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.970786, 0, 0.239947, 0, 1, 0, -0.239947, 0, 0.970786, 1.1584, -0.033, -1.2613)
 
-[node name="PickableImageFrame7" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.793107, 0, -0.609082, 0, 1, 0, 0.609082, 0, 0.793107, 0.997, -0.029, -3.054)
+[node name="LargeCupboardFix1" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.236887, 0, -0.971537, 0, 1, 0, 0.971537, 0, 0.236887, 1.641, 0.625, -0.648)
 
-[node name="PickableImageFrame8" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.887528, 0, -0.460755, 0, 1, 0, 0.460755, 0, 0.887528, 1.859, 0.042, -0.665)
+[node name="SmallCupboardFix" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(-0.266922, 0, 0.963718, 0, 1, 0, -0.963718, 0, -0.266922, -0.042, 0.291, 1.103)
 
-[node name="PickableImageFrame9" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(-0.576212, 0, 0.8173, 0, 1, 0, -0.8173, 0, -0.576212, -0.46, 0.098, -0.466)
+[node name="PinboardFix" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(-0.963718, 0, -0.266922, 0, 1, 0, 0.266922, 0, -0.963718, 1.629, 0.404, 1.291)
 
-[node name="PickableImageFrame10" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.763197, 0, 0.646166, 0, 1, 0, -0.646166, 0, 0.763197, -1.156, 0.746, -3.013)
+[node name="PinboardMove1" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(-0.966207, 0, -0.257766, 0, 1, 0, 0.257766, 0, -0.966207, 0.00573229, 0.289682, -0.102443)
 
-[node name="PickableImageFrame11" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.257102, 0, -0.966384, 0, 1, 0, 0.966384, 0, 0.257102, 0.212, 0.607, -2.98)
+[node name="PinboardMove2" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.976945, 0, 0.21349, 0, 1, 0, -0.21349, 0, 0.976945, 0.0251444, 0.29, -0.00438506)
 
-[node name="PickableImageFrame12" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(-0.675951, 0, -0.736947, 0, 1, 0, 0.736947, 0, -0.675951, 1.198, 0.525, -1.88)
+[node name="LargeCupboardFix2" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.727789, 0, -0.685801, 0, 1, 0, 0.685801, 0, 0.727789, 1.743, -0.227, -0.155)
 
-[node name="PickableImageFrame13" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(-0.615256, 0, -0.788328, 0, 1, 0, 0.788328, 0, -0.615256, 1.918, 0.043, 0.227)
+[node name="Float1" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.164885, 0, -0.986313, 0, 1, 0, 0.986313, 0, 0.164885, 1.84, 0.625, 0.227)
 
-[node name="PickableImageFrame14" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.448014, 0, 0.894027, 0, 1, 0, -0.894027, 0, 0.448014, -0.357, -0.121, 0.319)
+[node name="Float2" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(-0.886496, 0, 0.462737, 0, 1, 0, -0.462737, 0, -0.886496, 0.575, 0.538, 1.5)
 
-[node name="PickableImageFrame15" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.148976, 0, -0.988841, 0, 1, 0, 0.988841, 0, 0.148976, 0.355, 0.822, -0.814)
+[node name="Float3" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(0.680106, 0, -0.733114, 0, 1, 0, 0.733114, 0, 0.680106, 0.46, 0.769, -3.039)
 
-[node name="PickableImageFrame16" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.360854, 0, 0.932622, 0, 1, 0, -0.932622, 0, 0.360854, -0.748, -0.204, -2.305)
+[node name="Float4" parent="." instance=ExtResource("2_trca1")]
+transform = Transform3D(-0.75301, 0, 0.658009, 0, 1, 0, -0.658009, 0, -0.75301, 0.191, 0.888, -1.25)

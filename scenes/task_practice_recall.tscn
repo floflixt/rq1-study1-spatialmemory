@@ -19,14 +19,14 @@ size = Vector3(0.5, 0.4, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2v531"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wk7p3"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txi4l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xyao"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2v531")
+albedo_texture = SubResource("ViewportTexture_wk7p3")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gbvy4"]
@@ -72,7 +72,7 @@ image = ExtResource("8_6fg47")
 [node name="PlacedImages" type="Node3D" parent="."]
 
 [node name="RecallInstructions" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.981946, 0, 0.189164, 0, 1, 0, -0.189164, 0, 0.981946, 0, 0.60425, -0.11718)
+transform = Transform3D(0.99911, 0, 0.0421895, 0, 1, 0, -0.0421895, 0, 0.99911, 0.192691, 0.60425, -1.92452)
 mesh = SubResource("BoxMesh_6wdtj")
 surface_material_override/0 = ExtResource("10_nf2cx")
 
@@ -88,7 +88,7 @@ size = Vector2i(750, 420)
 
 [node name="Screen" parent="RecallInstructions/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_axpqw")
-surface_material_override/0 = SubResource("StandardMaterial3D_txi4l")
+surface_material_override/0 = SubResource("StandardMaterial3D_8xyao")
 
 [node name="StaticBody3D" parent="RecallInstructions/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 420)

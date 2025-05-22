@@ -34,14 +34,14 @@ size = Vector3(0.73, 0.515, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dh0ux"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rhuwo"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu2y3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bfdv"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_dh0ux")
+albedo_texture = SubResource("ViewportTexture_rhuwo")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5kpy"]
@@ -55,14 +55,14 @@ size = Vector3(0.4, 0.3, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d435n"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_q0pkr"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ltj6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nati"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_d435n")
+albedo_texture = SubResource("ViewportTexture_q0pkr")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_islj5"]
@@ -75,7 +75,7 @@ script = ExtResource("1_xhj2j")
 [node name="Images" type="Node3D" parent="."]
 
 [node name="PickableImageFrame1" parent="Images" instance=ExtResource("1_q154c")]
-transform = Transform3D(-0.273929, 0, 0.96175, 0, 1, 0, -0.96175, 0, -0.273929, -0.586, 0.65, -1.355)
+transform = Transform3D(0.488192, 0, 0.872736, 0, 1, 0, -0.872736, 0, 0.488192, -0.00851926, 0.65, -1.95525)
 image_texture = "europeana.jpg"
 image = ExtResource("3_vauyq")
 
@@ -97,7 +97,7 @@ layers = 2
 mesh = SubResource("PrismMesh_j0trt")
 
 [node name="GestureRecognition" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.987822, -0.0909528, 0.110018, -2.22484e-08, 0.584571, 0.707107, -0.155589, -0.577452, 0.698496, 0.268367, 0.0272435, 0.103775)
+transform = Transform3D(-0.0775709, -0.58281, 0.704977, -2.22484e-08, 0.584571, 0.707107, -0.996987, 0.0453457, -0.0548509, 0.0920984, 0.0272435, -0.972035)
 mesh = SubResource("BoxMesh_ipcga")
 surface_material_override/0 = ExtResource("6_nou6q")
 
@@ -150,7 +150,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_r177x")
-surface_material_override/0 = SubResource("StandardMaterial3D_pu2y3")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bfdv")
 
 [node name="StaticBody3D" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -161,7 +161,7 @@ shape = SubResource("BoxShape3D_s5kpy")
 [node name="Furniture" parent="." instance=ExtResource("11_2muk2")]
 
 [node name="PracticeFrameInteractionInstruction" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.151865, 0, 0.988401, 0, 1, 0, -0.988401, 0, -0.151865, -0.109543, 0.275108, 0.911241)
+transform = Transform3D(0.909693, 0, 0.415281, 0, 1, 0, -0.415281, 0, 0.909693, 0.505121, 0.773922, -2.34695)
 mesh = SubResource("BoxMesh_3vigb")
 surface_material_override/0 = ExtResource("6_nou6q")
 
@@ -178,7 +178,7 @@ size = Vector2i(750, 400)
 [node name="Screen" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144191, -0.0828453, 4.88013e-07)
 mesh = SubResource("QuadMesh_gxd5e")
-surface_material_override/0 = SubResource("StandardMaterial3D_3ltj6")
+surface_material_override/0 = SubResource("StandardMaterial3D_2nati")
 
 [node name="StaticBody3D" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -186,7 +186,12 @@ viewport_size = Vector2(750, 400)
 [node name="CollisionShape3D" parent="PracticeFrameInteractionInstruction/Viewport2Din3D/StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_islj5")
 
+[node name="TimerPracticeComplete" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="button_pressed" from="GestureRecognition/TutorialComleteButton/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]
+[connection signal="timeout" from="TimerPracticeComplete" to="." method="_on_timer_practice_complete_timeout"]
 
 [editable path="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D"]
 [editable path="PracticeFrameInteractionInstruction/Viewport2Din3D"]

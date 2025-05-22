@@ -30,6 +30,8 @@ func _process(delta: float) -> void:
 			l_gesture = "FIST"
 		"OpenHand":
 			l_gesture = "OPENHAND"
+		_:
+			l_gesture = "..."
 	match EXPAR.current_right_gesture:
 		"ThumbsUp":
 			r_gesture = "THUMBSUP"
@@ -39,6 +41,8 @@ func _process(delta: float) -> void:
 			r_gesture = "FIST"
 		"OpenHand":
 			r_gesture = "OPENHAND"
+		_:
+			r_gesture = "..."
 			
 	$GestureRecognition/GestureLeft.text = l_gesture
 	$GestureRecognition/GestureRight.text = r_gesture
@@ -91,5 +95,9 @@ func _on_interactable_area_button_button_pressed(button: Variant) -> void:
 		$GestureRecognition/TutorialComleteButton/InteractableAreaButton.monitoring = false
 		$GestureRecognition/TutorialComleteButton/InteractableAreaButton.monitorable = false
 		get_tree().call_group("log", "log", "task_practice_learning.gd/_on_interactable_area_button_pressed()/button pressed")
-		all_ratings_complete.emit()
+		$TimerPracticeComplete.start()
 		button_clicked = true
+
+
+func _on_timer_practice_complete_timeout() -> void:
+	all_ratings_complete.emit()

@@ -70,8 +70,8 @@ max = 30.0
 [resource]
 script = ExtResource("2_gwjqt")
 pose_name = "OpenHand"
-threshold = 0.2
-hold_time = 0.2
+threshold = 0.185
+hold_time = 0.1
 release_time = 0.2
 flexion_thumb = SubResource("Resource_ap2ul")
 flexion_index = SubResource("Resource_685ei")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bh75755d31wed"]
+[gd_scene load_steps=31 format=3 uid="uid://bh75755d31wed"]
 
 [ext_resource type="Script" path="res://scenes/tutorial.gd" id="1_dtw18"]
 [ext_resource type="Material" uid="uid://blvqwdcqr5o28" path="res://components/tablet_background_black_material.tres" id="2_f7ues"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://6i6b52wdtj7y" path="res://components/green_material.tres" id="9_vx4gv"]
 [ext_resource type="Material" uid="uid://baas1mx6du0so" path="res://components/blue_transparent_material.tres" id="11_yg2qd"]
 [ext_resource type="PackedScene" uid="uid://ba4mp6krpo4bq" path="res://scenes/move_cubes_instruction.tscn" id="13_nbgot"]
+[ext_resource type="PackedScene" uid="uid://dvppkprpx8gyx" path="res://scenes/furniture.tscn" id="14_o8qtl"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g5ko1"]
 size = Vector2(0.5, 0.385)
@@ -33,14 +34,14 @@ size = Vector3(0.73, 0.515, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_h3u0e"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5mfmp"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aw4cs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekuq8"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_h3u0e")
+albedo_texture = SubResource("ViewportTexture_5mfmp")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivypv"]
@@ -63,14 +64,14 @@ size = Vector3(0.5, 0.4, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_h2u0h"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_isaqs"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8t5o"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v2ku5"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_h2u0h")
+albedo_texture = SubResource("ViewportTexture_isaqs")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xnkj1"]
@@ -88,7 +89,7 @@ text = "TutorialOrigin
 "
 
 [node name="GestureRecognition" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.584571, 0.707107, 0, -0.584571, 0.707107, 0, -0.00115846, 0.00316679)
+transform = Transform3D(0.0518479, -0.583785, 0.706156, 0, 0.584571, 0.707107, -0.998655, -0.0303088, 0.036662, 0.106679, -0.00115846, -0.893056)
 mesh = SubResource("PlaneMesh_g5ko1")
 surface_material_override/0 = ExtResource("2_f7ues")
 
@@ -141,7 +142,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_ajyre")
-surface_material_override/0 = SubResource("StandardMaterial3D_aw4cs")
+surface_material_override/0 = SubResource("StandardMaterial3D_ekuq8")
 
 [node name="StaticBody3D" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -150,7 +151,7 @@ viewport_size = Vector2(750, 400)
 shape = SubResource("BoxShape3D_ivypv")
 
 [node name="MoveCubes" type="Node3D" parent="."]
-transform = Transform3D(0.807197, 0, -0.590282, 0, 1, 0, 0.590282, 0, 0.807197, -0.621197, 0, 0.220213)
+transform = Transform3D(0.983455, 0, 0.181154, 0, 1, 0, -0.181154, 0, 0.983455, -0.796058, 0, -0.641935)
 
 [node name="RedCube" parent="MoveCubes" instance=ExtResource("6_47ibv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22663, 0.268509, -0.910536)
@@ -217,7 +218,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="MoveCubes/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_ixl0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_g8t5o")
+surface_material_override/0 = SubResource("StandardMaterial3D_v2ku5")
 
 [node name="StaticBody3D" parent="MoveCubes/MeshInstance3D/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -228,6 +229,8 @@ shape = SubResource("BoxShape3D_xnkj1")
 [node name="TimerTutorialComplete" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Furniture" parent="." instance=ExtResource("14_o8qtl")]
 
 [connection signal="button_pressed" from="GestureRecognition/TutorialComleteButton/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]
 [connection signal="area_entered" from="MoveCubes/RedGoal/RedGoalArea" to="." method="_on_red_goal_area_area_entered"]
