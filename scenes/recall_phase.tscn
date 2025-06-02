@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dhxifaj1wen0p"]
+[gd_scene load_steps=22 format=3 uid="uid://dhxifaj1wen0p"]
 
 [ext_resource type="Script" path="res://scenes/recall_phase.gd" id="1_8gqp3"]
 [ext_resource type="PackedScene" uid="uid://se8kdypldi4o" path="res://components/images.tscn" id="2_1edc7"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://djn6p7cj4u5is" path="res://assets/new_images/00092-3054694163.png" id="15_r1312"]
 [ext_resource type="Texture2D" uid="uid://bifdkhisuig4j" path="res://assets/new_images/00153-1820056054.png" id="16_dmsvo"]
 [ext_resource type="Texture2D" uid="uid://d0magbid66n2v" path="res://assets/new_images/00172-3658612153.png" id="19_kd53t"]
+[ext_resource type="Texture2D" uid="uid://b1swufid6kkp3" path="res://assets/new_images/00085-97630536.png" id="20_m8bsj"]
+[ext_resource type="Texture2D" uid="uid://ifldh1fppcie" path="res://assets/new_images/00158-1453835199.png" id="21_tw6c7"]
 
 [node name="RecallPhase" type="Node3D" groups=["setup"]]
 script = ExtResource("1_8gqp3")
@@ -105,6 +107,16 @@ is_new_image = true
 [node name="NEWPickableImageFrame16" parent="NewImages" instance=ExtResource("3_cet50")]
 image_texture = "00172-3658612153.png"
 image = ExtResource("19_kd53t")
+is_new_image = true
+
+[node name="NEWPickableImageFrame17" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00085-97630536.png"
+image = ExtResource("20_m8bsj")
+is_new_image = true
+
+[node name="NEWPickableImageFrame18" parent="NewImages" instance=ExtResource("3_cet50")]
+image_texture = "00158-1453835199.png"
+image = ExtResource("21_tw6c7")
 is_new_image = true
 
 [node name="PlacedImages" type="Node3D" parent="."]

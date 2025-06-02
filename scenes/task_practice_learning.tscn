@@ -34,14 +34,14 @@ size = Vector3(0.73, 0.515, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rhuwo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_viwcj"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bfdv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cu61"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_rhuwo")
+albedo_texture = SubResource("ViewportTexture_viwcj")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5kpy"]
@@ -55,14 +55,14 @@ size = Vector3(0.4, 0.3, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q0pkr"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_npn11"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nati"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vjag0"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_q0pkr")
+albedo_texture = SubResource("ViewportTexture_npn11")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_islj5"]
@@ -150,7 +150,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_r177x")
-surface_material_override/0 = SubResource("StandardMaterial3D_1bfdv")
+surface_material_override/0 = SubResource("StandardMaterial3D_6cu61")
 
 [node name="StaticBody3D" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -178,7 +178,7 @@ size = Vector2i(750, 400)
 [node name="Screen" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144191, -0.0828453, 4.88013e-07)
 mesh = SubResource("QuadMesh_gxd5e")
-surface_material_override/0 = SubResource("StandardMaterial3D_2nati")
+surface_material_override/0 = SubResource("StandardMaterial3D_vjag0")
 
 [node name="StaticBody3D" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
