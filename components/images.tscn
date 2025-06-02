@@ -23,7 +23,7 @@ transform = Transform3D(0.433966, 0, 0.900929, 0, 1, 0, -0.900929, 0, 0.433966, 
 transform = Transform3D(0.19996, 0, -0.979804, 0, 1, 0, 0.979804, 0, 0.19996, 1.257, -0.042, -2.067)
 
 [node name="LargeTableMove2" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.970786, 0, 0.239947, 0, 1, 0, -0.239947, 0, 0.970786, 1.1584, -0.033, -1.2613)
+transform = Transform3D(0.970786, 0, 0.239947, 0, 1, 0, -0.239947, 0, 0.970786, 1.1584, -0.033, -1.27176)
 
 [node name="LargeCupboardFix1" parent="." instance=ExtResource("2_trca1")]
 transform = Transform3D(0.236887, 0, -0.971537, 0, 1, 0, 0.971537, 0, 0.236887, 1.641, 0.625, -0.648)
@@ -41,7 +41,7 @@ transform = Transform3D(-0.966207, 0, -0.257766, 0, 1, 0, 0.257766, 0, -0.966207
 transform = Transform3D(0.976945, 0, 0.21349, 0, 1, 0, -0.21349, 0, 0.976945, 0.0251444, 0.29, -0.00438506)
 
 [node name="LargeCupboardFix2" parent="." instance=ExtResource("2_trca1")]
-transform = Transform3D(0.727789, 0, -0.685801, 0, 1, 0, 0.685801, 0, 0.727789, 1.743, -0.227, -0.155)
+transform = Transform3D(0.97873, 0, 0.205151, 0, 1, 0, -0.205151, 0, 0.97873, 1.79048, -0.227, -0.281558)
 
 [node name="Float1" parent="." instance=ExtResource("2_trca1")]
 transform = Transform3D(0.164885, 0, -0.986313, 0, 1, 0, 0.986313, 0, 0.164885, 1.84, 0.625, 0.227)

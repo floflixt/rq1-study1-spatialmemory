@@ -13,7 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if completed_ratings == 16 and not can_finish_learning_phase:
+	if completed_ratings == 18 and not can_finish_learning_phase:
 		can_finish_learning_phase = true
 		get_tree().call_group("xr", "participant_feedback", "ALL_RATINGS_COMPLETE", Color.GREEN)
 		get_tree().call_group("log", "log", "learning_phase.gd/_process()/can_finish_learning_phase set to true")
