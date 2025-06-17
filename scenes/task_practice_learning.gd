@@ -95,6 +95,7 @@ func _on_interactable_area_button_button_pressed(button: Variant) -> void:
 		$GestureRecognition/TutorialComleteButton/InteractableAreaButton.monitoring = false
 		$GestureRecognition/TutorialComleteButton/InteractableAreaButton.monitorable = false
 		get_tree().call_group("log", "log", "task_practice_learning.gd/_on_interactable_area_button_pressed()/button pressed")
+		get_tree().call_group("xr", "participant_feedback", "PRACTICE_COMPLETE", Color.GREEN)
 		$TimerPracticeComplete.start()
 		button_clicked = true
 

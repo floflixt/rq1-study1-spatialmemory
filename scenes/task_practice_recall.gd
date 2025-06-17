@@ -70,6 +70,7 @@ func present_next_image(hand_transform: Transform3D) -> void:
 	if not currently_placing:
 		# if there are no more images to place
 		if $Images.get_child_count() == 0:
+			get_tree().call_group("xr", "participant_feedback", "PRACTICE_COMPLETE", Color.GREEN)
 			recall_phase_complete.emit()
 		currently_placing = true
 		# first, we get a random node from those that have not yet been placed

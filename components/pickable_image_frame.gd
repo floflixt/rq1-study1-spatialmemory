@@ -53,15 +53,15 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	# only if we are currently waiting for confirming a placement, we set the frame color
 	if can_confirm:
-		if confirm_counter < 100:
+		if confirm_counter < 50:
 			set_frame_material(black)
-		if confirm_counter > 100:
+		if confirm_counter > 50:
 			set_frame_material(orange)
-		if confirm_counter > 200:
+		if confirm_counter > 100:
 			set_frame_material(yellow)
-		if confirm_counter > 300:
+		if confirm_counter > 150:
 			set_frame_material(green)
-		if confirm_counter > 360:
+		if confirm_counter > 200:
 			placement_confirmed = true
 
 ###################################################################

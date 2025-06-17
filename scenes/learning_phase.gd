@@ -59,6 +59,7 @@ func setup() -> void:
 	
 ## this function is only intended to be run once after all ratings are collected
 func save_final_ratings() -> void:
+	get_tree().call_group("xr", "participant_feedback", "EXPERIMENT_COMPLETE", Color.GREEN)
 	get_tree().call_group("log", "log", "learning_phase.gd/save_final_ratings()/save final ratings called")
 	# go through all images and save their current ratings
 	for image_node in $Images.get_children():

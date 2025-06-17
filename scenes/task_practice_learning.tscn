@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="1_q154c"]
 [ext_resource type="Script" path="res://scenes/task_practice_learning.gd" id="1_xhj2j"]
-[ext_resource type="Texture2D" uid="uid://b2put2lcsv0lj" path="res://assets/tutorial_images/europeana.jpg" id="3_vauyq"]
-[ext_resource type="Texture2D" uid="uid://d0rff6n7o57pn" path="res://assets/tutorial_images/paul-blenkhorn-2.jpg" id="4_ypcax"]
+[ext_resource type="Texture2D" uid="uid://cvv32g6s5ym0j" path="res://assets/tutorial_images/purple.jpg" id="3_c0fhn"]
+[ext_resource type="Texture2D" uid="uid://cevgfn2u4x2ek" path="res://assets/tutorial_images/orange.jpg" id="4_8h4r2"]
+[ext_resource type="Texture2D" uid="uid://dtwbjtokdm0io" path="res://assets/tutorial_images/pale_green.jpg" id="5_xgjv3"]
 [ext_resource type="Material" uid="uid://blvqwdcqr5o28" path="res://components/tablet_background_black_material.tres" id="6_nou6q"]
-[ext_resource type="Texture2D" uid="uid://dcgh78slkgv7i" path="res://assets/tutorial_images/steve-johnson.jpg" id="6_un4jg"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="9_k0a7t"]
 [ext_resource type="Material" uid="uid://6i6b52wdtj7y" path="res://components/green_material.tres" id="9_tmnc1"]
 [ext_resource type="PackedScene" uid="uid://cme66uldrjl2i" path="res://addons/godot-xr-tools/interactables/interactable_area_button.tscn" id="10_2vjwe"]
@@ -34,14 +34,14 @@ size = Vector3(0.73, 0.515, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wjeb5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_duebq"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spwnm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q53w8"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_wjeb5")
+albedo_texture = SubResource("ViewportTexture_duebq")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s5kpy"]
@@ -55,14 +55,14 @@ size = Vector3(0.4, 0.3, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_i0l01"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_y4bgn"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ky8yt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkhjv"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_i0l01")
+albedo_texture = SubResource("ViewportTexture_y4bgn")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_islj5"]
@@ -76,18 +76,18 @@ script = ExtResource("1_xhj2j")
 
 [node name="PickableImageFrame1" parent="Images" instance=ExtResource("1_q154c")]
 transform = Transform3D(0.488192, 0, 0.872736, 0, 1, 0, -0.872736, 0, 0.488192, -0.00851926, 0.65, -1.95525)
-image_texture = "europeana.jpg"
-image = ExtResource("3_vauyq")
+image_texture = "purple.jpg"
+image = ExtResource("3_c0fhn")
 
 [node name="PickableImageFrame2" parent="Images" instance=ExtResource("1_q154c")]
 transform = Transform3D(0.286063, 0, -0.958211, 0, 1, 0, 0.958211, 0, 0.286063, 1.884, 0.656, 0.153)
-image_texture = "paul-blenkhorn-2.jpg"
-image = ExtResource("4_ypcax")
+image_texture = "orange.jpg"
+image = ExtResource("4_8h4r2")
 
-[node name="PickableImageFrame4" parent="Images" instance=ExtResource("1_q154c")]
-transform = Transform3D(-0.601758, 0, 0.798679, 0, 1, 0, -0.798679, 0, -0.601758, 0.089, 0.279, 1.259)
-image_texture = "steve-johnson.jpg"
-image = ExtResource("6_un4jg")
+[node name="PickableImageFrame3" parent="Images" instance=ExtResource("1_q154c")]
+transform = Transform3D(-0.453522, 0, 0.891245, 0, 1, 0, -0.891245, 0, -0.453522, 0.0457446, 0.314372, 1.259)
+image_texture = "pale_green.jpg"
+image = ExtResource("5_xgjv3")
 
 [node name="FollowHMD" type="MeshInstance3D" parent="."]
 process_mode = 4
@@ -150,7 +150,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_r177x")
-surface_material_override/0 = SubResource("StandardMaterial3D_spwnm")
+surface_material_override/0 = SubResource("StandardMaterial3D_q53w8")
 
 [node name="StaticBody3D" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -161,7 +161,7 @@ shape = SubResource("BoxShape3D_s5kpy")
 [node name="Furniture" parent="." instance=ExtResource("11_2muk2")]
 
 [node name="PracticeFrameInteractionInstruction" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.909693, 0, 0.415281, 0, 1, 0, -0.415281, 0, 0.909693, 0.505121, 0.773922, -2.34695)
+transform = Transform3D(0.909693, 0, 0.415281, 0, 1, 0, -0.415281, 0, 0.909693, 0.505121, 0.557127, -2.34695)
 mesh = SubResource("BoxMesh_3vigb")
 surface_material_override/0 = ExtResource("6_nou6q")
 
@@ -178,7 +178,7 @@ size = Vector2i(750, 400)
 [node name="Screen" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144191, -0.0828453, 4.88013e-07)
 mesh = SubResource("QuadMesh_gxd5e")
-surface_material_override/0 = SubResource("StandardMaterial3D_ky8yt")
+surface_material_override/0 = SubResource("StandardMaterial3D_vkhjv")
 
 [node name="StaticBody3D" parent="PracticeFrameInteractionInstruction/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)

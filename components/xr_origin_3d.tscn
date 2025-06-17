@@ -108,7 +108,7 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0493448, 0, 0)
 
 [node name="ParticipantFeedback" type="Label3D" parent="XRCamera3D/Feedback"]
-transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, -1)
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 0, -0.500016)
 layers = 3
 no_depth_test = true
 modulate = Color(0, 1, 0.0117647, 1)
@@ -212,7 +212,7 @@ grab_distance = 0.06
 ranged_enable = false
 
 [node name="LeftHandCollision" type="Area3D" parent="LeftVirtualController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400173, 0.083923)
+transform = Transform3D(1.5, 0, 0, 0, -1.49841, -0.0691167, 0, 0.0691167, -1.49841, 0, -0.0400173, 0.0394701)
 collision_layer = 131072
 collision_mask = 4
 
@@ -221,7 +221,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CylinderShape3D_kqw8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftVirtualController/LeftHandCollision"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.0393563)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 mesh = SubResource("CylinderMesh_psniv")
 surface_material_override/0 = ExtResource("3_xhndn")
@@ -314,7 +314,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("21_bansj")
 
 [node name="RightHandCollision" type="Area3D" parent="RightVirtualController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0400173, 0.083923)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.0400173, 0.0560104)
 collision_layer = 131072
 collision_mask = 4
 
@@ -323,7 +323,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CylinderShape3D_kqw8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RightVirtualController/RightHandCollision"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.0393563)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 mesh = SubResource("CylinderMesh_psniv")
 surface_material_override/0 = ExtResource("3_xhndn")

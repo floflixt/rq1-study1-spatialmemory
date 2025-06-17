@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://5x2on57afeoh" path="res://components/pickable_image_frame.tscn" id="1_53g80"]
 [ext_resource type="Script" path="res://scenes/task_practice_recall.gd" id="1_g04ev"]
-[ext_resource type="Texture2D" uid="uid://dcgh78slkgv7i" path="res://assets/tutorial_images/steve-johnson.jpg" id="3_thawd"]
-[ext_resource type="Texture2D" uid="uid://b2put2lcsv0lj" path="res://assets/tutorial_images/europeana.jpg" id="4_vtllg"]
-[ext_resource type="Texture2D" uid="uid://d0rff6n7o57pn" path="res://assets/tutorial_images/paul-blenkhorn-2.jpg" id="5_snvtl"]
-[ext_resource type="Texture2D" uid="uid://cypbeb0g0sm1l" path="res://assets/tutorial_images/anniroenkae.jpg" id="6_mmjg5"]
-[ext_resource type="Texture2D" uid="uid://cilxddqyyyhfn" path="res://assets/tutorial_images/bymalens.jpg" id="7_150qx"]
-[ext_resource type="Texture2D" uid="uid://ko0prgc4wh82" path="res://assets/tutorial_images/googledeepmind.jpg" id="8_6fg47"]
+[ext_resource type="Texture2D" uid="uid://cvv32g6s5ym0j" path="res://assets/tutorial_images/purple.jpg" id="3_pcbup"]
+[ext_resource type="Texture2D" uid="uid://cevgfn2u4x2ek" path="res://assets/tutorial_images/orange.jpg" id="4_ynwp8"]
+[ext_resource type="Texture2D" uid="uid://dtwbjtokdm0io" path="res://assets/tutorial_images/pale_green.jpg" id="5_yieb7"]
+[ext_resource type="Texture2D" uid="uid://bu16ovpyvdprd" path="res://assets/tutorial_images/red.jpg" id="6_7vrje"]
+[ext_resource type="Texture2D" uid="uid://cq858oiluqnnf" path="res://assets/tutorial_images/blue.jpg" id="7_a0tdb"]
+[ext_resource type="Texture2D" uid="uid://de50qf8486ob1" path="res://assets/tutorial_images/green.jpg" id="8_o7wd4"]
 [ext_resource type="Material" uid="uid://blvqwdcqr5o28" path="res://components/tablet_background_black_material.tres" id="10_nf2cx"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="11_w1l84"]
 [ext_resource type="PackedScene" uid="uid://bth8gyqhlweds" path="res://scenes/recall_instructions.tscn" id="12_sasl1"]
@@ -19,14 +19,14 @@ size = Vector3(0.5, 0.4, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bf3wn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_q6he2"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmwmu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m14rc"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_bf3wn")
+albedo_texture = SubResource("ViewportTexture_q6he2")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gbvy4"]
@@ -40,34 +40,37 @@ script = ExtResource("1_g04ev")
 
 [node name="PickableImageFrame1" parent="Images" instance=ExtResource("1_53g80")]
 transform = Transform3D(-0.601815, 0, 0.798635, 0, 1, 0, -0.798635, 0, -0.601815, 0.089, 0.279, 1.259)
-image_texture = "steve-johnson.jpg"
-image = ExtResource("3_thawd")
+image_texture = "purple.jpg"
+image = ExtResource("3_pcbup")
 
 [node name="PickableImageFrame2" parent="Images" instance=ExtResource("1_53g80")]
 transform = Transform3D(-0.273959, 0, 0.961741, 0, 1, 0, -0.961741, 0, -0.273959, -0.586, 0.65, -1.355)
-image_texture = "europeana.jpg"
-image = ExtResource("4_vtllg")
+image_texture = "orange.jpg"
+image = ExtResource("4_ynwp8")
 
 [node name="PickableImageFrame3" parent="Images" instance=ExtResource("1_53g80")]
 transform = Transform3D(0.285688, 0, -0.958323, 0, 1, 0, 0.958323, 0, 0.285688, 1.884, 0.656, 0.153)
-image_texture = "paul-blenkhorn-2.jpg"
-image = ExtResource("5_snvtl")
+image_texture = "pale_green.jpg"
+image = ExtResource("5_yieb7")
 
 [node name="NewImages" type="Node3D" parent="."]
 
 [node name="NEWPickableImageFrame1" parent="NewImages" instance=ExtResource("1_53g80")]
-image_texture = "anniroenkae.jpg"
-image = ExtResource("6_mmjg5")
+image_texture = "red.jpg"
+image = ExtResource("6_7vrje")
+is_new_image = true
 
 [node name="NEWPickableImageFrame2" parent="NewImages" instance=ExtResource("1_53g80")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514776, 0, -0.38444)
-image_texture = "bymalens.jpg"
-image = ExtResource("7_150qx")
+image_texture = "blue.jpg"
+image = ExtResource("7_a0tdb")
+is_new_image = true
 
 [node name="NEWPickableImageFrame3" parent="NewImages" instance=ExtResource("1_53g80")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.705961, 0, -0.0133194)
-image_texture = "googledeepmind.jpg"
-image = ExtResource("8_6fg47")
+image_texture = "green.jpg"
+image = ExtResource("8_o7wd4")
+is_new_image = true
 
 [node name="PlacedImages" type="Node3D" parent="."]
 
@@ -88,7 +91,7 @@ size = Vector2i(750, 420)
 
 [node name="Screen" parent="RecallInstructions/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_axpqw")
-surface_material_override/0 = SubResource("StandardMaterial3D_lmwmu")
+surface_material_override/0 = SubResource("StandardMaterial3D_m14rc")
 
 [node name="StaticBody3D" parent="RecallInstructions/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 420)

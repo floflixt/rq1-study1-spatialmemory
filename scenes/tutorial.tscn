@@ -34,14 +34,14 @@ size = Vector3(0.73, 0.515, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_l1u7y"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rbvg6"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjqny"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oubq5"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_l1u7y")
+albedo_texture = SubResource("ViewportTexture_rbvg6")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ivypv"]
@@ -64,14 +64,14 @@ size = Vector3(0.5, 0.4, 0.05)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e608f"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l4pjd"]
 viewport_path = NodePath("Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmr84"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsjlh"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_e608f")
+albedo_texture = SubResource("ViewportTexture_l4pjd")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xnkj1"]
@@ -142,7 +142,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_ajyre")
-surface_material_override/0 = SubResource("StandardMaterial3D_qjqny")
+surface_material_override/0 = SubResource("StandardMaterial3D_oubq5")
 
 [node name="StaticBody3D" parent="GestureRecognition/PracticeInstructionsGestures/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
@@ -218,7 +218,7 @@ size = Vector2i(750, 400)
 
 [node name="Screen" parent="MoveCubes/MeshInstance3D/Viewport2Din3D" index="1"]
 mesh = SubResource("QuadMesh_ixl0x")
-surface_material_override/0 = SubResource("StandardMaterial3D_vmr84")
+surface_material_override/0 = SubResource("StandardMaterial3D_xsjlh")
 
 [node name="StaticBody3D" parent="MoveCubes/MeshInstance3D/Viewport2Din3D" index="2"]
 viewport_size = Vector2(750, 400)
